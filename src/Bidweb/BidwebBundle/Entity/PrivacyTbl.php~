@@ -1,0 +1,65 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PrivacyTbl
+ *
+ * @ORM\Table(name="privacy_tbl")
+ * @ORM\Entity
+ */
+class PrivacyTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="privacy_desc", type="text", nullable=true)
+     */
+    private $privacyDesc;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set privacyDesc
+     *
+     * @param string $privacyDesc
+     * @return PrivacyTbl
+     */
+    public function setPrivacyDesc($privacyDesc)
+    {
+        $this->privacyDesc = $privacyDesc;
+
+        return $this;
+    }
+
+    /**
+     * Get privacyDesc
+     *
+     * @return string 
+     */
+    public function getPrivacyDesc()
+    {
+        return $this->privacyDesc;
+    }
+}

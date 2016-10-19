@@ -1,0 +1,57 @@
+{# empty Twig template #}
+{# src/Adbck/BidwebBundle/Resources/views/Page/index.html.twig #}
+{% extends '::landing.html.twig' %}
+
+{% block content_title %}
+    My applications Job
+{% endblock %}
+{% block path %}
+    <li><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></li>
+    <li><a href="#">{{'my.app'|trans}}</a></li>
+    {% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'application'|trans}}</h3>
+                </div>
+                <div class="panel-body">
+
+                    {% for ad in jobs %}
+                        <div class="feed">
+                            <div class="row">
+                                <div class="avatar">
+                                    <a href="{{ path('bidweb_job_show', { 'id': ad.job.id, 'slug':ad.job.slug }) }}" original-title="{{ ad.job.title }}">{{ ad.job.title }}</a>
+                                    {% if ad.job.logo %}
+                                        <img src="{{asset(ad.job.getWebPath()) }}" alt="{{ ad.job.title }} image not found" alt="Bidweb" width="50" height="50" />
+                                    {% else %}
+                                        <img src="{{asset("rs/thumb_default.png")}}" alt="Bidweb" width="50" height="50">
+                                    {% endif %}
+                                </div>
+                                <h6>
+                                    <a href="{{ path('bidweb_job_show', { 'id': ad.job.id, 'slug':ad.job.slug }) }}" class="usr">{{ad.job.companyName}}-</a> 
+                                    <a href="{{ path('bidweb_job_show', { 'id': ad.job.id, 'slug':ad.job.slug }) }}">{{ad.job.title}}</a>
+                                </h6>
+                                <p><i></i>{{ ad.job.description(200) | raw |striptags}}...</p>
+                                <div class="usrbar">
+                                    {{ ad.created|date('l, F j, Y') }}
+                                    <a href="#">Posted by : {{ad.job.companyName}}</a>
+                                    <b>-</b>
+                                    <a href="{{ path('bidweb_job_show', { 'id': ad.job.id , 'slug':ad.job.slug}) }}">Details</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    {% else %}
+                        <p>You have no application job</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

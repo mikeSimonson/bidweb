@@ -1,0 +1,12 @@
+{# src/Adbck/AdbckBundle/Resources/views/layout.html.twig #}
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headeruser %}
+    {{ render(controller("BidwebBundle:Page:notification")) }}
+{% endblock %}
+{% block leftside %}
+    {{ render(controller("BidwebBundle:Page:sidebar")) }}
+{% endblock %}

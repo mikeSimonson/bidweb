@@ -1,0 +1,48 @@
+{# empty Twig template #}
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'apply.job'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    {{'apply.job'|trans}}
+{% endblock %}
+{% block path %}
+  
+    <li><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></li>
+    <li><a href="#">{{'apply.job'|trans}}</a></li>
+{% endblock %}
+{% block body %}
+    
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'apply.job'|trans}}</h3>
+                </div>
+                <form action="{{ path('bidweb_apply_job' ,{'id':job.id}) }}" method="post" {{ form_enctype(form) }}>
+                    <div class="panel-body  form-horizontal form-padding">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'message'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.message, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'profile'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.profile, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-right">
+
+                         <input type="submit" value="{{'apply.job'|trans}}" class="btn btn-info"/>
+                    </div>
+                    {{ form_rest(form) }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+  
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% for comment in comments %}
+   
+        <div class="row">
+           
+            <h6><a href="#" class="usr">User</a> <a href="#">{{ comment.user }}</a></h6>
+            <p><i></i>{{ comment.message }}</p>
+            <div class="usrbar">
+                {{ comment.created|created_ago }}
+            </div>
+            
+            
+        </div>
+{% else %}
+    <p>There are no comments for this post. Be the first to comment...</p>
+{% endfor %}

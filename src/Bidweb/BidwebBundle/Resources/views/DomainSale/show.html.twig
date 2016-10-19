@@ -1,0 +1,97 @@
+{% extends '::guest.html.twig' %}
+
+{% block title %}{{ domain.title }}{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <section>
+            <div class="normalheader transition animated fadeIn">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <a class="small-header-action" href="#">
+                            <div class="clip-header">
+                                <i class="fa fa-arrow-up"></i>
+                            </div>
+                        </a>
+                        <div id="hbreadcrumb" class="pull-right m-t-lg">
+                            <ol class="hbreadcrumb breadcrumb">
+                                <li><a href="/">Bidweb</a></li>
+                                <li>
+                                    <a href="{{path('bidweb_domain')}}"<span>{{'domains'|trans}}</span></a>
+                                </li>
+                                <li class="active">
+                                    <span>{{'detail'|trans}} </span>
+                                </li>
+                            </ol>
+                        </div>
+                        <h2 class="font-light m-b-xs">
+                            {{'domain'|trans}}
+                        </h2>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="content animate-panel">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="hpanel hgreen">
+                        <div class="panel-body">
+                            <div class="pull-right text-right">
+                                <div class="btn-group">
+                                    <i class="fa fa-facebook btn btn-default btn-xs"></i>
+                                    <i class="fa fa-twitter btn btn-default btn-xs"></i>
+                                    <i class="fa fa-linkedin btn btn-default btn-xs"></i>
+                                </div>
+                            </div>
+                            
+                            <h3><a href="#">{{ domain.title }}</a></h3>
+                            <div class="text-muted font-bold m-b-xs">{{'posted'|trans}} : {{domain.created | created_ago}}</div>
+                        </div>
+                        <div class="panel-body">
+                            <dl>
+                                <dt>{{'domain'|trans}}</dt>
+                                <dd>{{domain.domain}}</dd>
+                                <dt>{{'price'|trans}}</dt>
+                                <dd>{{domain.price}}</dd>
+                               
+                                <dt>{{'daily.visitor'|trans}}</dt>
+                                <dd>{{domain.dailyVisitor}}</dd>
+                               
+                                {% if is_granted('ROLE_USER')%}
+                                    {% if app.user.id != domain.user.id %}
+                                        <dd><a class="like" href="{{path('user_send_msg',{'receiver':domain.user.id})}}" class="text-success">{{'contact.poster'|trans}}</a></dd>
+                                        
+                                    {% else %}
+                                        <dd><a class="like" href="{{path('bidweb_domain_edit',{'id':domain.id})}}" class="text-success">{{'edit'|trans}}</a></dd>
+                                    {% endif %}
+                                {% else %}
+                                    <dd>{{'you.must'|trans}} <a class="text-success" href='{{ path('fos_user_security_login') }}'> {{'login'|trans}}</a> {{'to.contact.poster'|trans}}.<br>
+                                    </dd>
+                                    <dd>{{'or'|trans}} 
+                                        <a href='{{ path('fos_user_registration_register') }}' class="text-success"{{'create.new.account'|trans}}</a></dd>
+                                    {% endif %}
+                            </dl>
+                        </div>
+                        <div class="panel-footer contact-footer">
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="hpanel">
+                        <div class="hpanel hgreen">
+                            <div class="panel-body">
+                                <h3>{{'detail'|trans}}</h3>
+                                <p>{{domain.detail}}</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>  
+        </div>
+    </div>
+{% endblock %}

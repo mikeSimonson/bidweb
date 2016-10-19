@@ -1,0 +1,6 @@
+{# empty Twig template #}
+{{'application.user'|trans}} {{ enquiry.job }} at {{ "now" | date("Y-m-d H:i") }}.
+
+Subject: {{ enquiry.profile.title }}
+Body:
+{{ enquiry.message }}

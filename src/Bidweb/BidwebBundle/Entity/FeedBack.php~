@@ -1,0 +1,58 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace Bidweb\BidwebBundle\Entity;
+
+/**
+ * Description of FeedBack
+ *
+ * @author walid
+ */
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Bidweb\BidwebBundle\Repository\CityRepository")
+ * @ORM\Table(name="feedback")
+ */
+class FeedBack {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
+    
+    /**
+     * @ORM\Column(name="message", type="string", length=1000, nullable=false)
+     *
+     */
+    private $message;
+    
+    /**
+     * @var \Bidweb\UserBundle\Entity\User
+     * 
+     * @ORM\ManyToOne(targetEntity="\Bidweb\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+    
+    /**
+     *
+     * @var integer
+     * @ORM\Column(name="score", type="integer", length=255, nullable=true) 
+     */
+    private $score;
+}

@@ -1,0 +1,89 @@
+{# empty Twig template #}
+{% form_theme form 'BidwebBundle:Form:fields.html.twig' %}
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}Edit post {{post.title}}{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Edit Post </h1>
+    </header>
+    {{ form_start(form, {'action': url('bidweb_post_edit',{'id':post.id})}) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.file) }}
+        {{ form_row(form.file2) }}
+        {{ form_row(form.file3) }}
+        {{ form_row(form.file4) }}
+        {{ form_row(form.file5) }}
+        
+        {{ form_row(form.website) }}
+        {{ form_row(form.address) }}
+        {{ form_row(form.price) }}
+        {{ form_row(form.category) }} 
+        {{ form_row(form.subcategory) }}
+        {{ form_row(form.state) }}
+        {{ form_row(form.city) }}
+        {{ form_row(form.description) }}
+    <input type="submit" value="Save change"/>
+    {{ form_end(form) }}
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+<script>
+
+
+var $state = $('#post_state');
+var $category = $('#post_category');
+
+$category.change(function() {
+  
+  var $form = $(this).closest('form');
+  
+  var data = {};
+  data[$category.attr('name')] = $category.val();
+  // Submit data via AJAX to the form's action path.
+ 
+  $.ajax({
+    url : $form.attr('action'),
+    type: $form.attr('method'),
+    data : data,
+    success: function(html) {
+         //alert($(html).find('#post_subcategory'));
+      // Replace current position field ...
+      $('#post_subcategory').replaceWith(
+        // ... with the returned one from the AJAX response.
+        $(html).find('#post_subcategory')
+      );
+      // Position field now displays the appropriate positions.
+    }
+  });
+});
+
+$state.change(function() {
+  
+  var $form = $(this).closest('form');
+  
+  var data = {};
+  data[$state.attr('name')] = $state.val();
+  // Submit data via AJAX to the form's action path.
+  
+  $.ajax({
+    url : $form.attr('action'),
+    type: $form.attr('method'),
+    data : data,
+    success: function(html) {
+       
+      // Replace current position field ...
+      $('#post_city').replaceWith(
+        // ... with the returned one from the AJAX response.
+        $(html).find('#post_city')
+      );
+      // Position field now displays the appropriate positions.
+    }
+  });
+});
+
+
+</script>    
+{% endblock%}

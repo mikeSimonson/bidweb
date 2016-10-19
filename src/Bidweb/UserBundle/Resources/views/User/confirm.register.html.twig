@@ -1,0 +1,21 @@
+{% block subject %}{{'confrim.register.adr'|trans}}{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+    {{'hello'|trans}} {{ user.username }} !
+
+{{'msg.confirm.register'|trans}} {{ confirmationUrl }}
+
+{{'greeting'|trans}},
+{{'bidweb.team'|trans}}
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{#
+    You can of course render the html directly here.
+    Including a template as done here allows keeping things DRY by using
+    the template inheritance in it
+#}
+
+{% endblock %}

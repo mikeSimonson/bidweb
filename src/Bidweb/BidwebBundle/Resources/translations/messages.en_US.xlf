@@ -1,0 +1,871 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>web.site</source>
+                <target>Web Site</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>seo.tool</source>
+                <target>SEO Tool</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>domain</source>
+                <target>Domain</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>job</source>
+                <target>Job</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>freelancer</source>
+                <target>Freelancer</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>database</source>
+                <target>Database</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>last.posted</source>
+                <target>Last posted</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>place.free.ads</source>
+                <target>Place free ads!</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>contact.us</source>
+                <target>Contact us</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>hi</source>
+                <target>Hi</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>guest</source>
+                <target>Guest</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>my.job</source>
+                <target>My Job</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>my.app</source>
+                <target>My Applicaion</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>all.right</source>
+                <target>All Rights Reserved</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>my.profile</source>
+                <target>My Profiles</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>my.seo</source>
+                <target>My SEO Tools</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>my.database</source>
+                <target>My Databases</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>my.web.site</source>
+                <target>My Web Sites</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>my.domain</source>
+                <target>My Domains</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>setting</source>
+                <target>Settings</target>
+            </trans-unit>
+             <trans-unit id="24">
+                <source>logout</source>
+                <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>detail</source>
+                <target>Details</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>taxonomy</source>
+                <target>Taxonomy</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>price</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>demo</source>
+                <target>Demo</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>quantity</source>
+                <target>Quantity</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>contact.poster</source>
+                <target>Contact Poster</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>edit.post</source>
+                <target>Edit post</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>msg.add.confirm</source>
+                <target>Congratulation, your post is saved</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>create.new.post</source>
+                <target>Create new post</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>posted.by</source>
+                <target>Posted by</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>no.post.found</source>
+                <target>There is no post found</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>see.more</source>
+                <target>See more</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>posted</source>
+                <target>Posted</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>daily.visitor</source>
+                <target>Daily visitor</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>apply.job</source>
+                <target>Apply job</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>message</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>profile</source>
+                <target>Profile</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>apply.confirm</source>
+                <target>Congratulation, your application job is added</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>company.name</source>
+                <target>Company name</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>skill</source>
+                <target>Skills</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>address</source>
+                <target>Address</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>duration</source>
+                <target>Duration</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>logo</source>
+                <target>Logo</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>work.type</source>
+                <target>Working type</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>sub.cat</source>
+                <target>Sub Category</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>state</source>
+                <target>State</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>city</source>
+                <target>City</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>msg.error.profile.create</source>
+                <target>You must create a profile before apply to this job.</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>create.profile</source>
+                <target>Create profile.</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>first.name</source>
+                <target>First name</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>last.name</source>
+                <target>Last name</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>phone</source>
+                <target>Phone</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>msg.confirm.register</source>
+                <target>To confirm your registration click the following link</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>greeting</source>
+                <target>Greetings</target>
+            </trans-unit>
+            <trans-unit id="62">
+                <source>bidweb.team</source>
+                <target>the Bidweb team</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>confrim.register.adr</source>
+                <target>Confirm registration email address</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>hello</source>
+                <target>Hello</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>msg.sent.by</source>
+                <target>메시지가 전송</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>subject</source>
+                <target>Subject</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>reply</source>
+                <target>Reply</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>send.msg</source>
+                <target>Send message</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>msg.box</source>
+                <target>Message Box</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>msg.sent</source>
+                <target>Messages sent</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>user</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>choose.ads</source>
+                <target>Choose ads to post</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>contact.msg</source>
+                <target>Want to contact Bidweb?</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>user.name</source>
+                <target>User name</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>diploma1</source>
+                <target>Diploma 1</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>diploma2</source>
+                <target>Diploma 2</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>diploma3</source>
+                <target>Diploma 3</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>certif1</source>
+                <target>Certification 1</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>certif2</source>
+                <target>Certification 2</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>certif3</source>
+                <target>Certification 3</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="85">
+                <source>cv</source>
+                <target>CV</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>resume</source>
+                <target>Resume</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>hide</source>
+                <target>Hide</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>show</source>
+                <target>Show</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>msg.profile.help</source>
+                <target>
+                    If you seeking for a job, you can create many profiles and publish it.
+                    Start by creating your first profile
+                
+                </target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>server.type</source>
+                <target>Server type</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>build.type</source>
+                <target>Build type</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>site.name</source>
+                <target>Site name</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>site.thumbnail</source>
+                <target>Site Thumbnail</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>last.freelancer</source>
+                <target>Last freelancer</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>load.wait</source>
+                <target>Loading...</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>application.user</source>
+                <target>New application for your job </target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>msg.edit.confirm</source>
+                <target>Your post is saved</target>
+            </trans-unit>
+            <trans-unit id="99">
+                <source>list.user.application</source>
+                <target>List of user applications</target>
+            </trans-unit>
+            <trans-unit id="100">
+                <source>my.page</source>
+                <target>My Pages</target>
+            </trans-unit>
+            <trans-unit id="101">
+                <source>posts</source>
+                <target>Posts</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>websites</source>
+                <target>Websites</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>databases</source>
+                <target>Databases</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>domains</source>
+                <target>Domains</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>seo.tools</source>
+                <target>SEO Tools</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>jobs</source>
+                <target>Jobs</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>messages</source>
+                <target>Messages</target>
+            </trans-unit>
+            <trans-unit id="108">
+                <source>wallet</source>
+                <target>Wallet</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>received.money</source>
+                <target>Received money</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>payments</source>
+                <target>Payments</target>
+            </trans-unit>
+            <trans-unit id="111">
+                <source>welcome.msg</source>
+                <target>Welcome to Bidweb</target>
+            </trans-unit>
+            <trans-unit id="112">
+                <source>last.msg</source>
+                <target>Last messages</target>
+            </trans-unit>
+            <trans-unit id="113">
+                <source>show.all.msg</source>
+                <target>Show all messages</target>
+            </trans-unit>
+            <trans-unit id="114">
+                <source>select.cat</source>
+                <target>Select categories</target>
+            </trans-unit>
+            <trans-unit id="115">
+                <source>search.text</source>
+                <target>Search text</target>
+            </trans-unit>
+            <trans-unit id="116">
+                <source>second</source>
+                <target>second</target>
+            </trans-unit>
+            <trans-unit id="117">
+                <source>ago</source>
+                <target>ago</target>
+            </trans-unit>
+            <trans-unit id="118">
+                <source>entries</source>
+                <target>entries</target>
+            </trans-unit>
+            <trans-unit id="119">
+                <source>site.name</source>
+                <target>Site name</target>
+            </trans-unit>
+            <trans-unit id="120">
+                <source>domain</source>
+                <target>Domain</target>
+            </trans-unit>
+            <trans-unit id="121">
+                <source>title.page</source>
+                <target>Hire freelancers, get a job, free Web site, domain, tools and Database ads</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>sign.up</source>
+                <target>Sign up</target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>have.project.hire.freelancer</source>
+                <target>Have a Project? Hire Freelancers Today</target>
+            </trans-unit>
+            <trans-unit id="125">
+                <source>with.us</source>
+                <target>With us, you can quickly build one of largest startup business platform.</target>
+            </trans-unit>
+            <trans-unit id="126">
+                <source>we.seek</source>
+                <target>We seek to be your choice to take your idea to the next level . For the greater thing, the pioneering idea that we will help you businesses succeed and establish you as visionaries.</target>
+            </trans-unit>
+            <trans-unit id="127">
+                <source>get.started</source>
+                <target>Get started</target>
+            </trans-unit>
+            <trans-unit id="128">
+                <source>hire.freelancer</source>
+                <target>Hire a freelancer</target>
+            </trans-unit>
+            <trans-unit id="129">
+                <source>hire.freelancer.text</source>
+                <target>thousand of start-up businesses use Bidweb to turn their ideas into reality. Need to get work done? We will help you.</target>
+            </trans-unit>
+            <trans-unit id="130">
+                <source>invite.friend</source>
+                <target>Invite friends who are looking for work or need to outsource a job.</target>
+            </trans-unit>
+            <trans-unit id="131">
+                <source>hire</source>
+                <target>Hire</target>
+            </trans-unit>
+            <trans-unit id="132">
+                <source>get.online.work</source>
+                <target>Get online work</target>
+            </trans-unit>
+            <trans-unit id="133">
+                <source>get.online.work.text</source>
+                <target>Do you have amazing skills? Bidweb has opportunities for all types of professionals. We help you find a job you'll love.</target>
+            </trans-unit>
+            <trans-unit id="134">
+                <source>work</source>
+                <target>Work</target>
+            </trans-unit>
+            <trans-unit id="135">
+                <source>sel.ads</source>
+                <target>sell websites, domains and SEO tools</target>
+            </trans-unit>
+            <trans-unit id="136">
+                <source>sel.ads.text</source>
+                <target>We provide the number one place to buy and sell websites, domains and much more database tools.</target>
+            </trans-unit>
+            <trans-unit id="137">
+                <source>sell</source>
+                <target>Sell</target>
+            </trans-unit>
+            <trans-unit id="138">
+                <source>great.work</source>
+                <target>"Great work starts with great talent"</target>
+            </trans-unit>
+            <trans-unit id="139">
+                <source>great.work.text</source>
+                <target>Get amazing results working with the best programmers, designers, writers.</target>
+            </trans-unit>
+            <trans-unit id="140">
+                <source>find.perfect.fast</source>
+                <target>Find the perfect match fast</target>
+            </trans-unit>
+            <trans-unit id="141">
+                <source>find.perfect.fast.text</source>
+                <target>Hire freelancers with confidence, always knowing their work experience and feedback from other clients.</target>
+            </trans-unit>
+            <trans-unit id="142">
+                <source>special.design.view</source>
+                <target>Special designed project view</target>
+            </trans-unit>
+            <trans-unit id="143">
+                <source>special.design.view.text</source>
+                <target>Collaborate in a secure online workplace using the latest communication tools. Work stress-free with time tracking, reports and Upwork Payment Protection that assures you only pay for work you approve.</target>
+            </trans-unit>
+            <trans-unit id="144">
+                <source>contact.us.anytime</source>
+                <target>Contact with us anytime</target>
+            </trans-unit>
+            <trans-unit id="145">
+                <source>contact.us.if</source>
+                <target>If you have any further queries, requests or suggestions, we will be pleased to assist you.</target>
+            </trans-unit>
+            <trans-unit id="146">
+                <source>contact.us.select</source>
+                <target>Please select the subject of your enquiry to ensure your question is forwarded to the correct department.</target>
+            </trans-unit>
+            <trans-unit id="147">
+                <source>name</source>
+                <target>Name</target>
+            </trans-unit><trans-unit id="148">
+                <source>all</source>
+                <target>All</target>
+            </trans-unit>
+            <trans-unit id="149">
+                <source>entries</source>
+                <target>entries</target>
+            </trans-unit>
+            <trans-unit id="150">
+                <source>you.must</source>
+                <target>You must</target>
+            </trans-unit>
+            <trans-unit id="151">
+                <source>to.contact.poster</source>
+                <target>to contact poster</target>
+            </trans-unit>
+            <trans-unit id="152">
+                <source>or</source>
+                <target>Or</target>
+            </trans-unit>
+            <trans-unit id="153">
+                <source>create.new.account</source>
+                <target>create new account</target>
+            </trans-unit>
+            <trans-unit id="154">
+                <source>category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="156">
+                <source>diploma</source>
+                <target>Diploma</target>
+            </trans-unit>
+            <trans-unit id="157">
+                <source>freelancers</source>
+                <target>Freelancers</target>
+            </trans-unit>
+            <trans-unit id="158">
+                <source>publish</source>
+                <target>Publish</target>
+            </trans-unit>
+            <trans-unit id="159">
+                <source>browse</source>
+                <target>Browse</target>
+            </trans-unit>
+            <trans-unit id="160">
+                <source>confirm</source>
+                <target>Confirmation</target>
+            </trans-unit>
+            <trans-unit id="161">
+                <source>accept</source>
+                <target>Accept</target>
+            </trans-unit>
+            <trans-unit id="162">
+                <source>decline</source>
+                <target>Decline</target>
+            </trans-unit>
+            <trans-unit id="163">
+                <source>pay</source>
+                <target>Pay</target>
+            </trans-unit>
+            <trans-unit id="164">
+                <source>worker</source>
+                <target>Workers</target>
+            </trans-unit>
+            <trans-unit id="165">
+                <source>finish</source>
+                <target>Finish</target>
+            </trans-unit>
+            <trans-unit id="166">
+                <source>new.job</source>
+                <target>Create new job</target>
+            </trans-unit>
+            <trans-unit id="167">
+                <source>change.password</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="168">
+                <source>personnel.infos</source>
+                <target>Personnel infos</target>
+            </trans-unit>
+            <trans-unit id="169">
+                <source>help</source>
+                <target>Help</target>
+            </trans-unit>
+            <trans-unit id="170">
+                <source>contact.admin</source>
+                <target>Contact Admin</target>
+            </trans-unit>
+            <trans-unit id="171">
+                <source>search</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="172">
+                <source>please.sign.in</source>
+                <target>Please sign in</target>
+            </trans-unit>
+            <trans-unit id="173">
+                <source>to.access.personal.page</source>
+                <target>To access your personnel pages!</target>
+            </trans-unit>
+            <trans-unit id="174">
+                <source>back.to.home</source>
+                <target>Back to home</target>
+            </trans-unit>
+            <trans-unit id="175">
+                <source>register.msg</source>
+                <target>Create account now and have full access to bidweb.</target>
+            </trans-unit>
+            <trans-unit id="176">
+                <source>cancel</source>
+                <target>Cancel</target>
+            </trans-unit>
+            <trans-unit id="177">
+                <source>new.application.job</source>
+                <target>New application job</target>
+            </trans-unit>
+            <trans-unit id="178">
+                <source>application.job.accepted</source>
+                <target>Application job accepted</target>
+            </trans-unit>
+            <trans-unit id="179">
+                <source>application.job.declined</source>
+                <target>Application job declined</target>
+            </trans-unit>
+            <trans-unit id="180">
+                <source>payment.received</source>
+                <target>Payment received</target>
+            </trans-unit>
+            <trans-unit id="181">
+                <source>admin.notif</source>
+                <target>Admin notification</target>
+            </trans-unit>
+            <trans-unit id="182">
+                <source>wallet</source>
+                <target>Wallet</target>
+            </trans-unit>
+            <trans-unit id="183">
+                <source>earning</source>
+                <target>Earning</target>
+            </trans-unit>
+            <trans-unit id="184">
+                <source>bidweb.fee</source>
+                <target>Bidweb fee</target>
+            </trans-unit>
+            <trans-unit id="185">
+                <source>log</source>
+                <target>Log</target>
+            </trans-unit>
+            <trans-unit id="186">
+                <source>paypal.fee</source>
+                <target>Paypal fee</target>
+            </trans-unit>
+            <trans-unit id="187">
+                <source>type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="188">
+                <source>amount</source>
+                <target>Amount</target>
+            </trans-unit>
+            <trans-unit id="189">
+                <source>cashout</source>
+                <target>Cashout</target>
+            </trans-unit>
+            <trans-unit id="190">
+                <source>sender</source>
+                <target>Sender</target>
+            </trans-unit>
+            <trans-unit id="191">
+                <source>currency.code</source>
+                <target>Currency code</target>
+            </trans-unit>
+            <trans-unit id="192">
+                <source>total.amount</source>
+                <target>Total amount</target>
+            </trans-unit>
+            <trans-unit id="193">
+                <source>gateway.name</source>
+                <target>Gateway name</target>
+            </trans-unit>
+            <trans-unit id="194">
+                <source>create.new.project</source>
+                <target>Create new project</target>
+            </trans-unit>
+            <trans-unit id="195">
+                <source>projects</source>
+                <target>Projects</target>
+            </trans-unit>
+            <trans-unit id="196">
+                <source>budget</source>
+                <target>Budget</target>
+            </trans-unit>
+            <trans-unit id="197">
+                <source>opened.post</source>
+                <target>Opened posts</target>
+            </trans-unit>
+            <trans-unit id="198">
+                <source>paypal.email</source>
+                <target>Paypal Email</target>
+            </trans-unit>
+            <trans-unit id="199">
+                <source>project</source>
+                <target>Project</target>
+            </trans-unit>
+            <trans-unit id="200">
+                <source>apply.project</source>
+                <target>Apply</target>
+            </trans-unit>
+            <trans-unit id="201">
+                <source>my.projects</source>
+                <target>My Projects</target>
+            </trans-unit>
+            <trans-unit id="202">
+                <source>offer</source>
+                <target>Offer</target>
+            </trans-unit>
+            <trans-unit id="203">
+                <source>edit.project</source>
+                <target>Edit Project</target>
+            </trans-unit>
+            <trans-unit id="204">
+                <source>project.worker</source>
+                <target>Project Workers</target>
+            </trans-unit>
+            <trans-unit id="205">
+                <source>project.application</source>
+                <target>Project Application</target>
+            </trans-unit>
+            <trans-unit id="206">
+                <source>application.project.declined</source>
+                <target>Project Application declined</target>
+            </trans-unit>
+            <trans-unit id="207">
+                <source>payment</source>
+                <target>Payment</target>
+            </trans-unit>
+            <trans-unit id="208">
+                <source>history.payment</source>
+                <target>Payment History</target>
+            </trans-unit>
+            <trans-unit id="209">
+                <source>history.worker</source>
+                <target>Worker History</target>
+            </trans-unit>
+            <trans-unit id="210">
+                <source>history.project</source>
+                <target>Project History</target>
+            </trans-unit>
+            <trans-unit id="211">
+                <source>history</source>
+                <target>History</target>
+            </trans-unit>
+            <trans-unit id="212">
+                <source>team</source>
+                <target>Team</target>
+            </trans-unit>
+            <trans-unit id="213">
+                <source>application</source>
+                <target>Application</target>
+            </trans-unit>
+            <trans-unit id="214">
+                <source>client.profile</source>
+                <target>Client profile</target>
+            </trans-unit>
+            <trans-unit id="215">
+                <source>new.application</source>
+                <target>New application</target>
+            </trans-unit>
+            <trans-unit id="216">
+                <source>application.project</source>
+                <target>Project applications</target>
+            </trans-unit>
+            
+        </body>
+    </file>
+</xliff>

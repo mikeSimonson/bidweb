@@ -1,0 +1,13 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'contact.poster'|trans}} - Bidweb{% endblock%}
+
+{% block body %}
+        <div class="col-lg-8">
+    <header>
+        <h1>{{'payment'|trans}}</h1>
+    </header>
+    <p> Your payment is done with success. See your balance.</p>
+    {{details}}
+        </div>
+{% endblock %}

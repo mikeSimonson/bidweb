@@ -1,0 +1,31 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{ domain.title }}{% endblock %}
+
+{% block content_title %}
+   {{'confirm'|trans}}
+{% endblock %}
+{% block path %}
+  
+    <li><a href="{{path('bidweb_domain')}}">{{'domains'|trans}}</a></li>
+    <li><a href="#">{{'confirm'|trans}}</a></li>
+{% endblock %}
+{% block body %}
+<div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'msg.edit.confirm'|trans}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="date"><time datetime="{{ domain.created|date('c') }}">{{ domain.created|date('l, F j, Y') }}</time></div>
+                    <h2>{{ domain.title }}</h2>
+                    <div>
+                        <p>{{ domain.detail | raw}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+{% endblock %}

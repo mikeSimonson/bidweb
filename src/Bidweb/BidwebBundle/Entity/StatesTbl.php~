@@ -1,0 +1,200 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * StatesTbl
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\StateRepository")
+ * @ORM\Table(name="states_tbl", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="index_states_tbl_state_code", columns={"state_code"}), @ORM\Index(name="index_states_tbl_country_id", columns={"country_id"})})
+ * @ORM\Entity
+ */
+class StatesTbl
+{
+    /**
+     * @var integer
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CountriesTbl", inversedBy="states")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     */
+    protected $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="state_code", type="string", length=2, nullable=true)
+     */
+    private $stateCode;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=true)
+     */
+    private $status = '1';
+
+    /**
+     * @ORM\OneToMany(targetEntity="CitiesTbl", mappedBy="state")
+     **/
+    protected $cities;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set country
+     *
+     * @param CountriesTbl $country
+     * @return StatesTbl
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get countryId
+     *
+     * @return CountriesTbl 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return StatesTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set stateCode
+     *
+     * @param string $stateCode
+     * @return StatesTbl
+     */
+    public function setStateCode($stateCode)
+    {
+        $this->stateCode = $stateCode;
+
+        return $this;
+    }
+
+    /**
+     * Get stateCode
+     *
+     * @return string 
+     */
+    public function getStateCode()
+    {
+        return $this->stateCode;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return StatesTbl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+     public function __construct()
+    {
+        $this->cities = new ArrayCollection();
+    }
+
+    /**
+     * Add cities
+     *
+     * @param \Adbck\AdbckBundle\Entity\CitiesTbl $cities
+     * @return StatesTbl
+     */
+    public function addCity(\Adbck\AdbckBundle\Entity\CitiesTbl $cities)
+    {
+        $this->cities[] = $cities;
+
+        return $this;
+    }
+
+    /**
+     * Remove cities
+     *
+     * @param \Adbck\AdbckBundle\Entity\CitiesTbl $cities
+     */
+    public function removeCity(\Adbck\AdbckBundle\Entity\CitiesTbl $cities)
+    {
+        $this->cities->removeElement($cities);
+    }
+
+    /**
+     * Get cities
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+}

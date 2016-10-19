@@ -1,0 +1,69 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'contact.us'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    {{'contact.us'|trans}}
+{% endblock %}
+{% block path %}
+    
+    <li><a href="#">{{'contact.us'|trans}}</a></li>
+    
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'contact.us'|trans}}</h3>
+                </div>
+                <form action="{{ path('bidweb_contact') }}" method="post" {{ form_enctype(form) }}>
+                     {{ form_errors(form) }}
+                    <div class="panel-body form-horizontal form-padding">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'user.name'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.userName, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'email'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.email, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'subject'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.subject, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'detail'|trans}}</label>
+                            <div class="col-md-6">
+                                {{ form_row(form.message, { 'label' : false,'attr': {'rows':9,'class': 'col-sm-9 form-control'} }) }}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-footer text-right">
+
+                        <input type="submit" value="{{'send.msg'|trans}}" class="btn btn-info"/>
+                    </div>
+                     {{ form_rest(form) }}
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+                
+    
+        
+{% endblock %}

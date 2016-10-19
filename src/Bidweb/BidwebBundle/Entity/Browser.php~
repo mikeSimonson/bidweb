@@ -1,0 +1,125 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Browser
+ *
+ * @ORM\Table(name="browser", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"}), @ORM\UniqueConstraint(name="identify", columns={"identify"})})
+ * @ORM\Entity
+ */
+class Browser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name = 'Crawler';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="identify", type="string", length=200, nullable=false)
+     */
+    private $identify;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="robot", type="integer", nullable=false)
+     */
+    private $robot = '0';
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Browser
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set identify
+     *
+     * @param string $identify
+     * @return Browser
+     */
+    public function setIdentify($identify)
+    {
+        $this->identify = $identify;
+
+        return $this;
+    }
+
+    /**
+     * Get identify
+     *
+     * @return string 
+     */
+    public function getIdentify()
+    {
+        return $this->identify;
+    }
+
+    /**
+     * Set robot
+     *
+     * @param integer $robot
+     * @return Browser
+     */
+    public function setRobot($robot)
+    {
+        $this->robot = $robot;
+
+        return $this;
+    }
+
+    /**
+     * Get robot
+     *
+     * @return integer 
+     */
+    public function getRobot()
+    {
+        return $this->robot;
+    }
+}

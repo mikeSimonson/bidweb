@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: 'C:\WT-NMP\WWW\bidweb\public_html\app/config/routing_dev.yml'

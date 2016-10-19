@@ -1,0 +1,26 @@
+<section class="section">
+    
+         <h1>{{'last.freelancer'|trans}}</h1>
+        <ul>
+        {% for prof in freelancer %}
+            <li>
+                <p><a href="{{path('profiledetails',{'id': prof.id})}}">{{prof.title(80)}}</a></p>
+                <div class="photo">
+                    <a href="{{path('profiledetails',{'id': prof.id})}}">
+                        {% if prof.image %}
+                            <img src="{{asset(prof.getWebPath()) }}" alt="{{ prof.title }} image not found" alt="Bidweb" width="40" height="40" />
+                        {% else %}
+                            <img src="{{asset("rs/thumb_default.png")}}" alt="Bidweb" width="40" height="40">
+                        {% endif %}
+                    </a>
+                </div>
+                
+                <div class="like">
+                    <a href="{{path('profiledetails',{'id': prof.id})}}">Detail</a>
+                </div>
+            </li>
+        {% else %}
+            <li>{{'no.post.found'|trans}}</li>
+        {% endfor %}
+         </ul>
+</section>

@@ -1,0 +1,40 @@
+#payum:
+#    storages:
+#        Bidweb\PaymentBundle\Entity\PaymentDetails:
+#            extension:
+#                all: true
+#            doctrine: orm
+#
+#    security:
+#        token_storage:
+#            Bidweb\PaymentBundle\Entity\PayumSecurityToken: { doctrine: orm }
+#
+#    gateways:
+#        paypal_express_checkou:
+#            paypal_express_checkout_nvp:
+#                username:  %paypal.express_checkout.username%
+#                password:  %paypal.express_checkout.password%
+#                signature: %paypal.express_checkout.signature%
+#                sandbox: true
+#
+#        
+#        offline:
+#            offline: ~
+# app/config/payum.yml 
+
+payum: 
+    storages:
+        Bidweb\PaymentBundle\Entity\PaymentDetails:
+            extension:
+                all: true
+            doctrine: orm
+    security: 
+        token_storage: 
+            Bidweb\PaymentBundle\Entity\PayumSecurityToken: { doctrine: orm }
+    gateways: 
+        paypal_express_checkout_and_doctrine_orm: 
+            paypal_express_checkout_nvp: 
+                username: '%paypal.express_checkout.username%' 
+                password: '%paypal.express_checkout.password%' 
+                signature: '%paypal.express_checkout.signature%' 
+                sandbox: false

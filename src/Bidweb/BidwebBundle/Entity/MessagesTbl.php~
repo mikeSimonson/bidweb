@@ -1,0 +1,335 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MessagesTbl
+ *
+ * @ORM\Table(name="messages_tbl", indexes={@ORM\Index(name="receiver_id", columns={"receiver_id"}), @ORM\Index(name="FK_messages_tbl_sender_id", columns={"sender_id"}), @ORM\Index(name="FK_messages_tbl_username", columns={"username"}), @ORM\Index(name="FK_mmessages_tbl_email", columns={"email"})})
+ * @ORM\Entity
+ */
+class MessagesTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="UsersTbl", inversedBy="msgsReceive" )
+     * @ORM\JoinColumn(name="receiver_id", referencedColumnName="id")
+     */
+    private $receiver;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="UsersTbl", inversedBy="msgsSend")
+     * @ORM\JoinColumn(name="sender_id", referencedColumnName="id")
+     */
+    private $sender;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="subject", type="string", length=100, nullable=false)
+     */
+    private $subject;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text", nullable=false)
+     */
+    private $message;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sender_status", type="integer", nullable=false)
+     */
+    private $senderStatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="receiver_status", type="integer", nullable=false)
+     */
+    private $receiverStatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="admin_status", type="integer", nullable=false)
+     */
+    private $adminStatus;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set receiver
+     *
+     * @param UsersTbl $receiver
+     * @return MessagesTbl
+     */
+    public function setReceiver($receiver)
+    {
+        $this->receiver = $receiver;
+
+        return $this;
+    }
+
+    /**
+     * Get receiverId
+     *
+     * @return UsersTbl 
+     */
+    public function getReceiver()
+    {
+        return $this->receiver;
+    }
+
+    /**
+     * Set sender
+     *
+     * @param UsersTbl $sender
+     * @return MessagesTbl
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
+
+        return $this;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return UsersTbl 
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     * @return MessagesTbl
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string 
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return MessagesTbl
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set subject
+     *
+     * @param string $subject
+     * @return MessagesTbl
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Get subject
+     *
+     * @return string 
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return MessagesTbl
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return MessagesTbl
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set senderStatus
+     *
+     * @param integer $senderStatus
+     * @return MessagesTbl
+     */
+    public function setSenderStatus($senderStatus)
+    {
+        $this->senderStatus = $senderStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get senderStatus
+     *
+     * @return integer 
+     */
+    public function getSenderStatus()
+    {
+        return $this->senderStatus;
+    }
+
+    /**
+     * Set receiverStatus
+     *
+     * @param integer $receiverStatus
+     * @return MessagesTbl
+     */
+    public function setReceiverStatus($receiverStatus)
+    {
+        $this->receiverStatus = $receiverStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get receiverStatus
+     *
+     * @return integer 
+     */
+    public function getReceiverStatus()
+    {
+        return $this->receiverStatus;
+    }
+
+    /**
+     * Set adminStatus
+     *
+     * @param integer $adminStatus
+     * @return MessagesTbl
+     */
+    public function setAdminStatus($adminStatus)
+    {
+        $this->adminStatus = $adminStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get adminStatus
+     *
+     * @return integer 
+     */
+    public function getAdminStatus()
+    {
+        return $this->adminStatus;
+    }
+}

@@ -1,0 +1,81 @@
+{# empty Twig template #}
+{% form_theme form 'BidwebBundle:Form:fields.html.twig' %}
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'create.new.post'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    {{'create.new.post'|trans}}
+{% endblock %}
+{% block path %}
+   
+    <li><a href="{{path('bidweb_domain')}}">{{'domains'|trans}}</a></li>
+    <li><a href="#">{{'create.new.post'|trans}}</a></li>
+{% endblock %}
+
+{% block body %}
+    
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'create.new.post'|trans}}</h3>
+                </div>
+                <form action="{{ path('bidweb_domain_create') }}" method="post" {{ form_enctype(form) }}>
+                     {{ form_errors(form) }}
+                    <div class="panel-body form-horizontal form-padding">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'title'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.title, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+                            
+                        
+                                
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'domain'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.domain, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'price'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.price, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'daily.visitor'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.dailyVisitor, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                       
+                        
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'detail'|trans}}</label>
+                            <div class="col-md-6">
+                                {{ form_row(form.detail, { 'label' : false,'attr': {'rows':9,'class': 'col-sm-9 form-control'} }) }}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-footer text-right">
+
+                        <input type="submit" value="{{'save'|trans}}" class="btn btn-info"/>
+                    </div>
+                     {{ form_rest(form) }}
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+      
+{% endblock %}

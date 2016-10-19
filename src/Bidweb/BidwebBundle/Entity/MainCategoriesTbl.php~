@@ -1,0 +1,232 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+/**
+ * MainCategoriesTbl
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\MainCategoryRepository")
+ * @ORM\Table(name="main_categories_tbl", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})})
+ * @ORM\Entity
+ */
+class MainCategoriesTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_ko_KR", type="string", length=100, nullable=false)
+     */
+    private $nameKoKr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_fr_FR", type="string", length=100, nullable=false)
+     */
+    private $nameFrFr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_en_US", type="string", length=100, nullable=false)
+     */
+    private $nameEnUs;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="SubCategoriesTbl", mappedBy="mainCategory")
+     */
+    protected $subcategories;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return MainCategoriesTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return MainCategoriesTbl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set nameKoKr
+     *
+     * @param string $nameKoKr
+     * @return MainCategoriesTbl
+     */
+    public function setNameKoKr($nameKoKr)
+    {
+        $this->nameKoKr = $nameKoKr;
+
+        return $this;
+    }
+
+    /**
+     * Get nameKoKr
+     *
+     * @return string 
+     */
+    public function getNameKoKr()
+    {
+        return $this->nameKoKr;
+    }
+
+    /**
+     * Set nameFrFr
+     *
+     * @param string $nameFrFr
+     * @return MainCategoriesTbl
+     */
+    public function setNameFrFr($nameFrFr)
+    {
+        $this->nameFrFr = $nameFrFr;
+
+        return $this;
+    }
+
+    /**
+     * Get nameFrFr
+     *
+     * @return string 
+     */
+    public function getNameFrFr()
+    {
+        return $this->nameFrFr;
+    }
+
+    /**
+     * Set nameEnUs
+     *
+     * @param string $nameEnUs
+     * @return MainCategoriesTbl
+     */
+    public function setNameEnUs($nameEnUs)
+    {
+        $this->nameEnUs = $nameEnUs;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEnUs
+     *
+     * @return string 
+     */
+    public function getNameEnUs()
+    {
+        return $this->nameEnUs;
+    }
+    
+    public function __construct(){
+        $this->subcategories = new ArrayCollection();
+    }
+
+    /**
+     * Add subcategories
+     *
+     * @param \Adbck\AdbckBundle\Entity\SubCategoriesTbl $subcategories
+     * @return MainCategoriesTbl
+     */
+    public function addSubcategory(\Adbck\AdbckBundle\Entity\SubCategoriesTbl $subcategories)
+    {
+        $this->subcategories[] = $subcategories;
+
+        return $this;
+    }
+
+    /**
+     * Remove subcategories
+     *
+     * @param \Adbck\AdbckBundle\Entity\SubCategoriesTbl $subcategories
+     */
+    public function removeSubcategory(\Adbck\AdbckBundle\Entity\SubCategoriesTbl $subcategories)
+    {
+        $this->subcategories->removeElement($subcategories);
+    }
+
+    /**
+     * Get subcategories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubcategories()
+    {
+        return $this->subcategories;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+}

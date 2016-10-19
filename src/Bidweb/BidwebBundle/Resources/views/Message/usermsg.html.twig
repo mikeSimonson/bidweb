@@ -1,0 +1,46 @@
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}{{'msg.box'|trans}} - Bidweb{% endblock%}
+
+{% block body %}
+        <div class="col-lg-8">
+    <header>
+        <h1>{{'msg.box'|trans}}</h1>
+    </header>
+    <p>
+        <a href='' class="btn-primary">{{'msg.sent'|trans}}</a>
+
+    </p>
+    <div>
+        <table border='1' width='100%' class='table-striped'>
+            <tr>
+                <th>{{'user'|trans}}</th>
+                <th>{{'subject'|trans}}</th>
+                <th>{{'date'|trans}}</th>
+            </tr>
+            {% for message in msg %}
+                <tr>
+               
+                    <td>
+                        {{message.sender}}
+                    </td>
+                    <td>
+                        {% if message.read %}
+                            <a href='{{url('user_read_msg',{'msgid':message.id})}}'><b>{{message.subject}}</b></a>
+                        {% else %}
+                            <a href='{{url('user_read_msg',{'msgid':message.id})}}'>{{message.subject}}</a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{message.created|date('d/M/Y h:m')}}
+                    </td>
+              
+                </tr>
+
+            {% else %}
+
+            {% endfor %}
+        </table>
+    </div>
+        </div>
+{% endblock %}

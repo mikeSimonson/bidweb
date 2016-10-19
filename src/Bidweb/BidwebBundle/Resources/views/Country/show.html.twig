@@ -1,0 +1,31 @@
+
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for cont in continents %}
+        <article class="continents_article">
+            <header>
+                <h1 id="{{cont.continentCode}}" >{{cont.name}}</h1>
+            </header>
+            <div id="{{cont.id}}" class="newspaper first_newspaper">
+                {% for country in cont.countries %}
+                    <div class="cityflag">
+                        <p class="location">
+                            <a href="{{path('change_country',{'id':country.id})}}" >
+                                <img src="{{ asset(['bundles/adbck/images/flags/', country.name,'.png']|join)}}" style="margin-top:4px; float:left" width="16" height="13" alt="{{country.name}}">
+                            </a>
+                        </p>
+                        <h5>
+                            <span class="flag"></span>
+                            <a href="{{url('change_country',{'id':country.id})}}">{{country.name}}</a>
+                        </h5>
+                    </div>
+                {% else %}
+                    
+                {% endfor %}
+            </div>
+        </article>
+    {% else %}
+        <p>There are Countires in DB please contact admin</p>
+    {% endfor %}
+{% endblock %}

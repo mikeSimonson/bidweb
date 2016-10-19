@@ -1,0 +1,220 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SubCategoriesTbl
+ *
+ * @ORM\Table(name="sub_categories_tbl", uniqueConstraints={@ORM\UniqueConstraint(name="main_cat_id_name", columns={"name", "main_cat_id"})}, indexes={@ORM\Index(name="index_sub_categories_tbl_main_cat_id", columns={"main_cat_id"}), @ORM\Index(name="index_sub_categories_tbl_name", columns={"name"})})
+ * @ORM\Entity
+ */
+class SubCategoriesTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="MainCategoriesTbl", inversedBy="subcategories")
+     * @ORM\JoinColumn(name="main_cat_id", referencedColumnName="id")
+     */
+    private $mainCategory;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_en_US", type="string", length=100, nullable=false)
+     */
+    private $nameEnUs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_fr_FR", type="string", length=100, nullable=false)
+     */
+    private $nameFrFr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_ko_KR", type="string", length=100, nullable=false)
+     */
+    private $nameKoKr;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set MainCategoriesTbl
+     *
+     * @param integer $mainCategory
+     * @return SubCategoriesTbl
+     */
+    public function setMainCategory($mainCategory)
+    {
+        $this->mainCatId = $mainCatId;
+
+        return $this;
+    }
+
+    /**
+     * Get MainCategoriesTbl
+     *
+     * @return MainCategoriesTbl 
+     */
+    public function getMainCategory()
+    {
+        return $this->mainCategory;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return SubCategoriesTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return SubCategoriesTbl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set nameEnUs
+     *
+     * @param string $nameEnUs
+     * @return SubCategoriesTbl
+     */
+    public function setNameEnUs($nameEnUs)
+    {
+        $this->nameEnUs = $nameEnUs;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEnUs
+     *
+     * @return string 
+     */
+    public function getNameEnUs()
+    {
+        return $this->nameEnUs;
+    }
+
+    /**
+     * Set nameFrFr
+     *
+     * @param string $nameFrFr
+     * @return SubCategoriesTbl
+     */
+    public function setNameFrFr($nameFrFr)
+    {
+        $this->nameFrFr = $nameFrFr;
+
+        return $this;
+    }
+
+    /**
+     * Get nameFrFr
+     *
+     * @return string 
+     */
+    public function getNameFrFr()
+    {
+        return $this->nameFrFr;
+    }
+
+    /**
+     * Set nameKoKr
+     *
+     * @param string $nameKoKr
+     * @return SubCategoriesTbl
+     */
+    public function setNameKoKr($nameKoKr)
+    {
+        $this->nameKoKr = $nameKoKr;
+
+        return $this;
+    }
+
+    /**
+     * Get nameKoKr
+     *
+     * @return string 
+     */
+    public function getNameKoKr()
+    {
+        return $this->nameKoKr;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+}

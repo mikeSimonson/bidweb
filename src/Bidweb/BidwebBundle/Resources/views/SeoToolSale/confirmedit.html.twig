@@ -1,0 +1,30 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{ seotool.title }}{% endblock %}
+{% block content_title %}
+    {{'confirm'|trans}}
+{% endblock %}
+{% block path %}
+    
+    <li><a href="{{path('bidweb_seotool')}}">{{'seo.tools'|trans}}</a></li>
+    <li><a href="#">{{'confirm'|trans}}</a></li>
+{% endblock %}
+{% block body %}
+<div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'msg.edit.confirm'|trans}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="date"><time datetime="{{ seotool.created|date('c') }}">{{ seotool.created|date('l, F j, Y') }}</time></div>
+                    <h2>{{ seotool.title }}</h2>
+                    <div>
+                        <p>{{ seotool.detail | raw}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+{% endblock %}

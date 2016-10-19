@@ -1,0 +1,155 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AdminTbl
+ *
+ * @ORM\Table(name="admin_tbl")
+ * @ORM\Entity
+ */
+class AdminTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="admin_id", type="smallint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $adminId = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="admin_login", type="string", length=15, nullable=true)
+     */
+    private $adminLogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="admin_pw", type="string", length=50, nullable=true)
+     */
+    private $adminPw;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="admin_email", type="text", nullable=true)
+     */
+    private $adminEmail;
+
+
+
+    /**
+     * Get adminId
+     *
+     * @return integer 
+     */
+    public function getAdminId()
+    {
+        return $this->adminId;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return AdminTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set adminLogin
+     *
+     * @param string $adminLogin
+     * @return AdminTbl
+     */
+    public function setAdminLogin($adminLogin)
+    {
+        $this->adminLogin = $adminLogin;
+
+        return $this;
+    }
+
+    /**
+     * Get adminLogin
+     *
+     * @return string 
+     */
+    public function getAdminLogin()
+    {
+        return $this->adminLogin;
+    }
+
+    /**
+     * Set adminPw
+     *
+     * @param string $adminPw
+     * @return AdminTbl
+     */
+    public function setAdminPw($adminPw)
+    {
+        $this->adminPw = $adminPw;
+
+        return $this;
+    }
+
+    /**
+     * Get adminPw
+     *
+     * @return string 
+     */
+    public function getAdminPw()
+    {
+        return $this->adminPw;
+    }
+
+    /**
+     * Set adminEmail
+     *
+     * @param string $adminEmail
+     * @return AdminTbl
+     */
+    public function setAdminEmail($adminEmail)
+    {
+        $this->adminEmail = $adminEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get adminEmail
+     *
+     * @return string 
+     */
+    public function getAdminEmail()
+    {
+        return $this->adminEmail;
+    }
+}

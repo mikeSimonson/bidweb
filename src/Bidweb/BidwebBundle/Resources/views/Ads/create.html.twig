@@ -1,0 +1,154 @@
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}Create New Ads - Adbck{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>New Ads Post Adbck</h1>
+    </header>
+    
+    
+    <form action="{{ path('bidweb_ads_create') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        {{ form_widget(form) }}
+    </form>
+{% endblock %}
+  {% block javascripts %}
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        hideAllOptions();
+        $('#adbck_bidweb_adstbl_state').change(function(){
+           var val = $(this).val();
+           $.ajax({
+                type: "POST",
+                url: "{{ url('state_ajax_call') }}?state_id=" + val,
+                success: function(data) {
+
+                    // Remove current options
+                    $('#adbck_bidweb_adstbl_city').html('');
+                    //alert(data);
+                    $.each(data, function(k, v) {
+                        $('#adbck_bidweb_adstbl_city').append('<option value="' + v + '">' + k + '</option>');
+                    });
+                }
+            });
+
+            return false;
+        });
+        
+        // Ajax action for get list of sub cat
+        $('#adbck_bidweb_adstbl_mainCat').change(function(){
+           var val = $(this).val();
+           $.ajax({
+                type: "POST",
+                url: "{{ url('category_ajax_call') }}?cat_id=" + val,
+                success: function(data) {
+
+                    // Remove current options
+                    $('#adbck_bidweb_adstbl_subCat').html('');
+                    //alert(data);
+                    $.each(data, function(k, v) {
+                        $('#adbck_bidweb_adstbl_subCat').append('<option value="' + v + '">' + k + '</option>');
+                    });
+                }
+            });
+
+            return false;
+        });
+        
+         // Hide / Show options ads 
+        $('#adbck_bidweb_adstbl_mainCat').change(function(){
+           var val = parseInt(this.value);
+          //alert(val);
+           switch(val){
+                            
+                /*case 5 :hideAllOptions();  showJobInfos();
+                    break;
+                case 2:
+                    hideAllOptions(); showDatingInfos();
+                    break;
+                case 6 : hideAllOptions(); showSaleInfos();
+                    break;
+                case 8 : hideAllOptions(); showSaleInfos();
+                    break;*/
+                    
+                case 1 :hideAllOptions();  showJobInfos();
+                    break;     
+                default: hideAllOptions();showJobInfos();
+                    break;
+                        }
+
+            return false;
+        });
+    });
+    
+    function hideAllOptions(){
+        $("#adbck_bidweb_adstbl_iwe").hide();
+        $("label[for='adbck_bidweb_adstbl_iwe']").hide();
+        
+        $("#adbck_bidweb_adstbl_seeking").hide();
+        $("label[for='adbck_bidweb_adstbl_seeking']").hide();
+        
+        $("#adbck_bidweb_adstbl_companyName").hide();
+        $("label[for='adbck_bidweb_adstbl_companyName']").hide();
+        
+        $("#adbck_bidweb_adstbl_workingtype").hide();
+        $("label[for='adbck_bidweb_adstbl_workingtype']").hide();
+        
+        $("#adbck_bidweb_adstbl_workingTime").hide();
+        $("label[for='adbck_bidweb_adstbl_workingTime']").hide();
+        
+        $("#adbck_bidweb_adstbl_age").hide();
+        $("label[for='adbck_bidweb_adstbl_age']").hide();
+        
+        $("#adbck_bidweb_adstbl_statusDating").hide();
+        $("label[for='adbck_bidweb_adstbl_statusDating']").hide();
+        
+        //$("#adbck_bidweb_adstbl_offerExpire").hide();
+        //$("label[for='adbck_bidweb_adstbl_offerExpire']").hide();
+        
+        $("#adbck_bidweb_adstbl_price").hide();
+        $("label[for='adbck_bidweb_adstbl_price']").hide();
+        
+    }
+    
+    function showJobInfos(){
+        $("#adbck_bidweb_adstbl_companyName").show();
+        $("label[for='adbck_bidweb_adstbl_companyName']").show();
+        
+        $("#adbck_bidweb_adstbl_workingType").show();
+        $("label[for='adbck_bidweb_adstbl_workingType']").show();
+        
+        $("#adbck_bidweb_adstbl_workingTime").show();
+        $("label[for='adbck_bidweb_adstbl_workingTime']").show();
+        
+        //$("#adbck_bidweb_adstbl_offerExpire").show();
+       // $("label[for='adbck_bidweb_adstbl_offerExpire']").show();
+    }
+    
+    function showDatingInfos(){
+        $("#adbck_bidweb_adstbl_iwe").show();
+        $("label[for='adbck_bidweb_adstbl_iwe']").show();
+        
+        $("#adbck_bidweb_adstbl_seeking").show();
+        $("label[for='adbck_bidweb_adstbl_seeking']").show();
+        
+        
+       $("#adbck_bidweb_adstbl_age").show();
+        $("label[for='adbck_bidweb_adstbl_age']").show();
+        
+        $("#adbck_bidweb_adstbl_statusDating").show();
+        $("label[for='adbck_bidweb_adstbl_statusDating']").show();
+    }
+    
+    function showSaleInfos(){
+        $("#adbck_bidweb_adstbl_price").show();
+        $("label[for='adbck_bidweb_adstbl_price']").show();
+    }
+
+</script>
+
+{% endblock %}

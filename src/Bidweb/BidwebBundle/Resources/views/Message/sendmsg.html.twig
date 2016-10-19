@@ -1,0 +1,101 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'contact.poster'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    Message Box
+{% endblock %}
+{% block path %}
+    <li><a href="/">Home</a></li>
+    <li><a href="#">MessageBox</a></li>
+    <li><a href="#">Send message</a></li>
+    {% endblock %}
+
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-4 col-lg-2">
+
+            {{ render(controller("BidwebBundle:Message:mailmenu")) }}
+
+        </div>
+        <div class="col-sm-8 col-lg-10">
+            <div class="panel panel-default panel-left">
+                <div class="panel-body">
+
+                    
+
+                    <!--Input form-->
+                    <form role="form" class="form-horizontal" name="msgForm" id="msgForm"
+                          action="{{ path('user_send_msg', { 'receiver' : receiver.id }) }}" method="post" {{ form_enctype(form) }}>
+                        
+                        <div class="form-group" >
+                            <label class="col-lg-1 control-label text-left" for="inputSubject">Subject</label>
+                            <div class="col-lg-11">
+                                {{ form_row(form.subject,{ 'label' : false,'attr': {'class': 'form-control'} }) }}
+                                
+                            </div>
+                                {{ form_row(form.message,{ 'label' : false,'attr': {'class': 'hide'} }) }}
+                        </div>
+                        {{ form_rest(form) }}
+                    </form>
+
+                                
+                   
+
+
+                    <!--Wysiwyg editor : Summernote placeholder-->
+                    <div id="demo-mail-compose"></div>
+
+                    <div class="pad-ver">
+
+                        <!--Send button-->
+                        <button id="mail-send-btn" type="button" class="btn btn-success btn-labeled" onclick="javascript:send();">
+                            <span class="btn-label"><i class="fa fa-paper-plane"></i></span> Send Mail
+                        </button>
+
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                    
+      
+{% endblock %}
+
+{% block javascripts %}
+    <style>
+        .hide{display: none;}
+    </style>
+    {{parent()}}
+    <link href="/bundles/bidweb/nifty/plugins/summernote/summernote.min.css" rel="stylesheet">
+    <script src="/bundles/bidweb/nifty/plugins/summernote/summernote.min.js"></script>
+    <script>
+        
+    function send(){
+        
+        $('#bidweb_bidwebbundle_message_message').val($('.note-editable').html());
+        
+        $('#msgForm').submit();
+    }
+    if ($('#demo-mail-compose').length) {
+
+
+		// SUMMERNOTE
+		// =================================================================
+		// Require Summernote
+		// http://hackerwins.github.io/summernote/
+		// =================================================================
+		$('#demo-mail-compose').summernote({
+			height:500
+		});
+
+
+		
+
+		//return;
+	}
+        
+    </script>
+    {% endblock %}

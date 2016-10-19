@@ -1,0 +1,96 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'contact.poster'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    Message Box
+{% endblock %}
+{% block path %}
+    <li><a href="/">Home</a></li>
+    <li><a href="#">MessageBox</a></li>
+    <li><a href="#">Read message</a></li>
+    {% endblock %}
+    {% block body %}
+    <div class="row">
+        <div class="col-sm-4 col-lg-2">
+
+            {{ render(controller("BidwebBundle:Message:mailmenu")) }}
+
+        </div>
+        <div class="col-sm-8 col-lg-10">
+            <div class="panel panel-default panel-left">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-7">
+
+                            <!--Sender Information-->
+                            <div class="media">
+                                <span class="media-left">
+                                    <img src="/img/av4.png" class="img-circle img-sm" alt="Profile Picture">
+                                </span>
+                                <div class="media-body">
+                                    <div class="text-bold">{{msg.sender}}</div>
+                                    <small class="text-muted">{{msg.sender.username}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-sm visible-xs">
+                        <div class="col-sm-5 clearfix">
+
+                            <!--Details Information-->
+                            <div class="pull-right text-right">
+                                <p class="mar-no"><small class="text-muted">{{msg.created|date('l, F j, Y')}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pad-ver">
+                        <div class="col-xs-7">
+
+                            <!--Mail toolbar-->
+                            <button class="btn btn-default"><i class="fa fa-print"></i></button>
+                            <div class="btn-group btn-group">
+                                <button class="btn btn-default"><i class="fa fa-exclamation-circle"></i></button>
+                                <button class="btn btn-default"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 clearfix">
+                            <div class="pull-right">
+
+                                <!--Reply & forward buttons-->
+                                <div class="btn-group btn-group">
+                                    <a class="btn btn-default" href="{{url('user_reply_msg',{'msgid':msg.id})}}">
+                                        <i class="fa fa-reply"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Message-->
+                    <!--===================================================-->
+                    <div class="pad-all bord-all bg-gray-light">
+                        {{msg.message|raw}}
+                    </div>
+                    <!--===================================================-->
+                    <!--End Message-->
+
+                    <!-- Attach Files-->
+                    <!--===================================================-->
+
+                    <!--===================================================-->
+                    <!-- End Attach Files-->
+
+
+
+                    <!--Send button-->
+                    <div class="pad-ver">
+                        <button id="demo-mail-send-btn" type="button" class="btn btn-primary hide">
+                            <span class="fa fa-paper-plane"></span>
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

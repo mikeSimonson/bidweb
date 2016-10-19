@@ -1,0 +1,4 @@
+services:
+#    bidweb_payment.example:
+#        class: Bidweb\PaymentBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

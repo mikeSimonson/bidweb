@@ -1,0 +1,24 @@
+{% extends '::landing.html.twig' %}
+{% block content_title %}
+    {{'confirm'|trans}}
+{% endblock %}
+{% block title %}{{'apply.job'|trans}}{% endblock %}
+{% block path %}
+   
+    <li><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></li>
+    <li><a href="#">{{'confirm'|trans}}</a></li>
+    {% endblock %}
+    {% block body %}
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h1>{{'apply.confirm'|trans}} </h1>
+                </div>
+                <div class="panel-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

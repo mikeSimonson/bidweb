@@ -1,0 +1,1656 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * AdsTbl
+ *
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\AdsRepository")
+ * @ORM\Table(name="ads_tbl", indexes={@ORM\Index(name="FK_ads_tbl_user_id", columns={"user_id"}), @ORM\Index(name="FK_ads_tbl_main_cat_id", columns={"main_cat_id"}), @ORM\Index(name="FK_ads_tbl_sub_cat_id", columns={"sub_cat_id"}), @ORM\Index(name="FK_ads_tbl_main_loc_id", columns={"main_loc_id"}), @ORM\Index(name="FK_ads_tbl_sub_loc_id", columns={"sub_loc_id"}), @ORM\Index(name="FK_ads_tbl_country_id", columns={"country_id"}), @ORM\Index(name="FK_ads_tbl_state_id", columns={"state_id"}), @ORM\Index(name="FK_ads_tbl_city_id", columns={"city_id"})})
+ * @ORM\HasLifecycleCallbacks
+ *  */
+class AdsTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var UsersTbl
+     * 
+     * @ORM\ManyToOne(targetEntity="UsersTbl", inversedBy="ads")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CitiesTbl")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     */
+    protected $city;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="StatesTbl")
+     * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
+     */
+    protected $state;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CountriesTbl")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     **/
+    private $country;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="MainCategoriesTbl")
+     * @ORM\JoinColumn(name="main_cat_id", referencedColumnName="id")
+     */
+    private $mainCat;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="SubCategoriesTbl")
+     * @ORM\JoinColumn(name="sub_cat_id", referencedColumnName="id")
+     */
+    private $subCat;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="MainLocationsTbl")
+     * @ORM\JoinColumn(name="main_loc_id", referencedColumnName="id")
+     */
+    private $mainLoc;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="SubLocationsTbl")
+     * @ORM\JoinColumn(name="sub_loc_id", referencedColumnName="id")
+     */
+    private $subLoc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_status", type="integer", nullable=false)
+     */
+    private $userStatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="approved", type="integer", nullable=false)
+     */
+    private $approved;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_time", type="datetime", nullable=false)
+     */
+    private $dateTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="today_visits", type="integer", nullable=false)
+     */
+    private $todayVisits;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total_visits", type="integer", nullable=false)
+     */
+    private $totalVisits;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="string", length=50, nullable=false)
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=50, nullable=false)
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=100, nullable=false)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="website", type="string", length=100, nullable=true)
+     */
+    private $website;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="slider_status", type="integer", nullable=false)
+     */
+    private $sliderStatus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=100, nullable=true)
+     */
+    private $image = 'n';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image2", type="string", length=100, nullable=true)
+     */
+    private $image2 = 'n';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image3", type="string", length=100, nullable=true)
+     */
+    private $image3 = 'n';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image4", type="string", length=100, nullable=true)
+     */
+    private $image4 = 'n';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image5", type="string", length=100, nullable=true)
+     */
+    private $image5 = 'n';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt", type="string", length=100, nullable=true)
+     */
+    private $alt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt2", type="string", length=100, nullable=true)
+     */
+    private $alt2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt3", type="string", length=100, nullable=true)
+     */
+    private $alt3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt4", type="string", length=100, nullable=true)
+     */
+    private $alt4;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt5", type="string", length=100, nullable=true)
+     */
+    private $alt5;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="i_we", type="string", length=100, nullable=true)
+     */
+    private $iWe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="seeking", type="string", length=100, nullable=true)
+     */
+    private $seeking;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="string", length=30, nullable=true)
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="company_name", type="string", length=100, nullable=true)
+     */
+    private $companyName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="working_type", type="string", length=100, nullable=true)
+     */
+    private $workingType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="working_time", type="string", length=100, nullable=true)
+     */
+    private $workingTime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age", type="string", length=10, nullable=true)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status_dating", type="string", length=40, nullable=true)
+     */
+    private $statusDating;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="offer_expire", type="date", nullable=true)
+     */
+    private $offerExpire;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="CommentsTbl", mappedBy="adsId")
+     */
+    protected $comments;
+    
+    public function addComment(CommentsTbl $comment)
+    {
+        $this->comments[] = $comment;
+    }
+    
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->userStatus = 1;
+        $this->approved = 1;
+        $this->todayVisits=0;
+        $this->totalVisits=0;
+        $this->latitude='';
+        $this->longitude='';
+        $this->sliderStatus= 1;
+        $this->iWe='';
+        $this->price='0';
+        $this->age='';
+        $this->companyName='';
+        
+        $this->setDateTime(new \DateTime());
+        $this->setOfferExpire(new \DateTime('+30 days'));
+       
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param UsersTbl $user
+     * @return AdsTbl
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return UsersTbls 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set city
+     *
+     * @param CitiesTbl $city
+     * @return AdsTbl
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get cityId
+     *
+     * @return CitiesTbl 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set state
+     *
+     * @param StatesTbl $state
+     * @return AdsTbl
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get stateId
+     *
+     * @return StatesTbl 
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * Set country
+     *
+     * @param integer $country
+     * @return AdsTbl
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return CountriesTbl 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set mainCat
+     *
+     * @param MainCategoriesTbl $mainCat
+     * @return AdsTbl
+     */
+    public function setMainCatId($mainCat)
+    {
+        $this->mainCat = $mainCat;
+
+        return $this;
+    }
+
+    /**
+     * Get mainCat
+     *
+     * @return MainCategoriesTbl 
+     */
+    public function getMainCat()
+    {
+        return $this->mainCat;
+    }
+
+    /**
+     * Set subCat
+     *
+     * @param SubCategoriesTbl $subCat
+     * @return AdsTbl
+     */
+    public function setSubCatId($subCat)
+    {
+        $this->subCat = $subCat;
+
+        return $this;
+    }
+
+    /**
+     * Get subCat
+     *
+     * @return SubCategoriesTbl 
+     */
+    public function getSubCat()
+    {
+        return $this->subCat;
+    }
+
+    /**
+     * Set mainLoc
+     *
+     * @param MainLocationsTbl $mainLoc
+     * @return AdsTbl
+     */
+    public function setMainLocId($mainLoc)
+    {
+        $this->mainLoc = $mainLoc;
+
+        return $this;
+    }
+
+    /**
+     * Get mainLoc
+     *
+     * @return MainLocationsTbl 
+     */
+    public function getMainLoc()
+    {
+        return $this->mainLoc;
+    }
+
+    /**
+     * Set subLoc
+     *
+     * @param SubLocationsTbl $subLoc
+     * @return AdsTbl
+     */
+    public function setSubLocId($subLoc)
+    {
+        $this->subLoc = $subLoc;
+
+        return $this;
+    }
+
+    /**
+     * Get subLocId
+     *
+     * @return SubLocationsTbl 
+     */
+    public function getSubLoc()
+    {
+        return $this->subLoc;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return AdsTbl
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        $this->setSlug($this->title);
+         
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return AdsTbl
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription($length=null)
+    {
+        if (false === is_null($length) && $length > 0)
+            return substr($this->description, 0, $length);
+        else
+            return $this->description;
+    }
+
+    /**
+     * Set userStatus
+     *
+     * @param integer $userStatus
+     * @return AdsTbl
+     */
+    public function setUserStatus($userStatus)
+    {
+        $this->userStatus = $userStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get userStatus
+     *
+     * @return integer 
+     */
+    public function getUserStatus()
+    {
+        return $this->userStatus;
+    }
+
+    /**
+     * Set approved
+     *
+     * @param integer $approved
+     * @return AdsTbl
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+
+        return $this;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return integer 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+    /**
+     * Set dateTime
+     *
+     * @param \DateTime $dateTime
+     * @return AdsTbl
+     */
+    public function setDateTime($dateTime)
+    {
+        $this->dateTime = $dateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get dateTime
+     *
+     * @return \DateTime 
+     */
+    public function getDateTime()
+    {
+        return $this->dateTime;
+    }
+
+    /**
+     * Set todayVisits
+     *
+     * @param integer $todayVisits
+     * @return AdsTbl
+     */
+    public function setTodayVisits($todayVisits)
+    {
+        $this->todayVisits = $todayVisits;
+
+        return $this;
+    }
+
+    /**
+     * Get todayVisits
+     *
+     * @return integer 
+     */
+    public function getTodayVisits()
+    {
+        return $this->todayVisits;
+    }
+
+    /**
+     * Set totalVisits
+     *
+     * @param integer $totalVisits
+     * @return AdsTbl
+     */
+    public function setTotalVisits($totalVisits)
+    {
+        $this->totalVisits = $totalVisits;
+
+        return $this;
+    }
+
+    /**
+     * Get totalVisits
+     *
+     * @return integer 
+     */
+    public function getTotalVisits()
+    {
+        return $this->totalVisits;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param string $latitude
+     * @return AdsTbl
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string 
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     * @return AdsTbl
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return AdsTbl
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return AdsTbl
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set sliderStatus
+     *
+     * @param integer $sliderStatus
+     * @return AdsTbl
+     */
+    public function setSliderStatus($sliderStatus)
+    {
+        $this->sliderStatus = $sliderStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get sliderStatus
+     *
+     * @return integer 
+     */
+    public function getSliderStatus()
+    {
+        return $this->sliderStatus;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return AdsTbl
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set image2
+     *
+     * @param string $image2
+     * @return AdsTbl
+     */
+    public function setImage2($image2)
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
+
+    /**
+     * Get image2
+     *
+     * @return string 
+     */
+    public function getImage2()
+    {
+        return $this->image2;
+    }
+
+    /**
+     * Set image3
+     *
+     * @param string $image3
+     * @return AdsTbl
+     */
+    public function setImage3($image3)
+    {
+        $this->image3 = $image3;
+
+        return $this;
+    }
+
+    /**
+     * Get image3
+     *
+     * @return string 
+     */
+    public function getImage3()
+    {
+        return $this->image3;
+    }
+
+    /**
+     * Set image4
+     *
+     * @param string $image4
+     * @return AdsTbl
+     */
+    public function setImage4($image4)
+    {
+        $this->image4 = $image4;
+
+        return $this;
+    }
+
+    /**
+     * Get image4
+     *
+     * @return string 
+     */
+    public function getImage4()
+    {
+        return $this->image4;
+    }
+
+    /**
+     * Set image5
+     *
+     * @param string $image5
+     * @return AdsTbl
+     */
+    public function setImage5($image5)
+    {
+        $this->image5 = $image5;
+
+        return $this;
+    }
+
+    /**
+     * Get image5
+     *
+     * @return string 
+     */
+    public function getImage5()
+    {
+        return $this->image5;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return AdsTbl
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string 
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * Set alt2
+     *
+     * @param string $alt2
+     * @return AdsTbl
+     */
+    public function setAlt2($alt2)
+    {
+        $this->alt2 = $alt2;
+
+        return $this;
+    }
+
+    /**
+     * Get alt2
+     *
+     * @return string 
+     */
+    public function getAlt2()
+    {
+        return $this->alt2;
+    }
+
+    /**
+     * Set alt3
+     *
+     * @param string $alt3
+     * @return AdsTbl
+     */
+    public function setAlt3($alt3)
+    {
+        $this->alt3 = $alt3;
+
+        return $this;
+    }
+
+    /**
+     * Get alt3
+     *
+     * @return string 
+     */
+    public function getAlt3()
+    {
+        return $this->alt3;
+    }
+
+    /**
+     * Set alt4
+     *
+     * @param string $alt4
+     * @return AdsTbl
+     */
+    public function setAlt4($alt4)
+    {
+        $this->alt4 = $alt4;
+
+        return $this;
+    }
+
+    /**
+     * Get alt4
+     *
+     * @return string 
+     */
+    public function getAlt4()
+    {
+        return $this->alt4;
+    }
+
+    /**
+     * Set alt5
+     *
+     * @param string $alt5
+     * @return AdsTbl
+     */
+    public function setAlt5($alt5)
+    {
+        $this->alt5 = $alt5;
+
+        return $this;
+    }
+
+    /**
+     * Get alt5
+     *
+     * @return string 
+     */
+    public function getAlt5()
+    {
+        return $this->alt5;
+    }
+
+    /**
+     * Set iWe
+     *
+     * @param string $iWe
+     * @return AdsTbl
+     */
+    public function setIWe($iWe)
+    {
+        $this->iWe = $iWe;
+
+        return $this;
+    }
+
+    /**
+     * Get iWe
+     *
+     * @return string 
+     */
+    public function getIWe()
+    {
+        return $this->iWe;
+    }
+
+    /**
+     * Set seeking
+     *
+     * @param string $seeking
+     * @return AdsTbl
+     */
+    public function setSeeking($seeking)
+    {
+        $this->seeking = $seeking;
+
+        return $this;
+    }
+
+    /**
+     * Get seeking
+     *
+     * @return string 
+     */
+    public function getSeeking()
+    {
+        return $this->seeking;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     * @return AdsTbl
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set companyName
+     *
+     * @param string $companyName
+     * @return AdsTbl
+     */
+    public function setCompanyName($companyName)
+    {
+        $this->companyName = $companyName;
+
+        return $this;
+    }
+
+    /**
+     * Get companyName
+     *
+     * @return string 
+     */
+    public function getCompanyName()
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * Set workingType
+     *
+     * @param string $workingType
+     * @return AdsTbl
+     */
+    public function setWorkingType($workingType)
+    {
+        $this->workingType = $workingType;
+
+        return $this;
+    }
+
+    /**
+     * Get workingType
+     *
+     * @return string 
+     */
+    public function getWorkingType()
+    {
+        return $this->workingType;
+    }
+
+    /**
+     * Set workingTime
+     *
+     * @param string $workingTime
+     * @return AdsTbl
+     */
+    public function setWorkingTime($workingTime)
+    {
+        $this->workingTime = $workingTime;
+
+        return $this;
+    }
+
+    /**
+     * Get workingTime
+     *
+     * @return string 
+     */
+    public function getWorkingTime()
+    {
+        return $this->workingTime;
+    }
+
+    /**
+     * Set age
+     *
+     * @param string $age
+     * @return AdsTbl
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return string 
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set statusDating
+     *
+     * @param string $statusDating
+     * @return AdsTbl
+     */
+    public function setStatusDating($statusDating)
+    {
+        $this->statusDating = $statusDating;
+
+        return $this;
+    }
+
+    /**
+     * Get statusDating
+     *
+     * @return string 
+     */
+    public function getStatusDating()
+    {
+        return $this->statusDating;
+    }
+
+    /**
+     * Set offerExpire
+     *
+     * @param \DateTime $offerExpire
+     * @return AdsTbl
+     */
+    public function setOfferExpire($offerExpire)
+    {
+        $this->offerExpire = $offerExpire;
+
+        return $this;
+    }
+
+    /**
+     * Get offerExpire
+     *
+     * @return \DateTime 
+     */
+    public function getOfferExpire()
+    {
+        return $this->offerExpire;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Adbck\AdbckBundle\Entity\CommentsTbl $comments
+     */
+    public function removeComment(\Adbck\AdbckBundle\Entity\CommentsTbl $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+    
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $slug;
+
+    
+    public function slugify($text)
+    {
+       
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'ASCII//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return AdsTbl
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $this->slugUrl($slug);
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        if($this->slug==''){
+            $this->slug = $this->slugUrl($this->title);
+        }
+        return $this->slug;
+    }
+    
+    function slugUrl($str, $spaceRepl = "_") {
+	// Make sure string is in UTF-8 and strip invalid UTF-8 characters
+	$str = mb_convert_encoding((string)$str, 'UTF-8', mb_list_encodings());
+	$options = array('delimiter' => '_');
+	$defaults = array(
+		'delimiter' => '-',
+		'limit' => null,
+		'lowercase' => true,
+		'replacements' => array(),
+		'transliterate' => false,
+	);
+	
+	// Merge options
+	$options = array_merge($defaults, $options);
+	
+	$char_map = array(
+		// Latin
+		'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'AE', 'Ç' => 'C', 
+		'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 
+		'Ð' => 'D', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ő' => 'O', 
+		'Ø' => 'O', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ű' => 'U', 'Ý' => 'Y', 'Þ' => 'TH', 
+		'ß' => 'ss', 
+		'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'ae', 'ç' => 'c', 
+		'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 
+		'ð' => 'd', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ő' => 'o', 
+		'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'u', 'ű' => 'u', 'ý' => 'y', 'þ' => 'th', 
+		'ÿ' => 'y',
+ 
+		// Latin symbols
+		'©' => '(c)',
+ 
+		// Greek
+		'Α' => 'A', 'Β' => 'B', 'Γ' => 'G', 'Δ' => 'D', 'Ε' => 'E', 'Ζ' => 'Z', 'Η' => 'H', 'Θ' => '8',
+		'Ι' => 'I', 'Κ' => 'K', 'Λ' => 'L', 'Μ' => 'M', 'Ν' => 'N', 'Ξ' => '3', 'Ο' => 'O', 'Π' => 'P',
+		'Ρ' => 'R', 'Σ' => 'S', 'Τ' => 'T', 'Υ' => 'Y', 'Φ' => 'F', 'Χ' => 'X', 'Ψ' => 'PS', 'Ω' => 'W',
+		'Ά' => 'A', 'Έ' => 'E', 'Ί' => 'I', 'Ό' => 'O', 'Ύ' => 'Y', 'Ή' => 'H', 'Ώ' => 'W', 'Ϊ' => 'I',
+		'Ϋ' => 'Y',
+		'α' => 'a', 'β' => 'b', 'γ' => 'g', 'δ' => 'd', 'ε' => 'e', 'ζ' => 'z', 'η' => 'h', 'θ' => '8',
+		'ι' => 'i', 'κ' => 'k', 'λ' => 'l', 'μ' => 'm', 'ν' => 'n', 'ξ' => '3', 'ο' => 'o', 'π' => 'p',
+		'ρ' => 'r', 'σ' => 's', 'τ' => 't', 'υ' => 'y', 'φ' => 'f', 'χ' => 'x', 'ψ' => 'ps', 'ω' => 'w',
+		'ά' => 'a', 'έ' => 'e', 'ί' => 'i', 'ό' => 'o', 'ύ' => 'y', 'ή' => 'h', 'ώ' => 'w', 'ς' => 's',
+		'ϊ' => 'i', 'ΰ' => 'y', 'ϋ' => 'y', 'ΐ' => 'i',
+ 
+		// Turkish
+		'Ş' => 'S', 'İ' => 'I', 'Ç' => 'C', 'Ü' => 'U', 'Ö' => 'O', 'Ğ' => 'G',
+		'ş' => 's', 'ı' => 'i', 'ç' => 'c', 'ü' => 'u', 'ö' => 'o', 'ğ' => 'g', 
+ 
+		// Russian
+		'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D', 'Е' => 'E', 'Ё' => 'Yo', 'Ж' => 'Zh',
+		'З' => 'Z', 'И' => 'I', 'Й' => 'J', 'К' => 'K', 'Л' => 'L', 'М' => 'M', 'Н' => 'N', 'О' => 'O',
+		'П' => 'P', 'Р' => 'R', 'С' => 'S', 'Т' => 'T', 'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C',
+		'Ч' => 'Ch', 'Ш' => 'Sh', 'Щ' => 'Sh', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '', 'Э' => 'E', 'Ю' => 'Yu',
+		'Я' => 'Ya',
+		'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd', 'е' => 'e', 'ё' => 'yo', 'ж' => 'zh',
+		'з' => 'z', 'и' => 'i', 'й' => 'j', 'к' => 'k', 'л' => 'l', 'м' => 'm', 'н' => 'n', 'о' => 'o',
+		'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't', 'у' => 'u', 'ф' => 'f', 'х' => 'h', 'ц' => 'c',
+		'ч' => 'ch', 'ш' => 'sh', 'щ' => 'sh', 'ъ' => '', 'ы' => 'y', 'ь' => '', 'э' => 'e', 'ю' => 'yu',
+		'я' => 'ya',
+ 
+		// Ukrainian
+		'Є' => 'Ye', 'І' => 'I', 'Ї' => 'Yi', 'Ґ' => 'G',
+		'є' => 'ye', 'і' => 'i', 'ї' => 'yi', 'ґ' => 'g',
+ 
+		// Czech
+		'Č' => 'C', 'Ď' => 'D', 'Ě' => 'E', 'Ň' => 'N', 'Ř' => 'R', 'Š' => 'S', 'Ť' => 'T', 'Ů' => 'U', 
+		'Ž' => 'Z', 
+		'č' => 'c', 'ď' => 'd', 'ě' => 'e', 'ň' => 'n', 'ř' => 'r', 'š' => 's', 'ť' => 't', 'ů' => 'u',
+		'ž' => 'z', 
+ 
+		// Polish
+		'Ą' => 'A', 'Ć' => 'C', 'Ę' => 'e', 'Ł' => 'L', 'Ń' => 'N', 'Ó' => 'o', 'Ś' => 'S', 'Ź' => 'Z', 
+		'Ż' => 'Z', 
+		'ą' => 'a', 'ć' => 'c', 'ę' => 'e', 'ł' => 'l', 'ń' => 'n', 'ó' => 'o', 'ś' => 's', 'ź' => 'z',
+		'ż' => 'z',
+ 
+		// Latvian
+		'Ā' => 'A', 'Č' => 'C', 'Ē' => 'E', 'Ģ' => 'G', 'Ī' => 'i', 'Ķ' => 'k', 'Ļ' => 'L', 'Ņ' => 'N', 
+		'Š' => 'S', 'Ū' => 'u', 'Ž' => 'Z',
+		'ā' => 'a', 'č' => 'c', 'ē' => 'e', 'ģ' => 'g', 'ī' => 'i', 'ķ' => 'k', 'ļ' => 'l', 'ņ' => 'n',
+		'š' => 's', 'ū' => 'u', 'ž' => 'z'
+	);
+	
+	// Make custom replacements
+	$str = preg_replace(array_keys($options['replacements']), $options['replacements'], $str);
+	
+	// Transliterate characters to ASCII
+	if ($options['transliterate']) {
+		$str = str_replace(array_keys($char_map), $char_map, $str);
+	}
+	
+	// Replace non-alphanumeric characters with our delimiter
+	$str = preg_replace('/[^\p{L}\p{Nd}]+/u', $options['delimiter'], $str);
+	
+	// Remove duplicate delimiters
+	$str = preg_replace('/(' . preg_quote($options['delimiter'], '/') . '){2,}/', '$1', $str);
+	
+	// Truncate slug to max. characters
+	$str = mb_substr($str, 0, ($options['limit'] ? $options['limit'] : mb_strlen($str, 'UTF-8')), 'UTF-8');
+	
+	// Remove delimiter from ends
+	$str = trim($str, $options['delimiter']);
+	
+	return $options['lowercase'] ? mb_strtolower($str, 'UTF-8') : $str;
+}
+
+    /**
+     * Set mainCat
+     *
+     * @param \Adbck\AdbckBundle\Entity\MainCategoriesTbl $mainCat
+     * @return AdsTbl
+     */
+    public function setMainCat(\Adbck\AdbckBundle\Entity\MainCategoriesTbl $mainCat = null)
+    {
+        $this->mainCat = $mainCat;
+
+        return $this;
+    }
+
+    /**
+     * Set subCat
+     *
+     * @param \Adbck\AdbckBundle\Entity\SubCategoriesTbl $subCat
+     * @return AdsTbl
+     */
+    public function setSubCat(\Adbck\AdbckBundle\Entity\SubCategoriesTbl $subCat = null)
+    {
+        $this->subCat = $subCat;
+
+        return $this;
+    }
+
+    /**
+     * Set mainLoc
+     *
+     * @param \Adbck\AdbckBundle\Entity\MainLocationsTbl $mainLoc
+     * @return AdsTbl
+     */
+    public function setMainLoc(\Adbck\AdbckBundle\Entity\MainLocationsTbl $mainLoc = null)
+    {
+        $this->mainLoc = $mainLoc;
+
+        return $this;
+    }
+
+    /**
+     * Set subLoc
+     *
+     * @param \Adbck\AdbckBundle\Entity\SubLocationsTbl $subLoc
+     * @return AdsTbl
+     */
+    public function setSubLoc(\Adbck\AdbckBundle\Entity\SubLocationsTbl $subLoc = null)
+    {
+        $this->subLoc = $subLoc;
+
+        return $this;
+    }
+    
+    public function getAbsoluteImage($num)
+    {
+        if($num==1){
+            return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+        }
+        if($num==2){
+            return null === $this->image2 ? null : $this->getUploadRootDir().'/'.$this->image2;
+        }
+        if($num==3){
+            return null === $this->image3 ? null : $this->getUploadRootDir().'/'.$this->image3;
+        }
+        if($num==4){
+            return null === $this->image4 ? null : $this->getUploadRootDir().'/'.$this->image4;
+        }
+        if($num==5){
+            return null === $this->image5 ? null : $this->getUploadRootDir().'/'.$this->image5;
+        }
+        return $this->getUploadRootDir().'/'.'default.png';
+    }
+
+    public function getWebPath($num)
+    {
+        if($num==1){
+            return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+        }
+        if($num==2){
+            return null === $this->image2 ? null : $this->getUploadDir().'/'.$this->image2;
+        }
+        if($num==3){
+            return null === $this->image3 ? null : $this->getUploadDir().'/'.$this->image3;
+        }
+        if($num==4){
+            return null === $this->image4 ? null : $this->getUploadDir().'/'.$this->image4;
+        }
+        if($num==5){
+            return null === $this->image5 ? null : $this->getUploadDir().'/'.$this->image5;
+        }
+        
+        return $this->getUploadDir().'/'.'default.png';
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/images';
+    }
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file2;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file3;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file4;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file5;
+    
+    
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+        
+        if($this->file !== null){
+            $this->file->move($this->getUploadRootDir(),  $this->image);
+            
+            unset($this->file);
+        }
+        
+        if($this->file2 !== null){
+            $this->file2->move($this->getUploadRootDir(),  $this->image2);
+            
+            unset($this->file2);
+        }
+        
+        if($this->file3 !== null){
+            $this->file3->move($this->getUploadRootDir(),  $this->image3);
+            
+            unset($this->file3);
+        }
+        
+        if($this->file4 !== null){
+            $this->file4->move($this->getUploadRootDir(), $this->id.'4.'.$this->image4);
+            
+            unset($this->file4);
+        }
+        
+        if($this->file5 !== null){
+            $this->file5->move($this->getUploadRootDir(),  $this->id.'5.'.$this->image5);
+            
+            unset($this->file5);
+        }
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->image = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        }
+        
+        if (null !== $this->file2) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->image2 = sha1(uniqid(mt_rand(), true)).'.'.$this->file2->guessExtension();
+        }
+        
+        if (null !== $this->file3) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->image3 = sha1(uniqid(mt_rand(), true)).'.'.$this->file3->guessExtension();
+        }
+        
+        if (null !== $this->file4) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->image4 = sha1(uniqid(mt_rand(), true)).'.'.$this->file4->guessExtension();
+        }
+        
+        if (null !== $this->file5) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->image5 = sha1(uniqid(mt_rand(), true)).'.'.$this->file5->guessExtension();
+        }
+    }
+    
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($this->file = $this->getAbsoluteImage(1)) {
+            unlink($this->file);
+        }
+        
+        if ($this->file2 = $this->getAbsoluteImage(2)) {
+            unlink($this->file2);
+        }
+        
+        if ($this->file3 = $this->getAbsoluteImage(3)) {
+            unlink($this->file3);
+        }
+        
+        if ($this->file4 = $this->getAbsoluteImage(4)) {
+            unlink($this->file4);
+        }
+        
+        if ($this->file5 = $this->getAbsoluteImage(5)) {
+            unlink($this->file5);
+        }
+    }
+}

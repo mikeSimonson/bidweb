@@ -1,0 +1,20 @@
+{% for msg in notifs %}
+    <li>
+        <a href="{{url('bidweb_read_notif',{'id':msg.id})}}" class="media">
+            <div class="media-left">
+                <img src="/img/av2.png" alt="Profile Picture" class="img-circle img-sm">
+            </div>
+            <div class="media-body">
+                <div class="text-nowrap">{{msg.subject}}</div>
+                <small class="text-muted">{{ msg.message(30)|striptags }}</small><br>
+                <small class="text-muted">{{ msg.created|created_ago }}</small>
+                
+            </div>
+        </a>
+    </li>
+{% else %}
+    <li>
+        No messages
+    </li>
+
+{% endfor%}

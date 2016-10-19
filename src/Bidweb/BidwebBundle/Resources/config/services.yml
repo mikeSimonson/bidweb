@@ -1,0 +1,19 @@
+services :
+    bidweb.twig.extension:
+            class: Bidweb\BidwebBundle\Twig\Extensions\BidwebExtension
+            arguments: [@translator]
+            tags:
+                - { name: twig.extension }
+    bidweb_userstbl.form.type:
+            class: Bidweb\BidwebBundle\Form\UsersTblType
+            tags:
+                - { name: form.type, alias: bidweb_userstbl }
+    bidweb_fileupload.image_type_extension:
+        class: Bidweb\BidwebBundle\Form\Extension\ImageTypeExtension
+        tags:
+            - { name: form.type_extension, alias: file }
+    bidweb_locale.locale_listener:
+        class: Bidweb\BidwebBundle\EventListener\LocaleListener
+        arguments: ["%locale%"]
+        tags:
+            - { name: kernel.event_subscriber }

@@ -1,0 +1,125 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserHits
+ *
+ * @ORM\Table(name="user_hits", indexes={@ORM\Index(name="FK_user_hits_user_id", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class UserHits
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="page", type="text", nullable=true)
+     */
+    private $page;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="integer", nullable=true)
+     */
+    private $userId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time", type="datetime", nullable=false)
+     */
+    private $time = 'CURRENT_TIMESTAMP';
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set page
+     *
+     * @param string $page
+     * @return UserHits
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return string 
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return UserHits
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \DateTime $time
+     * @return UserHits
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \DateTime 
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+}

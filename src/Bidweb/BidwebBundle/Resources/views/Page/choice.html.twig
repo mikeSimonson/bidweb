@@ -1,0 +1,44 @@
+{# empty Twig template #}
+{# src/Adbck/BidwebBundle/Resources/views/Page/index.html.twig #}
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="col-lg-8"> 
+    <div class="col-xs-6 col-md-3">
+        <a href="{{path('bidweb_domain_create')}}" class="thumbnail">
+            <img src="{{asset('bundles/bidweb/images/domain.jpg')}}" width="150" height="130"><br>
+                        <h1>{{'domain'|trans}}</h1>
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a href="{{path('bidweb_job_create')}}" class="thumbnail">
+           <img src="{{asset('bundles/bidweb/images/jobs.jpg')}}" width="150" height="130"><br>
+           <h1>{{'job'|trans}}</h1>
+        </a>
+    </div>
+        
+    <div class="col-xs-6 col-md-3">
+        <a href="{{path('bidweb_website_create')}}" class="thumbnail">
+            <img src="{{asset('bundles/bidweb/images/website.jpg')}}" width="150" height="130"><br>
+                        <h1>{{'web.site'|trans}}</h1>
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a href="{{path('bidweb_seotool_create')}}" class="thumbnail">
+            <img src="{{asset('bundles/bidweb/images/seotools.jpg')}}" width="150" height="130"><br>
+                        <h1>{{'seo.tool'|trans}}</h1>
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a href="{{path('bidweb_database_create')}}" class="thumbnail">
+            <img src="{{asset('bundles/bidweb/images/database.jpg')}}" width="150" height="130"><br>
+                        <h1>{{'database'|trans}}</h1>
+        </a>
+    </div>
+        
+   
+                        
+                        
+                        
+    </div>
+{% endblock %}

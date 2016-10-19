@@ -1,0 +1,262 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+/**
+ * MainLocationsTbl
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\MainLocationRepository")
+ * @ORM\Table(name="main_locations_tbl", indexes={@ORM\Index(name="index_main_categories_tbl_name", columns={"name"}), @ORM\Index(name="index_main_categories_tbl_city_id", columns={"city_id"})})
+ * @ORM\Entity
+ */
+class MainLocationsTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="CitiesTbl", inversedBy="mainlocations")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     */
+    private $city;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pin_code", type="integer", nullable=false)
+     */
+    private $pinCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="string", length=20, nullable=false)
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=20, nullable=false)
+     */
+    private $longitude;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="SubLocationsTbl", mappedBy="mainLocation")
+     */
+    protected $sublocations;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return MainLocationsTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set CitiesTbl
+     *
+     * @param CitiesTbl $city
+     * @return MainLocationsTbl
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get CitiesTbl
+     *
+     * @return CitiesTbl 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set pinCode
+     *
+     * @param integer $pinCode
+     * @return MainLocationsTbl
+     */
+    public function setPinCode($pinCode)
+    {
+        $this->pinCode = $pinCode;
+
+        return $this;
+    }
+
+    /**
+     * Get pinCode
+     *
+     * @return integer 
+     */
+    public function getPinCode()
+    {
+        return $this->pinCode;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param string $latitude
+     * @return MainLocationsTbl
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string 
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     * @return MainLocationsTbl
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return MainLocationsTbl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    public function __construct() {
+        $this->sublocations=new ArrayCollection();
+    }
+
+    /**
+     * Add sublocations
+     *
+     * @param \Adbck\AdbckBundle\Entity\SubLocationsTbl $sublocations
+     * @return MainLocationsTbl
+     */
+    public function addSublocation(\Adbck\AdbckBundle\Entity\SubLocationsTbl $sublocations)
+    {
+        $this->sublocations[] = $sublocations;
+
+        return $this;
+    }
+
+    /**
+     * Remove sublocations
+     *
+     * @param \Adbck\AdbckBundle\Entity\SubLocationsTbl $sublocations
+     */
+    public function removeSublocation(\Adbck\AdbckBundle\Entity\SubLocationsTbl $sublocations)
+    {
+        $this->sublocations->removeElement($sublocations);
+    }
+
+    /**
+     * Get sublocations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSublocations()
+    {
+        return $this->sublocations;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+}

@@ -1,0 +1,152 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% form_theme form 'BidwebBundle:Form:fields.html.twig' %}
+
+{% if app.user.type=='client' %}
+    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" id="loginForm">
+        <div class="row">
+            {{ form_errors(form) }}
+            <div class="form-group col-lg-6">
+                {{ form_row(form.username,{ 'label' : 'form.username'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.email,{ 'label' : 'form.email'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.companyName,{ 'label' : 'company.name'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.city,{ 'label' : 'city'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.state,{ 'label' : 'state'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.country,{ 'label' : 'country'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.address,{ 'label' : 'address'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.zipCode,{ 'label' : 'zip.code'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.phone,{ 'label' : 'phone'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.webSite,{ 'label' : 'web.site'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.paypalEmail,{ 'label' : 'paypal.email'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-12">
+                <span class="pull-left btn btn-default btn-file">
+                    Browse... {{ form_row(form.file,{ 'label' : 'image'|trans,'attr': { 'data-show-upload':'false',
+                     'data-show-caption':'true','class': 'file'} }) }}
+                </span>
+
+
+            </div>
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.current_password,{ 'label' : 'form.password_confirmation'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            {{ form_rest(form) }}
+
+            <div class="text-center">
+                <button class="btn btn-success">{{'save'|trans}}</button>
+                <button class="btn btn-default">{{'cancel'|trans}}</button>
+            </div>
+        </div>
+    </form>
+{% else %}
+    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" id="loginForm">
+        <div class="row">
+            {{ form_errors(form) }}
+            <div class="form-group col-lg-6">
+                {{ form_row(form.username,{ 'label' : 'form.username'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.email,{ 'label' : 'form.email'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.firstName,{ 'label' : 'first.name'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.lastName,{ 'label' : 'last.name'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.phone,{ 'label' : 'phone'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.city,{ 'label' : 'city'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.state,{ 'label' : 'state'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.country,{ 'label' : 'country'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+            <div class="form-group col-lg-6">
+                {{ form_row(form.address,{ 'label' : 'address'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.zipCode,{ 'label' : 'zip.code'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+            <div class="form-group col-lg-12">
+                <span class="pull-left btn btn-default btn-file">
+                    Browse... {{ form_row(form.file,{ 'label' : 'image'|trans,'attr': { 'data-show-upload':'false',
+                     'data-show-caption':'true','class': 'file'} }) }}
+                </span>
+
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.paypalEmail,{ 'label' : 'paypal.email'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+            <div class="form-group col-lg-6">
+                {{ form_row(form.current_password,{ 'label' : 'form.password_confirmation'|trans,'attr': {'class': 'form-control'} }) }}
+
+            </div>
+
+            {{ form_rest(form) }}
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success">{{'save'|trans}}</button>
+            <button class="btn btn-default">{{'cancel'|trans}}</button>
+        </div>
+    </form>
+{% endif %}    

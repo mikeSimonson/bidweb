@@ -1,0 +1,234 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+/**
+ * CommentsTbl
+ *
+ * @ORM\Table(name="comments_tbl", indexes={@ORM\Index(name="FK_comments_tbl_ads_id", columns={"ads_id"}), @ORM\Index(name="FK_comments_tbl_country", columns={"country"})})
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\CommentRepository")
+ */
+class CommentsTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdsTbl", inversedBy="comments")
+     * @ORM\JoinColumn(name="ads_id", referencedColumnName="id")
+     */
+    private $adsId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nickname", type="string", length=100, nullable=false)
+     */
+    private $nickname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=300, nullable=false)
+     */
+    private $comment;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_time", type="datetime", nullable=false)
+     */
+    private $dateTime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=50, nullable=false)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ip", type="string", length=16, nullable=false)
+     */
+    private $ip;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set adsId
+     *
+     * @param AdsTbl $adsId
+     * @return CommentsTbl
+     */
+    public function setAdsId($adsId)
+    {
+        $this->adsId = $adsId;
+
+        return $this;
+    }
+
+    /**
+     * Get adsId
+     *
+     * @return AdsTbl 
+     */
+    public function getAdsId()
+    {
+        return $this->adsId;
+    }
+
+    /**
+     * Set nickname
+     *
+     * @param string $nickname
+     * @return CommentsTbl
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Get nickname
+     *
+     * @return string 
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return CommentsTbl
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set dateTime
+     *
+     * @param \DateTime $dateTime
+     * @return CommentsTbl
+     */
+    public function setDateTime($dateTime)
+    {
+        $this->dateTime = $dateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get dateTime
+     *
+     * @return \DateTime 
+     */
+    public function getDateTime()
+    {
+        return $this->dateTime;
+    }
+
+    
+    /**
+     * Set country
+     *
+     * @param string $country
+     * @return CommentsTbl
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set ip
+     *
+     * @param string $ip
+     * @return CommentsTbl
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
+     * Get ip
+     *
+     * @return string 
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('nickname', new NotBlank(array(
+            'message' => 'You must enter your name'
+        )));
+        $metadata->addPropertyConstraint('comment', new NotBlank(array(
+            'message' => 'You must enter a comment'
+        )));
+        
+    }
+    
+     public function __construct()
+    {
+        
+        $this->setDateTime(new \DateTime());
+       
+    }
+}

@@ -1,0 +1,103 @@
+<div id="aside">
+    <div class="nano">
+        <div class="nano-content">
+            <div class="tab-pane fade in active" id="demo-asd-tab-1">
+                {% if app.user.type=='client' %}
+                    <div class="list-group bg-trans">
+                        <a href="{{path('bidweb_client_project')}}" class="list-group-item">
+                            <div class="media-left">
+                                <i class="fa fa-briefcase fa-2x"></i>
+                            </div>
+                            <div class="media-body">
+                                <div class="text-lg">{{'my.projects'|trans}}</div>
+                                <span class="text-muted">{{countJob}} {{'project'|trans}}</span>
+                            </div>
+                        </a>
+                        <a href="{{path('bidweb_my_worker')}}" class="list-group-item">
+                            <div class="media-left">
+                                <i class="fa fa-male fa-2x"></i>
+                            </div>
+                            <div class="media-body">
+                                <div class="text-lg">  {{'worker'|trans}}</div>
+                                <span class="text-muted">{{countWorker}} {{'worker'|trans}}</span>
+                            </div>
+                        </a>
+                        <a href="{{path('bidweb_client_application')}}" class="list-group-item">
+                            <div class="media-left">
+                                <i class="fa fa-male fa-2x"></i>
+                            </div>
+                            <div class="media-body">
+                                <div class="text-lg">  {{'Application.project'|trans}}</div>
+                                <span class="text-muted">(0)</span>
+                            </div>
+                        </a>
+
+                    </div>
+
+                {% else %}
+                    <!--Profile-->
+                    <div class="list-group bg-trans">
+                        <a href="{{path('show_profiles')}}" class="list-group-item">
+                            <div class="media-left">
+                                <img class="img-circle img-xs" src="/img/av5.png" alt="Profile Picture">
+                            </div>
+                            <div class="media-body">
+                                <div class="text-lg">{{'my.profile'|trans}}</div>
+                               
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <!--Profile-->
+
+                    <div class="list-group bg-trans">
+                        <a href="{{path('bidweb_myapplication')}}" class="list-group-item">
+                            <div class="media-left">
+                                <img class="img-circle img-xs" src="/img/av5.png" alt="Profile Picture">
+                            </div>
+                            <div class="media-body">
+                                <div class="text-lg">{{'my.app'|trans}}</div>
+                                <span class="text-muted">{{countApp}} {{'applications'|trans}}</span>
+                            </div>
+                        </a>
+
+                    </div> 
+                            
+                            <div class="list-group bg-trans">
+                        <a href="{{path('bidweb_freelancer_project')}}" class="list-group-item">
+                            <div class="media-left">
+                                <img class="img-circle img-xs" src="/img/av5.png" alt="Profile Picture">
+                            </div>
+                            <div class="media-body">
+                                <div class="text-lg">{{'my.projects'|trans}}</div>
+                               
+                            </div>
+                        </a>
+
+                    </div>
+                {% endif %}
+
+
+                <!--Family-->
+
+                <hr>
+                <h4 class="pad-hor text-thin">
+                    {{'setting'|trans}}
+                </h4>
+
+                <!--Works-->
+                <div class="list-group bg-trans">
+                    <a href="{{path('fos_user_change_password')}}" class="list-group-item">
+                        <span class="badge badge-purple badge-icon badge-fw pull-left"></span> {{'change.password'|trans}}
+                    </a>
+                    <a href="{{ path('fos_user_profile_show') }}" class="list-group-item">
+                        <span class="badge badge-info badge-icon badge-fw pull-left"></span> {{'personnel.infos'|trans}}
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

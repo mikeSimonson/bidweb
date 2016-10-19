@@ -1,0 +1,141 @@
+{# empty Twig template #}
+{# src/Adbck/BidwebBundle/Resources/views/Page/index.html.twig #}
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block body %}
+  <div class="col-sm-8">  
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#tab-website">{{ 'web.site'|trans }}</a></li>
+        <li><a data-toggle="tab" href="#tab-seotool">{{ 'seo.tool'|trans }}</a></li>
+        <li><a data-toggle="tab" href="#tab-database">{{'database'|trans}}</a></li>
+        <li><a data-toggle="tab" href="#tab-domain">{{'domain'|trans}}</a></li>
+        <li><a data-toggle="tab" href="#tab-job">{{'job'|trans}}</a></li>
+        <li><a data-toggle="tab" href="#tab-freelancer">{{'freelancer'|trans}}</a></li>
+    </ul>
+
+  <div class="tab-content">
+    <div id="tab-website" class="tab-pane fade in active">
+        
+      <h3>{{ 'web.site'|trans }}</h3>
+      {% for ad in websites %}
+          <div class="col-sm-6 col-md-4" >
+              <div class="thumbnail" style="max-width: 250px;max-height: 350px;">
+                  {% if ad.logo %}
+                      <img src="{{asset(ad.getWebPathSiteThumbnail()) }}" alt="{{ ad.title }} image not found" alt="Bidweb"  width="182" height="132"/>
+                  {% else %}
+                      <img src="{{asset("rs/thumb_default.png")}}" alt="Bidweb" width="182" height="132">
+                  {% endif %}
+                  <div class="caption">
+                      <h3>{{ad.title}}</h3>
+                      <p>{{ ad.detail(200) | raw |striptags}}...</p>
+                      <p>
+                          <a href="{{ path('bidweb_website_show', { 'id': ad.id, 'slug':ad.slug }) }}" class="btn btn-primary" role="button">{{'detail'|trans}}</a> 
+                      </p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    
+    <div id="tab-seotool" class="tab-pane fade">
+      <h3>{{ 'seo.tool'|trans }}</h3>
+      {% for ad in seotools %}
+          <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                  <img src="{{asset("bundles/bidweb/images/seotools.jpg")}}" alt="Bidweb" width="182" height="132">
+                  <div class="caption">
+                      <h3>{{ad.title}}</h3>
+                      <p>{{ ad.detail(200) | raw |striptags}}...</p>
+                      <p>
+                          <a href="{{ path('bidweb_seotool_show', { 'id': ad.id, 'slug':ad.slug }) }}" class="btn btn-primary" role="button">{{'detail'|trans}}</a>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    <div id="tab-database" class="tab-pane fade">
+      <h3>{{'database'|trans}}</h3>
+      {% for ad in databases %}
+          <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                  <img src="{{asset("bundles/bidweb/images/database.jpg")}}" alt="Bidweb" width="182" height="132">
+                  <div class="caption">
+                      <h3>{{ad.title}}</h3>
+                      <p>{{ ad.detail(200) | raw |striptags}}...</p>
+                      <p><a href="{{ path('bidweb_database_show', { 'id': ad.id, 'slug':ad.slug }) }}" class="btn btn-primary" role="button">{{'detail'|trans}}</a> 
+                          </p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    <div id="tab-domain" class="tab-pane fade">
+      <h3>{{'domain'|trans}}</h3>
+      {% for ad in domains %}
+          <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                  <img src="{{asset("bundles/bidweb/images/domain.jpg")}}" alt="Bidweb" width="182" height="132">
+                  <div class="caption">
+                      <h3>{{ad.title}}</h3>
+                      <p>{{ ad.detail(200) | raw |striptags}}...</p>
+                      <p>
+                          <a href="{{ path('bidweb_domain_show', { 'id': ad.id, 'slug':ad.slug }) }}" class="btn btn-primary" role="button">{{'detail'|trans}}</a> 
+                      </p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    <div id="tab-job" class="tab-pane fade">
+      <h3>{{'job'|trans}}</h3>
+      {% for ad in jobs %}
+          <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                  {% if ad.logo %}
+                      <img src="{{asset(ad.getWebPath()) }}" alt="{{ ad.title }} image not found" alt="Bidweb" width="182" height="132" />
+                  {% else %}
+                      <img src="{{asset("rs/thumb_default.png")}}" alt="Bidweb" width="182" height="132">
+                  {% endif %}
+                  <div class="caption">
+                      <h3>{{ad.title}}</h3>
+                      <p>{{ ad.description(200) | raw |striptags}}...</p>
+                      <p><a href="{{ path('bidweb_job_show', { 'id': ad.id, 'slug':ad.slug }) }}" class="btn btn-primary" role="button">{{'detail'|trans}}</a>
+                       </p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    <div id="tab-freelancer" class="tab-pane fade">
+      <h3>{{'freelancer'|trans}}</h3>
+      {% for ad in freelancers %}
+          <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                  {% if ad.image %}
+                      <img src="{{asset(ad.getWebPathImage()) }}" alt="{{ ad.title }} image not found" alt="Bidweb" width="182" height="132" />
+                  {% else %}
+                      <img src="{{asset("rs/thumb_default.png")}}" alt="Bidweb" width="182" height="132">
+                  {% endif %}
+                  <div class="caption">
+                      <h3>{{ad.title}}</h3>
+                      <p>{{ ad.description(200) | raw |striptags}}...</p>
+                      <p><a href="{{ path('profiledetails', { 'id': ad.id, 'slug':ad.slug }) }}" class="btn btn-primary" role="button">{{'detail'|trans}}</a>
+                          </p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+    
+   
+  </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+
+  </script>
+  
+  {% endblock %}

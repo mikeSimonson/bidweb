@@ -1,0 +1,44 @@
+bidweb_payment:
+    resource: "@BidwebPaymentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bidweb:
+    resource: "@BidwebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#app:
+#    resource: @AppBundle/Controller/
+#    type:     annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
+payum_capture:
+    resource: "@PayumBundle/Resources/config/routing/capture.xml"
+
+payum_authorize:
+    resource: "@PayumBundle/Resources/config/routing/authorize.xml"
+
+payum_notify:
+    resource: "@PayumBundle/Resources/config/routing/notify.xml"
+    
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+    
+get_categories_from_tag:
+    path: /admin/bidweb/admin/job/get-categories-from-tag/{tagId}
+    defaults: {_controller: BidwebBundle:JobAdmin:getCategoryOptionsFromTag}
+    options:
+        expose: true

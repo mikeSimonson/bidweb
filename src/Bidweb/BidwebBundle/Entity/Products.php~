@@ -1,0 +1,215 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Products
+ *
+ * @ORM\Table(name="products", uniqueConstraints={@ORM\UniqueConstraint(name="product_code", columns={"product_code"})})
+ * @ORM\Entity
+ */
+class Products
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="product_code", type="string", length=60, nullable=false)
+     */
+    private $productCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="product_name", type="string", length=60, nullable=false)
+     */
+    private $productName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="product_desc", type="text", nullable=false)
+     */
+    private $productDesc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="days_name", type="string", length=50, nullable=false)
+     */
+    private $daysName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plan_type", type="string", length=100, nullable=false)
+     */
+    private $planType;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set productCode
+     *
+     * @param string $productCode
+     * @return Products
+     */
+    public function setProductCode($productCode)
+    {
+        $this->productCode = $productCode;
+
+        return $this;
+    }
+
+    /**
+     * Get productCode
+     *
+     * @return string 
+     */
+    public function getProductCode()
+    {
+        return $this->productCode;
+    }
+
+    /**
+     * Set productName
+     *
+     * @param string $productName
+     * @return Products
+     */
+    public function setProductName($productName)
+    {
+        $this->productName = $productName;
+
+        return $this;
+    }
+
+    /**
+     * Get productName
+     *
+     * @return string 
+     */
+    public function getProductName()
+    {
+        return $this->productName;
+    }
+
+    /**
+     * Set productDesc
+     *
+     * @param string $productDesc
+     * @return Products
+     */
+    public function setProductDesc($productDesc)
+    {
+        $this->productDesc = $productDesc;
+
+        return $this;
+    }
+
+    /**
+     * Get productDesc
+     *
+     * @return string 
+     */
+    public function getProductDesc()
+    {
+        return $this->productDesc;
+    }
+
+    /**
+     * Set daysName
+     *
+     * @param string $daysName
+     * @return Products
+     */
+    public function setDaysName($daysName)
+    {
+        $this->daysName = $daysName;
+
+        return $this;
+    }
+
+    /**
+     * Get daysName
+     *
+     * @return string 
+     */
+    public function getDaysName()
+    {
+        return $this->daysName;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     * @return Products
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set planType
+     *
+     * @param string $planType
+     * @return Products
+     */
+    public function setPlanType($planType)
+    {
+        $this->planType = $planType;
+
+        return $this;
+    }
+
+    /**
+     * Get planType
+     *
+     * @return string 
+     */
+    public function getPlanType()
+    {
+        return $this->planType;
+    }
+}

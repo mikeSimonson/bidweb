@@ -1,0 +1,110 @@
+{# empty Twig template #}
+{% form_theme form 'BidwebBundle:Form:fields.html.twig' %}
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'edit'|trans}} - {{website.title}}{% endblock%}
+{% block content_title %}
+    {{'edit'|trans}}
+{% endblock %}
+{% block path %}
+    <li><a href="{{path('bidweb_websites')}}">{{'websites'|trans}}</a></li>
+    <li><a href="#">{{'edit'|trans}}</a></li>
+    {% endblock %}
+    {% block body %}
+
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'edit.website'|trans}}</h3>
+                </div>
+                <form action="{{ path('bidweb_website_edit',{'id':website.id} ) }}" method="post" {{ form_enctype(form) }}>
+                    {{ form_errors(form) }}
+                    <div class="panel-body form-horizontal form-padding">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'title'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.title, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">{{'logo'|trans}}</label>
+                            <div class="col-md-9">
+                                <span class="pull-left btn btn-default btn-file">
+                                    {{'browse'|trans}}... {{ form_row(form.file, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">{{'site.thumbnail'|trans}}</label>
+                            <div class="col-md-9">
+                                <span class="pull-left btn btn-default btn-file">
+                                    {{'browse'|trans}}... {{ form_row(form.file2, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'site.name'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.siteName, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'domain'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.domain, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'price'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.price, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'server.type'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.serverType, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'build.type'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.buildType, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" >{{'detail'|trans}}</label>
+                            <div class="col-md-6">
+                                {{ form_row(form.detail, { 'label' : false,'attr': {'rows':9,'class': 'col-sm-9 form-control'} }) }}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-footer text-right">
+
+                        <input type="submit" value="{{'save'|trans}}" class="btn btn-info"/>
+                    </div>
+                    {{ form_rest(form) }}
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

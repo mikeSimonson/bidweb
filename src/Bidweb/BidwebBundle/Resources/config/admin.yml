@@ -1,0 +1,65 @@
+services:
+    sonata.admin.websiteSale:
+        class: Bidweb\BidwebBundle\Admin\WebsiteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Website Sale" }
+        arguments:
+            - ~
+            - Bidweb\BidwebBundle\Entity\WebsiteSale
+            - ~
+        calls:
+            - [ setTranslationDomain, [BidwebBundle]]
+            
+    sonata.admin.domainSale:
+        class: Bidweb\BidwebBundle\Admin\DomainAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Domain Sale" }
+        arguments:
+            - ~
+            - Bidweb\BidwebBundle\Entity\DomainSale
+            - ~
+        calls:
+            - [ setTranslationDomain, [BidwebBundle]]
+            
+    sonata.admin.job:
+        class: Bidweb\BidwebBundle\Admin\JobAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Job" }
+        arguments:
+            - ~
+            - Bidweb\BidwebBundle\Entity\Job
+            - BidwebBundle:JobCRUD
+        calls:
+            - [ setTranslationDomain, [BidwebBundle]]
+            
+    sonata.admin.seotoolSale:
+        class: Bidweb\BidwebBundle\Admin\SEOToolsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "SeoTool Sale" }
+        arguments:
+            - ~
+            - Bidweb\BidwebBundle\Entity\SeoToolSale
+            - ~
+        calls:
+            - [ setTranslationDomain, [BidwebBundle]]
+            
+    sonata.admin.databaseSale:
+        class: Bidweb\BidwebBundle\Admin\DatabaseAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Database Sale" }
+        arguments:
+            - ~
+            - Bidweb\BidwebBundle\Entity\DatabaseSale
+            - ~
+        calls:
+            - [ setTranslationDomain, [BidwebBundle]]
+    sonata.admin.User:
+        class: Bidweb\UserBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Users" }
+        arguments:
+            - ~
+            - Bidweb\UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [BidwebBundle]]

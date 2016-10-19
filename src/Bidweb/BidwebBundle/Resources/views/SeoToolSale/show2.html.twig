@@ -1,0 +1,79 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{ seotool.title }}{% endblock %}
+{% block content_title %}
+   {{'detail'|trans}}
+{% endblock %}
+{% block path %}
+    
+     <li><a href="{{path('bidweb_seotool')}}">{{'seo.tools'|trans}}</a></li>
+     <li>{{'detail'|trans}}</li>
+{% endblock %}
+
+{% block body %}
+    
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'detail'|trans}} </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="pull-right text-right">
+                        <div class="btn-group">
+                            <i class="fa fa-facebook btn btn-default btn-xs"></i>
+                            <i class="fa fa-twitter btn btn-default btn-xs"></i>
+                            <i class="fa fa-linkedin btn btn-default btn-xs"></i>
+                        </div>
+                    </div>
+                    
+                    <h3><a href="#">{{ seotool.title }}</a></h3>
+                    <div class="text-muted font-bold m-b-xs">{{'posted'|trans}} : {{seotool.created | created_ago}}</div>
+                    
+                   
+                </div>
+                
+                <div class="panel-footer">
+                     {% if is_granted('ROLE_USER')%}
+                        {% if app.user.id != seotool.user.id %}
+                            <a class="btn btn-success" href="{{path('user_send_msg',{'receiver':seotool.user.id})}}">{{'contact.poster'|trans}}</a> 
+                            
+                        {% else %}
+                            <dd><a class="btn btn-info" href="{{path('bidweb_seotool_edit',{'id':seotool.id})}}">{{'edit'|trans}}</a></dd>
+                        {% endif %}
+                    {% else %}
+                        <dd>{{'you.must'|trans}} <a class="btn btn-info" href='{{ path('fos_user_security_login') }}'> {{'login'|trans}}</a> {{'to.contact.poster'|trans}}.<br>
+                            {{'or'|trans}}
+                            <a  class="btn btn-info" href='{{ path('fos_user_registration_register') }}'>{{'create.new.account'|trans}}</a></dd>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'detail'|trans}} </h3>
+                </div>
+                <div class="panel-body">
+                    <dl>
+                        <dt>{{'taxonomy'|trans}}</dt>
+                        <dd>{{seotool.taxonomy}}</dd>
+                        <dt>{{'demo'|trans}}</dt>
+                        <dd>{{seotool.demo}}</dd>
+                        <dt>{{'price'|trans}}</dt>
+                        <dd>{{seotool.price}}</dd>
+                        
+                        
+                    </dl>
+
+                    <h3><a href="#">{{'detail'|trans}}</a></h3>
+                    <p>{{seotool.detail}}</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

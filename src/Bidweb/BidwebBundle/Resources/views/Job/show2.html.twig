@@ -1,0 +1,91 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{ job.title }}{% endblock %}
+{% block content_title %}
+    {{'detail'|trans}}
+{% endblock %}
+{% block path %}
+    
+    <li><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></li>
+    <li><a href="#">{{'detail'|trans}}</a></li>
+    {% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'job'|trans}} </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="pull-right text-right">
+                        <div class="btn-group">
+                            <i class="fa fa-facebook btn btn-default btn-xs"></i>
+                            <i class="fa fa-twitter btn btn-default btn-xs"></i>
+                            <i class="fa fa-linkedin btn btn-default btn-xs"></i>
+                        </div>
+                    </div>
+                    {% if job.logo %}
+                        <img src="{{ asset(job.getWebPath())}}" name="image" 
+                             id="image" class="img-circle m-b m-t-md" alt="Bidweb" 
+                             title="{{ job.title }}" width="76" height="76">
+                    {% else %}
+                        <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" 
+                             name="image" id="image" class="img-circle m-b m-t-md" 
+                             alt="Bidweb" title="Urun Adı"  width="76" height="76">
+                    {% endif %}
+                    <h3><a href="#">{{ job.title }}</a></h3>
+                    <div class="text-muted font-bold m-b-xs">{{'posted'|trans}} : {{job.created | created_ago}}</div>
+                    
+                   
+                </div>
+                
+                <div class="panel-footer">
+                     {% if is_granted('ROLE_USER')%}
+                        {% if app.user.id != job.user.id %}
+                            <a class="btn btn-success" href="{{path('user_send_msg',{'receiver':job.user.id})}}">{{'contact.poster'|trans}}</a> 
+                            <a class="btn btn-info" href='{{ path('bidweb_apply_job',{ 'id' : job.id }) }}'>{{'apply.job'|trans}} </a>
+                        {% else %}
+                            <dd><a class="btn btn-info" href="{{path('bidweb_job_edit',{'id':job.id})}}">{{'edit.job'|trans}}</a></dd>
+                        {% endif %}
+                    {% else %}
+                        <dd>{{'you.must'|trans}} <a class="btn btn-info" href='{{ path('fos_user_security_login') }}'> {{'login'|trans}}</a> {{'to.contact.poster'|trans}}.<br>
+                            {{'or'|trans}}
+                            <a  class="btn btn-info" href='{{ path('fos_user_registration_register') }}'>{{'create.new.account'|trans}}</a></dd>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'detail'|trans}} </h3>
+                </div>
+                <div class="panel-body">
+                    <dl>
+                        <dt>{{'company.name'|trans}}</dt>
+                        <dd>{{job.companyName}}</dd>
+                        <dt>{{'sub.cat'|trans}}</dt>
+                        <dd>{{job.subcategory}}</dd>
+                        <dt>{{'work.type'|trans}}</dt>
+                        <dd>{{job.workingType}}</dd>
+                        <dt>{{'state'|trans}}</dt>
+                        <dd>{{job.state}}</dd>
+                        <dt>{{'city'|trans}}</dt>
+                        <dd>{{job.city}}</dd>
+                        
+                    </dl>
+
+                    <h3><a href="#">{{'detail'|trans}}</a></h3>
+                    <p>{{job.description}}</p>
+                    <div class="text-muted font-bold m-b-xs">{{'skill'|trans}} : {{job.skills}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

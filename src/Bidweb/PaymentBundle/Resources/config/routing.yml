@@ -1,0 +1,27 @@
+
+                    ########## Payment        
+#############################################################################
+        
+#bidweb_payment_prepare:
+#    path: /payprepare
+#    defaults: { _controller : BidwebPaymentBundle:Payment:prepare}
+
+bidweb_pay_done:
+    path: /paydone
+    defaults: { _controller : BidwebPaymentBundle:Payment:done}
+    
+bidweb_paypal_express_pay:
+    path: /paypalexpress/{email}/{id}
+    defaults: { _controller : BidwebPaymentBundle:Payment:paypaplExpress }
+    
+bidweb_wallet:
+    path: /wallet
+    defaults: { _controller : BidwebPaymentBundle:Payment:wallet }
+    
+bidweb_payments:
+    path: /payments
+    defaults: { _controller : BidwebPaymentBundle:Payment:payments }
+    
+bidweb_checkout_paypal:
+    path: /checkoutpay/{email}/{id}
+    defaults: { _controller : BidwebPaymentBundle:Payment:cashoutpaypapl }

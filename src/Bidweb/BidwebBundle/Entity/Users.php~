@@ -1,0 +1,215 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Users
+ *
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="FK_users_browser_id", columns={"browser_id"}), @ORM\Index(name="FK_users_os_id", columns={"os_id"})})
+ * @ORM\Entity
+ */
+class Users
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ip", type="integer", nullable=true)
+     */
+    private $ip;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="browser_id", type="integer", nullable=true)
+     */
+    private $browserId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="os_id", type="integer", nullable=true)
+     */
+    private $osId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="origin", type="string", length=100, nullable=true)
+     */
+    private $origin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="domain", type="string", length=100, nullable=true)
+     */
+    private $domain;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_hit", type="datetime", nullable=true)
+     */
+    private $lastHit;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set ip
+     *
+     * @param integer $ip
+     * @return Users
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
+     * Get ip
+     *
+     * @return integer 
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * Set browserId
+     *
+     * @param integer $browserId
+     * @return Users
+     */
+    public function setBrowserId($browserId)
+    {
+        $this->browserId = $browserId;
+
+        return $this;
+    }
+
+    /**
+     * Get browserId
+     *
+     * @return integer 
+     */
+    public function getBrowserId()
+    {
+        return $this->browserId;
+    }
+
+    /**
+     * Set osId
+     *
+     * @param integer $osId
+     * @return Users
+     */
+    public function setOsId($osId)
+    {
+        $this->osId = $osId;
+
+        return $this;
+    }
+
+    /**
+     * Get osId
+     *
+     * @return integer 
+     */
+    public function getOsId()
+    {
+        return $this->osId;
+    }
+
+    /**
+     * Set origin
+     *
+     * @param string $origin
+     * @return Users
+     */
+    public function setOrigin($origin)
+    {
+        $this->origin = $origin;
+
+        return $this;
+    }
+
+    /**
+     * Get origin
+     *
+     * @return string 
+     */
+    public function getOrigin()
+    {
+        return $this->origin;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param string $domain
+     * @return Users
+     */
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return string 
+     */
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+
+    /**
+     * Set lastHit
+     *
+     * @param \DateTime $lastHit
+     * @return Users
+     */
+    public function setLastHit($lastHit)
+    {
+        $this->lastHit = $lastHit;
+
+        return $this;
+    }
+
+    /**
+     * Get lastHit
+     *
+     * @return \DateTime 
+     */
+    public function getLastHit()
+    {
+        return $this->lastHit;
+    }
+}

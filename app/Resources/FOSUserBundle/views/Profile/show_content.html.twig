@@ -1,0 +1,38 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<br><br>
+<div class="details">
+    <div class="pad-ver">
+        {% if user.image=='empty'%}
+                    <img class="img-lg img-border img-circle" src="/img/av1.png" alt="Profile Picture">
+                {% else %}
+                    <img class="img-lg img-border img-circle" src="{{asset(user.getWebPathImage())}}" alt="Profile Picture">
+                {% endif %}
+        
+    </div>
+    <h4 class="text-lg text-overflow mar-no">{{ user.username }}</h4>
+    <dl>
+      {% if user.type=='client' %}
+          <dd>{{'email'|trans}} : {{ user.email }}</dd>
+          <dd>{{'company.name'|trans}} : {{ user.companyName }}</dd>
+          <dd>{{'city'|trans}} : {{ user.city }}</dd>
+          <dd>{{'state'|trans}} : {{ user.state }}</dd>
+          <dd>{{'address'|trans}} : {{ user.address }}</dd>
+          <dd>{{'zip.code'|trans}} : {{ user.zipCode }}</dd>
+          <dd>{{'phone'|trans}} : {{ user.phone }}</dd>
+          <dd>{{'web.site'|trans}} : {{ user.webSite }}</dd>
+          <dd>{{'paypal.email'|trans}} : {{ user.paypalEmail }}</dd>
+      {% else %}
+          <dd>{{'email'|trans}} : {{ user.email }}</dd>
+          <dd>{{'first.name'|trans}} : {{ user.firstName }}</dd>
+          <dd>{{'last.name'|trans}} : {{ user.lastname }}</dd>
+          <dd>{{'address'|trans}} : {{ user.address }}</dd>
+          <dd>{{'phone'|trans}} : {{ user.phone }}</dd>
+      {% endif %}
+       
+        
+        
+    </dl>
+</div>
+
+<br><div class="like"> <a class ="btn btn-success" href="{{path('fos_user_profile_edit')}}">Edit</a></div>
+

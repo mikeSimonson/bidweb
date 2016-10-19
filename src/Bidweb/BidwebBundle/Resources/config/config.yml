@@ -1,0 +1,4 @@
+## YAML Template.
+parameters:
+    # Bidweb contact email address
+    bidweb.emails.contact_email: walid.ham@hotmail.com

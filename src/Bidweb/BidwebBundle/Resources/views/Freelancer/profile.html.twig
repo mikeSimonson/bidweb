@@ -1,0 +1,199 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{ 'profile'|trans }}{% endblock %}
+{% block content_title %}
+    {{'profile'|trans}}
+{% endblock %}
+{% block path %}
+    <li><a href="#">{{'profile'|trans}}</a></li>
+    {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'profile.detail'|trans}} </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="pull-right text-right">
+                        <div class="btn-group">
+                            <i class="fa fa-facebook btn btn-default btn-xs"></i>
+                            <i class="fa fa-twitter btn btn-default btn-xs"></i>
+                            <i class="fa fa-linkedin btn btn-default btn-xs"></i>
+                        </div>
+                    </div>
+                    {% if profile.user.image != 'empty' %}
+                        <img class="img-circle m-b m-t-md" src="{{asset(profile.user.getWebPathImage()) }}" alt="{{ profile.title }} image not found" alt="Bidweb" width="76" height="76" />
+                    {% else %}
+                        <img src="{{asset("img/av1.png")}}" alt="Bidweb" width="76" height="76">
+                    {% endif %}
+
+
+                    <h3><a href="#">{{ profile.title }}</a></h3>
+                    <div class="text-muted font-bold m-b-xs">{{'created'|trans}} : {{profile.created | created_ago}}</div>
+
+
+                </div>
+
+                <div class="panel-footer">
+                    {% if is_granted('ROLE_USER')%}
+                        {% if app.user.id != profile.user.id %}
+                            <a class="btn btn-success" href="{{path('user_send_msg',{'receiver':profile.user.id})}}" class="text-success">{{'contact.poster'|trans}}</a> 
+
+                        {% else %}
+                            <a class="btn btn-success" href="{{path('editprofile',{'id':profile.id})}}" class="text-success">{{'edit'|trans}}</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'detail'|trans}} </h3>
+                </div>
+                <div class="panel-body">
+                    <dl>
+                        {% if profile.diploma %}
+                            <dt>{{'diploma1'|trans}}</dt>
+                            <dd>{{profile.diploma}}</dd>
+                        {% endif %}
+
+
+                        {% if profile.diploma2 %}
+                            <dt>{{'diploma2'|trans}}</dt>
+                            <dd>{{profile.diploma2}}</dd>
+                        {% endif %}
+
+                        {% if profile.diploma3 %}
+                            <dt>{{'diploma3'|trans}}</dt>
+                            <dd>{{profile.diploma3}}</dd>
+                        {% endif %}
+
+                        {% if profile.certification %}
+                            <dt>{{'certif1'|trans}}</dt>
+                            <dd>{{profile.certification}}</dd>
+                        {% endif %}
+
+                        {% if profile.certification2 %}
+                            <dt>{{'certif2'|trans}}</dt>
+                            <dd>{{profile.certification2}}</dd>
+                        {% endif %}
+
+                        {% if profile.certification3 %}
+                            <dt>{{'certif3'|trans}}</dt>
+                            <dd>{{profile.certification3}}</dd>
+                        {% endif %}
+
+                    </dl>
+
+                    <h3><a href="#">{{'description'|trans}}</a></h3>
+                    <p>{{profile.description}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'projects'|trans}}</h3>
+                </div>
+                <div class="panel-body">
+                    <label class="form-inline">{{'show'|trans}}
+                        <select id="demo-show-entries" class="form-control input-sm">
+                            <option value="5">5</option>
+                            <option value="10" selected="true">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                        {{'entries'|trans}}
+                    </label>
+                    <table id="foo-pagination" class="table toggle-arrow-tiny" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">{{'title'|trans}}</th>
+                                <th>{{'company.name'|trans}}</th>
+                                <th>{{'budget'|trans}}</th>
+                                <th>{{'opened.post'|trans}}</th>
+                                <th data-hide="all">{{'category'|trans}}</th>
+                                <th data-hide="all">{{'posted'|trans}}</th>
+                                <th data-hide="all">{{'detail'|trans}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ad in projects %}
+                                <tr>
+                                    <td>{{ad.title}}</td>
+                                    <td>{{ad.client.companyName}}</td>
+                                    <td>{{ad.budget}}</td>
+                                    <td>{{ad.openedPost}}</td>
+                                    <td>
+                                        {{ad.category}}
+                                    </td>
+                                    <td>{{ ad.created|date('l, F j, Y') }}</td>
+                                    <td>
+                                        {{ ad.description(50) | raw |striptags}}...
+                                        <span class="label label-table label-success"><a href="{{ path('bidweb_freelancer_project_detail', { 'id': ad.id , 'slug':ad.slug}) }}"> {{'detail'|trans}} </a></span></td>
+                                </tr>
+                            {% endfor %}
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="text-right">
+                                        <ul class="pagination"></ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}    
+
+{% block javascripts %}
+    {{parent() }}
+    <script src="bundles/bidweb/nifty/plugins/fooTable/dist/footable.all.min.js"></script>
+
+    <script>
+        $(window).on('load', function () {
+
+
+            // FOO TABLES
+            // =================================================================
+            // Require FooTable
+            // -----------------------------------------------------------------
+            // http://fooplugins.com/footable-demos/
+            // =================================================================
+
+
+            // Row Toggler
+            // -----------------------------------------------------------------
+            // Pagination
+            // -----------------------------------------------------------------
+            $('#foo-pagination').footable();
+            $('#demo-show-entries').change(function (e) {
+                e.preventDefault();
+                var pageSize = $(this).val();
+                $('#foo-pagination').data('page-size', pageSize);
+                $('#foo-pagination').trigger('footable_initialized');
+            });
+
+
+
+        });
+
+    </script>
+{% endblock %}

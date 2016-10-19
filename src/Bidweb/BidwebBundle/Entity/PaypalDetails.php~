@@ -1,0 +1,95 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PaypalDetails
+ *
+ * @ORM\Table(name="paypal_details")
+ * @ORM\Entity
+ */
+class PaypalDetails
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="paypal_details_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $paypalDetailsId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="payer_id", type="string", length=100, nullable=false)
+     */
+    private $payerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="item_name", type="string", length=200, nullable=false)
+     */
+    private $itemName;
+
+
+
+    /**
+     * Get paypalDetailsId
+     *
+     * @return integer 
+     */
+    public function getPaypalDetailsId()
+    {
+        return $this->paypalDetailsId;
+    }
+
+    /**
+     * Set payerId
+     *
+     * @param string $payerId
+     * @return PaypalDetails
+     */
+    public function setPayerId($payerId)
+    {
+        $this->payerId = $payerId;
+
+        return $this;
+    }
+
+    /**
+     * Get payerId
+     *
+     * @return string 
+     */
+    public function getPayerId()
+    {
+        return $this->payerId;
+    }
+
+    /**
+     * Set itemName
+     *
+     * @param string $itemName
+     * @return PaypalDetails
+     */
+    public function setItemName($itemName)
+    {
+        $this->itemName = $itemName;
+
+        return $this;
+    }
+
+    /**
+     * Get itemName
+     *
+     * @return string 
+     */
+    public function getItemName()
+    {
+        return $this->itemName;
+    }
+}

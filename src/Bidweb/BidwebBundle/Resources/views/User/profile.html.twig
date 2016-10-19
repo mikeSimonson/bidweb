@@ -1,0 +1,25 @@
+
+{% extends 'BidwebBundle::layout.html.twig' %}
+{% block title %}User Profile{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Edit Profile</h1>
+    </header>
+  
+
+    <form action="" method="post">
+        <label for="username">User Name :</label>
+        <input type="text" id="username" name="_username" value="{{ user.username }}" />
+
+        <b>This is test of show user profile</b>
+
+        <button type="submit">Save change</button>
+
+    </form>
+    <header>
+        <h1>Authentication Adbck</h1>
+    </header>
+        
+
+{% endblock %}

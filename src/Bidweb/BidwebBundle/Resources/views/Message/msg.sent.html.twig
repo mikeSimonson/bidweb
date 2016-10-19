@@ -1,0 +1,272 @@
+{% extends '::landing.html.twig' %}
+
+{% block content_title %}
+    Message Box
+{% endblock %}
+{% block path %}
+    <li><a href="/">Home</a></li>
+    <li><a href="#">MessageBox</a></li>
+
+{% endblock %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-4 col-lg-2">
+
+            {{ render(controller("BidwebBundle:Message:mailmenu")) }}
+
+        </div>
+        <div class="col-sm-8 col-lg-10">
+
+            <div class="panel">
+                <div class="panel panel-default panel-left">
+                    <div id="email-list" class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="btn-group">
+                                    <div id="checked-all-mail" class="btn btn-default">
+                                        <label class="form-checkbox form-normal form-primary">
+                                            <input class="form-input" type="checkbox" name="mail-list">
+                                        </label>
+                                    </div>
+                                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle dropdown-toggle-icon"><i class="dropdown-caret fa fa-caret-down"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)" id="select-all-list">All</a></li>
+                                        <li><a href="javascript:void(0)" id="select-none-list">None</a></li>
+                                       
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)" id="select-read-list">Read</a></li>
+                                        <li><a href="javascript:void(0)" id="select-unread-list">Unread</a></li>
+                                       
+                                    </ul>
+                                </div>
+
+                                <!--Refresh button-->
+                                <button onclick="javascript:window.location='{{path('user_msg_box')}}'" id="mail-ref-btn" data-toggle="panel-overlay" data-target="#email-list" class="btn btn-default" type="button">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                                <!--Refresh button-->
+                                <button id="mail-delete-sent" data-toggle="panel-overlay" data-target="#email-list" class="btn btn-default" type="button">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                            
+                            <hr class="hr-sm visible-xs">
+                            
+                            <div class="col-sm-5 clearfix">
+                                <div class="pull-right">
+
+                                    <!--Pager buttons-->
+                                    <span class="text-muted">
+                                        {% set limitR = (page+1)*10 %}
+                                        
+                                        
+                                        {% if limitR > total %}
+                                            {% set limitR = total %}
+                                        {% endif %}
+                                        
+                                      
+                                        <strong>{{page*10+1}}-{{limitR}}</strong>
+                                        of
+                                        <strong>{{total}}</strong>
+                                    </span>
+                                    <div class="btn-group btn-group">
+                                        {% if page==0 %}
+                                            <a href="" class="btn btn-default disabled" type="button">
+                                                <span class="fa fa-chevron-left"></span>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{path('user_msg_sent',{'page':page-1})}}" class="btn btn-default" type="button">
+                                                <span class="fa fa-chevron-left"></span>
+                                            </a>
+                                        {% endif %}
+                                        {% if (page+1)*10>=total %}
+                                            <a href="" class="btn btn-default disabled" type="button">
+                                                <span class="fa fa-chevron-right"></span>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{path('user_msg_sent',{'page':page+1})}}" class="btn btn-default" type="button">
+                                                <span class="fa fa-chevron-right"></span>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <hr class="hr-sm">
+
+                        <!--Mail list group-->
+                        <ul id="mail-list" class="mail-list">
+                           {% for child in form.messages %}
+                                {% set index = child.vars.value %}
+                            <!--Mail list item-->
+                            {% if choices[index].read %}
+                                <li class="">
+                            {% else %}
+                                <li class="mail-list-unread">
+                                
+                            {% endif %}
+                            
+                                <div class="mail-control">
+                                    <label class="cb-mail form-checkbox form-normal form-primary">
+                                        {{ form_widget(child) }}
+
+                                    </label>
+                                </div>
+                            {% if not choices[index].read %}
+                                <span class="badge badge-danger badge-icon badge-fw pull-left"></span>
+                            {% else %}
+                                <span class="badge badge-success badge-icon badge-fw pull-left"></span>
+                            {% endif %}
+                                
+                            <div class="mail-from"><a href="{{url('user_read_msg',{'msgid':choices[index].id})}}">{{choices[index].receiver}}</a></div>
+                            <div class="mail-time">{{choices[index].created|date('l, F j, Y')}}</div>
+
+                            <div class="mail-subject">
+                                <a href="{{url('user_read_msg',{'msgid':choices[index].id})}}">{{(choices[index].message|striptags)|e }} </a>
+                            </div>
+                            </li>
+                            {% endfor %}
+                            
+                        </ul>
+                    </div>
+
+
+                    <!--Mail footer-->
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            <span class="text-muted"><strong>{{page*10+1}}-{{limitR}}</strong> of <strong>{{total}}</strong></span>
+                            <div class="btn-group btn-group">
+                                 {% if page==0 %}
+                                    <a href="#" type="button" class="btn btn-dark disabled">
+                                        <span class="fa fa-chevron-left"></span>
+                                    </a>
+                                {% else %}
+                                    <a href="{{path('user_msg_box',{'page':page-1})}}" type="button" class="btn btn-dark">
+                                        <span class="fa fa-chevron-left"></span>
+                                    </a>
+                                {% endif %}
+                                
+                                {% if (page+1)*10>=total %}
+                                    <a href="" type="button" class="btn btn-dark disabled">
+                                        <span class="fa fa-chevron-right"></span>
+                                    </a>
+                                {% else %}
+                                    <a href="{{path('user_msg_box',{'page':page+1})}}" type="button" class="btn btn-dark">
+                                        <span class="fa fa-chevron-right"></span>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+        </div>
+
+    </div>
+
+
+{% endblock%}
+
+{% block javascripts %}
+    
+    {{parent()}}
+     <script src="/bundles/bidweb/nifty/plugins/bootbox/bootbox.min.js"></script>
+    <script>
+        var mSelAllCb 	= $('#checked-all-mail').find('.form-checkbox');
+        var mListCb 	= $('.cb-mail');
+        var mReadCb 	= $('#mail-list').find('li:not(.mail-list-unread)');
+	var mUnreadCb 	= $('#mail-list').find('.mail-list-unread');
+        
+        // Select / deselect all checkboxes.
+	// =================================================================
+	$('#checked-all-mail').on('click', function(e){
+		if(!mSelAllCb.niftyCheck('isChecked')){
+			mListCb.niftyCheck('toggleOn');
+			mSelAllCb.niftyCheck('toggleOn');
+		}else{
+			mListCb.niftyCheck('toggleOff');
+			mSelAllCb.niftyCheck('toggleOff');
+		}
+	});
+        
+        // Sellect all checkboxes.
+	// =================================================================
+	$('#select-all-list').on('click', function(e){
+		mListCb.niftyCheck('toggleOn');
+		mSelAllCb.niftyCheck('toggleOn');
+	});
+        
+        // Uncheck all checkboxes.
+	// =================================================================
+	$('#select-none-list').on('click', function(e){
+		mListCb.niftyCheck('toggleOff');
+		mSelAllCb.niftyCheck('toggleOff');
+	});
+
+
+	// Check on all the messages that have been read.
+	// =================================================================
+	$('#select-read-list').on('click', function(e){
+		mListCb.niftyCheck('toggleOff');
+		mReadCb.niftyCheck('toggleOn');
+	});
+
+
+	// Checks on all unread messages.
+	// =================================================================
+	$('#select-unread-list').on('click', function(e){
+		mListCb.niftyCheck('toggleOff');
+		mUnreadCb.niftyCheck('toggleOn');
+	});
+        
+        function deleteMsg() {
+            var mListCb = $('.cb-mail').children();
+            var test=false;
+            
+            mListCb.each(function () {
+
+                var sThisVal = (this.checked ? $(this).val() : "");
+                if (sThisVal){
+                   
+                    test =  true;
+                    return;
+                }
+
+            });
+            
+            return test;
+        }
+        
+        $('#mail-delete-sent').on('click', function(){
+           if(deleteMsg()==false){
+               return;
+           }
+            
+		bootbox.confirm("Are you sure to delete selected message(s)?", function(result) {
+			if (result) {
+				$.niftyNoty({
+					type: 'success',
+					icon : 'fa fa-check',
+					message : 'User confirmed dialog',
+					container : 'floating',
+					timer : 3000
+				});
+                                $('#multidelete').submit();
+			}else{
+				$.niftyNoty({
+					type: 'danger',
+					icon : 'fa fa-minus',
+					message : 'Delete canceled.',
+					container : 'floating',
+					timer : 3000
+				});
+			};
+
+		});
+	});
+    </script>
+    {% endblock %}

@@ -1,0 +1,874 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>web.site</source>
+                <target>웹사이트</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>seo.tool</source>
+                <target>SEO 도구</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>domain</source>
+                <target>도메인</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>job</source>
+                <target>잡</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>freelancer</source>
+                <target>프리랜서</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>database</source>
+                <target>데이터베이스</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>last.posted</source>
+                <target>최근 게시물</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>home</source>
+                <target>홈</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>place.free.ads</source>
+                <target>게시물 작성하기</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>contact.us</source>
+                <target>문의</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Hi</source>
+                <target>Hi</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>guest</source>
+                <target>비회원</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>login</source>
+                <target>로그인</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>register</source>
+                <target>가입</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>my.job</source>
+                <target>내 일</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>my.app</source>
+                <target>내 응용 프로그램</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>all.right</source>
+                <target>판권 소유</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>my.profile</source>
+                <target>내 프로필</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>my.seo</source>
+                <target>내 SEO 도구</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>my.database</source>
+                <target>내 데이터베이스</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>my.web.site</source>
+                <target>내 웹사이트</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>my.domain</source>
+                <target>내 도메인</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>setting</source>
+                <target>설정</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>logout</source>
+                <target>로그 아웃</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>detail</source>
+                <target>자세히보기</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>taxonomy</source>
+                <target>분류</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>price</source>
+                <target>가격</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>demo</source>
+                <target>데모</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>quantity</source>
+                <target>개스</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>contact.poster</source>
+                <target>작성자와 연락하기</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>edit.post</source>
+                <target>게시물 편집</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>msg.add.confirm</source>
+                <target>축하합니다, 당신의 게시물이 성공적으로 추가됩니다</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>title</source>
+                <target>제목</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>save</source>
+                <target>저장</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>create.new.post</source>
+                <target>새 게시물을 작성</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>edit</source>
+                <target>편집</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>posted.by</source>
+                <target>작성자</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>no.post.found</source>
+                <target>게시물을 찾을수 없습니다</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>see.more</source>
+                <target>더보기</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>posted</source>
+                <target>게시되었습니다</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>daily.visitor</source>
+                <target>일일 방문자</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>apply.job</source>
+                <target>채용 지원하기</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>message</source>
+                <target>메시지</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>profile</source>
+                <target>프로필</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>apply.confirm</source>
+                <target>지원서 접수되었습니다.</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>company.name</source>
+                <target>회사 명</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>skill</source>
+                <target>스킬</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>address</source>
+                <target>주소</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>duration</source>
+                <target>기간</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>logo</source>
+                <target>로고</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>work.type</source>
+                <target>작업 유형</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>sub.cat</source>
+                <target>세부 카테고리</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>state</source>
+                <target>상태</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>city</source>
+                <target>지역</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>msg.error.profile.create</source>
+                <target>프로필을 작성해주세요</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>create.profile</source>
+                <target>프로필작성.</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>first.name</source>
+                <target>이름</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>last.name</source>
+                <target>성</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>phone</source>
+                <target>연락처 :</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>msg.confirm.register</source>
+                <target>등록되었습니다</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>greeting</source>
+                <target>안녕하세요</target>
+            </trans-unit>
+            <trans-unit id="62">
+                <source>bidweb.team</source>
+                <target>Bidweb 팀</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>confrim.register.adr</source>
+                <target>등록 이메일 주소를 확인</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>hello</source>
+                <target>안녕하세요</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>msg.sent.by</source>
+                <target>메시지가 전송</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>subject</source>
+                <target>제목</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>reply</source>
+                <target>답장</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>delete</source>
+                <target>삭제</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>send.msg</source>
+                <target>메시지 보내기</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>msg.box</source>
+                <target>메시지 상자</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>msg.sent</source>
+                <target>전송되었습니다</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>user</source>
+                <target>사용자</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>date</source>
+                <target>날짜</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>choose.ads</source>
+                <target>게시물 종류선택</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>contact.msg</source>
+                <target>Bidweb 문의하기</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>user.name</source>
+                <target>사용자 이름</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>email</source>
+                <target>이메일</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>diploma1</source>
+                <target>졸업 증서 1</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>diploma2</source>
+                <target>졸업 증서 2</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>diploma3</source>
+                <target>졸업 증서 3</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>certif1</source>
+                <target>자격증 1 :</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>certif2</source>
+                <target>자격증 2 :</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>certif3</source>
+                <target>자격증 3 :</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>image</source>
+                <target>이미지 첨부 :</target>
+            </trans-unit>
+            <trans-unit id="85">
+                <source>cv</source>
+                <target>이력서 첨부:</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>resume</source>
+                <target>이력서 첨부:</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>hide</source>
+                <target>숨기기</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>show</source>
+                <target>표시</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>msg.profile.help</source>
+                <target>
+                   당신이 직업을 찾고 있다면, 1개 이상의 지원서를 작성하여 게시 할 수 있습니다.
+                   첫 번째 지원서 작성하기
+                </target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>action</source>
+                <target>액션</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>server.type</source>
+                <target>서버 유형</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>build.type</source>
+                <target>빌드 유형</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>site.name</source>
+                <target>사이트 이름</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>site.thumbnail</source>
+                <target>사이트 미리보기 이미지</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>last.freelancer</source>
+                <target>마지막 프리랜서</target>
+            </trans-unit>
+            <trans-unit id="96">
+                <source>load.wait</source>
+                <target>로딩중...</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>application.user</source>
+                <target>새로운 어플리캐이션</target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>msg.edit.confirm</source>
+                <target>게시물이 저장되었습니다</target>
+            </trans-unit>
+            <trans-unit id="99">
+                <source>list.user.application</source>
+                <target>어플리캐이션 목록</target>
+            </trans-unit>
+            <trans-unit id="100">
+                <source>my.page</source>
+                <target>내 페이지</target>
+            </trans-unit>
+            <trans-unit id="101">
+                <source>posts</source>
+                <target>게시물</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>websites</source>
+                <target>웹사이트</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>databases</source>
+                <target>데이터베이스</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>domains</source>
+                <target>도메인</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>seo.tools</source>
+                <target>SEO 도구</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>jobs</source>
+                <target>채용 정보</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>messages</source>
+                <target>메시지</target>
+            </trans-unit>
+            <trans-unit id="108">
+                <source>wallet</source>
+                <target>지갑</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>received.money</source>
+                <target>받은 돈</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>payments</source>
+                <target>지급</target>
+            </trans-unit>
+            <trans-unit id="111">
+                <source>welcome.msg</source>
+                <target>Bidweb에 오신것을 환영합니다</target>
+            </trans-unit>
+            <trans-unit id="112">
+                <source>last.msg</source>
+                <target>마지막 메시지</target>
+            </trans-unit>
+            <trans-unit id="113">
+                <source>show.all.msg</source>
+                <target>모든 메시지를 표시</target>
+            </trans-unit>
+            <trans-unit id="114">
+                <source>select.cat</source>
+                <target>카테고리 선택</target>
+            </trans-unit>
+            <trans-unit id="115">
+                <source>search.text</source>
+                <target>검색</target>
+            </trans-unit>
+            <trans-unit id="116">
+                <source>second</source>
+                <target>초</target>
+            </trans-unit>
+            <trans-unit id="117">
+                <source>ago</source>
+                <target>전</target>
+            </trans-unit>
+            <trans-unit id="118">
+                <source>entries</source>
+                <target>개씩 보기</target>
+            </trans-unit>
+            <trans-unit id="119">
+                <source>site.name</source>
+                <target>사이트명</target>
+            </trans-unit>
+            <trans-unit id="120">
+                <source>domain</source>
+                <target>도메인명</target>
+            </trans-unit>
+            <trans-unit id="121">
+                <source>title.page</source>
+                <target>프리랜서를 고용 직업, 무료 웹 사이트, 도메인, 도구 및 데이터베이스 광고를 가져 오기</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>sign.up</source>
+                <target>가입</target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>categories</source>
+                <target>카테고리</target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>have.project.hire.freelancer</source>
+                <target>프로젝트가있으세요? 그렇다면, 프리랜서를 고용하세요</target>
+            </trans-unit>
+            <trans-unit id="125">
+                <source>with.us</source>
+                <target>스타트업 비지니스를 빠르게 구축할수 있게 도와드립니다.</target>
+            </trans-unit>
+             <trans-unit id="126">
+                <source>we.seek</source>
+                <target>당신의 기발한 아이디어를 프리랜서들과함께 구현해보세요.</target>
+            </trans-unit>
+            <trans-unit id="127">
+                <source>get.started</source>
+                <target>시작하기</target>
+            </trans-unit>
+            <trans-unit id="128">
+                <source>hire.freelancer</source>
+                <target>프리랜서 채용하기</target>
+            </trans-unit>
+            <trans-unit id="129">
+                <source>hire.freelancer.text</source>
+                <target>수천개의 스타트업 비지니스가 Bidweb과 함께하며 아이디어를 실현시킵니다. 혼자서는 힘드신가요? 저희가 도와드립니다.</target>
+            </trans-unit>
+            <trans-unit id="130">
+                <source>invite.friend</source>
+                <target>친구들을 초대해보세요</target>
+            </trans-unit>
+            <trans-unit id="131">
+                <source>hire</source>
+                <target>채용</target>
+            </trans-unit>
+            <trans-unit id="132">
+                <source>get.online.work</source>
+                <target>프로젝트 따오기</target>
+            </trans-unit>
+            <trans-unit id="133">
+                <source>get.online.work.text</source>
+                <target>남들이 하기힘든 놀라운 스킬이 있으신가요? 모든종류의 프로페셔널한 기술을 보유하신 분들께 Bidweb에서 기회를드립니다. 당신이 원하는 일을 찾을수있도록 저희가도와드립니다.</target>
+            </trans-unit>
+            <trans-unit id="134">
+                <source>work</source>
+                <target>보기</target>
+            </trans-unit>
+            <trans-unit id="135">
+                <source>sel.ads</source>
+                <target>웹사이트, 도메인, 각종툴 판매하기</target>
+            </trans-unit>
+            <trans-unit id="136">
+                <source>sel.ads.text</source>
+                <target>저희는 웹사이트,  도메인 또는 그밖의 수많은 데이터베이스 툴들을 거래할수있는 최고의 온라인 장소입니다.</target>
+            </trans-unit>
+            <trans-unit id="137">
+                <source>sell</source>
+                <target>판매</target>
+            </trans-unit>
+            <trans-unit id="138">
+                <source>great.work</source>
+                <target>"최고의 작업은 최고의 재능으로부터 시작됩니다"</target>
+            </trans-unit>
+            <trans-unit id="139">
+                <source>great.work.text</source>
+                <target>최고의 프로그래머, 디자이너, 편집가분들과함께 놀라운 결과물을 얻으실수 있습니다.</target>
+            </trans-unit>
+            <trans-unit id="140">
+                <source>find.perfect.fast</source>
+                <target>빠르고 완벽한 매치를 찾으세요</target>
+            </trans-unit>
+            <trans-unit id="141">
+                <source>find.perfect.fast.text</source>
+                <target>자신감있고, 경험이풍부한  그리고 다른 클라이언트로부터 좋은 피드백을 받았던 프리랜서를 찾아보세요.</target>
+            </trans-unit>
+            <trans-unit id="142">
+                <source>special.design.view</source>
+                <target>스페셜 프로젝트 뷰어</target>
+            </trans-unit>
+            <trans-unit id="143">
+                <source>special.design.view.text</source>
+                <target>최신의 커뮤니케이션 툴을 갖춘, 안전한 온라인 워크플레이스를 이용한 협업이가능합니다. 시간에따른 업무분량 확인시스템과, 보고서, 결제보호시스템이 확실한 결과물에 대해서만 임금을 지급할수있도록보장해드립니다.</target>
+            </trans-unit>
+            <trans-unit id="144">
+                <source>contact.us.anytime</source>
+                <target>언제든지 연락주세요</target>
+            </trans-unit>
+            <trans-unit id="145">
+                <source>contact.us.if</source>
+                <target>문의사항이있으신가요? 요청하신다면 기쁘게 도와드리겠습니다.</target>
+            </trans-unit>
+            <trans-unit id="146">
+                <source>contact.us.select</source>
+                <target>문의사항이 알맞은 부서로 빠르게 전달될수있도록, 제목을 작성해 주시기 바랍니다.</target>
+            </trans-unit>
+            <trans-unit id="147">
+                <source>name</source>
+                <target>이름</target>
+            </trans-unit>
+            <trans-unit id="148">
+                <source>all</source>
+                <target>모든</target>
+            </trans-unit>
+            <trans-unit id="149">
+                <source>entries</source>
+                <target>항목</target>
+            </trans-unit>
+            <trans-unit id="150">
+                <source>you.must</source>
+                <target>작성자와 연락을 위해서</target>
+            </trans-unit>
+            <trans-unit id="151">
+                <source>to.contact.poster</source>
+                <target>해주세요</target>
+            </trans-unit>
+            <trans-unit id="152">
+                <source>or</source>
+                <target>또는</target>
+            </trans-unit>
+            <trans-unit id="153">
+                <source>create.new.account</source>
+                <target>가입하기</target>
+            </trans-unit>
+            <trans-unit id="154">
+                <source>category</source>
+                <target>범주</target>
+            </trans-unit>
+            <trans-unit id="155">
+                <source>applications</source>
+                <target>응용 프로그램</target>
+            </trans-unit>
+            <trans-unit id="156">
+                <source>diploma</source>
+                <target>졸업 증서</target>
+            </trans-unit>
+            <trans-unit id="157">
+                <source>freelancers</source>
+                <target>프리랜서</target>
+            </trans-unit>
+            <trans-unit id="158">
+                <source>publish</source>
+                <target>게시</target>
+            </trans-unit>
+            <trans-unit id="159">
+                <source>browse</source>
+                <target>검색</target>
+            </trans-unit>
+            <trans-unit id="160">
+                <source>confirm</source>
+                <target>확인</target>
+            </trans-unit>
+            <trans-unit id="161">
+                <source>accept</source>
+                <target>동의</target>
+            </trans-unit>
+            <trans-unit id="162">
+                <source>decline</source>
+                <target>쇠퇴</target>
+            </trans-unit>
+            <trans-unit id="163">
+                <source>pay</source>
+                <target>지불</target>
+            </trans-unit>
+            <trans-unit id="164">
+                <source>worker</source>
+                <target>노동자</target>
+            </trans-unit>
+            <trans-unit id="165">
+                <source>finish</source>
+                <target>끝</target>
+            </trans-unit>
+            <trans-unit id="166">
+                <source>new.job</source>
+                <target>새 작업을 만들</target>
+            </trans-unit>
+            <trans-unit id="167">
+                <source>change.password</source>
+                <target>암호 변경</target>
+            </trans-unit>
+            <trans-unit id="168">
+                <source>personnel.infos</source>
+                <target>개인 정보를 정기적으로</target>
+            </trans-unit>
+            <trans-unit id="169">
+                <source>help</source>
+                <target>도움</target>
+            </trans-unit>
+            <trans-unit id="170">
+                <source>contact.admin</source>
+                <target>연락처 관리</target>
+            </trans-unit>
+            <trans-unit id="171">
+                <source>search</source>
+                <target>수색</target>
+            </trans-unit>
+            <trans-unit id="172">
+                <source>please.sign.in</source>
+                <target>로그인</target>
+            </trans-unit>
+            <trans-unit id="173">
+                <source>to.access.personal.page</source>
+                <target>내 페이지!</target>
+            </trans-unit>
+            <trans-unit id="174">
+                <source>back.to.home</source>
+                <target>홈으로</target>
+            </trans-unit>
+            <trans-unit id="175">
+                <source>register.msg</source>
+                <target>지금 바로가입하시고, bidweb의 모든기능을 활용하세요.</target>
+            </trans-unit>
+            <trans-unit id="176">
+                <source>cancel</source>
+                <target>취소</target>
+            </trans-unit>
+            <trans-unit id="177">
+                <source>new.application.job</source>
+                <target>새로운 응용 프로그램 작업</target>
+            </trans-unit>
+            <trans-unit id="178">
+                <source>application.job.accepted</source>
+                <target>응용 프로그램 작업 허용</target>
+            </trans-unit>
+            <trans-unit id="179">
+                <source>application.job.declined</source>
+                <target>응용 프로그램 작업 </target>
+            </trans-unit>
+            <trans-unit id="180">
+                <source>payment.received</source>
+                <target>지불 수신</target>
+            </trans-unit>
+            <trans-unit id="181">
+                <source>admin.notif</source>
+                <target>관리자 알림</target>
+            </trans-unit>
+            <trans-unit id="182">
+                <source>wallet</source>
+                <target>지갑</target>
+            </trans-unit>
+            <trans-unit id="183">
+                <source>earning</source>
+                <target>수입</target>
+            </trans-unit>
+            <trans-unit id="184">
+                <source>bidweb.fee</source>
+                <target>bidweb 수수료</target>
+            </trans-unit>
+            <trans-unit id="185">
+                <source>log</source>
+                <target>로그</target>
+            </trans-unit>
+            <trans-unit id="186">
+                <source>paypal.fee</source>
+                <target>페이팔 수수료</target>
+            </trans-unit>
+            <trans-unit id="187">
+                <source>type</source>
+                <target>유형</target>
+            </trans-unit>
+            <trans-unit id="188">
+                <source>amount</source>
+                <target>양</target>
+            </trans-unit>
+            <trans-unit id="189">
+                <source>cashout</source>
+                <target>현금 인출</target>
+            </trans-unit>
+            <trans-unit id="190">
+                <source>sender</source>
+                <target>보내는 사람</target>
+            </trans-unit>
+            <trans-unit id="191">
+                <source>currency.code</source>
+                <target>통화 코드</target>
+            </trans-unit>
+            <trans-unit id="192">
+                <source>total.amount</source>
+                <target>총액</target>
+            </trans-unit>
+            <trans-unit id="193">
+                <source>gateway.name</source>
+                <target>게이트웨이 이름</target>
+            </trans-unit>
+            <trans-unit id="194">
+                <source>create.new.project</source>
+                <target>새 프로젝트를 만듭니다</target>
+            </trans-unit>
+            <trans-unit id="195">
+                <source>projects</source>
+                <target>프로젝트</target>
+            </trans-unit>
+            <trans-unit id="196">
+                <source>budget</source>
+                <target>예산</target>
+            </trans-unit>
+            <trans-unit id="197">
+                <source>opened.post</source>
+                <target>오픈 게시물</target>
+            </trans-unit>
+            <trans-unit id="198">
+                <source>paypal.email</source>
+                <target>페이팔 이메일</target>
+            </trans-unit>
+            <trans-unit id="199">
+                <source>project</source>
+                <target>계획</target>
+            </trans-unit>
+            <trans-unit id="200">
+                <source>apply.project</source>
+                <target>대다</target>
+            </trans-unit>
+            <trans-unit id="201">
+                <source>my.projects</source>
+                <target>내 프로젝트</target>
+            </trans-unit>
+            <trans-unit id="202">
+                <source>offer</source>
+                <target>제공</target>
+            </trans-unit>
+            <trans-unit id="203">
+                <source>edit.project</source>
+                <target>프로젝트 편집</target>
+            </trans-unit>
+            <trans-unit id="204">
+                <source>project.worker</source>
+                <target>프로젝트 노동자</target>
+            </trans-unit>
+            <trans-unit id="205">
+                <source>project.application</source>
+                <target>프로젝트 신청</target>
+            </trans-unit>
+            <trans-unit id="206">
+                <source>application.project.declined</source>
+                <target>Project Application declined</target>
+            </trans-unit>
+            <trans-unit id="207">
+                <source>payment</source>
+                <target>지불</target>
+            </trans-unit>
+            <trans-unit id="208">
+                <source>history.payment</source>
+                <target>지급 내역</target>
+            </trans-unit>
+            <trans-unit id="209">
+                <source>history.worker</source>
+                <target>노동자 역사</target>
+            </trans-unit>
+            <trans-unit id="210">
+                <source>history.project</source>
+                <target>프로젝트의 역사</target>
+            </trans-unit>
+            <trans-unit id="211">
+                <source>history</source>
+                <target>역사</target>
+            </trans-unit>
+            <trans-unit id="212">
+                <source>team</source>
+                <target>팀</target>
+            </trans-unit>
+            <trans-unit id="213">
+                <source>application</source>
+                <target>신청</target>
+            </trans-unit>
+            <trans-unit id="214">
+                <source>client.profile</source>
+                <target>클라이언트 프로파일</target>
+            </trans-unit>
+            <trans-unit id="215">
+                <source>new.application</source>
+                <target>새로운 응용 프로그램</target>
+            </trans-unit>
+            <trans-unit id="216">
+                <source>application.project</source>
+                <target>Project applications</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

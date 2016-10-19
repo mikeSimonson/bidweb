@@ -1,0 +1,145 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ContinentsTbl
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\ContinentRepository")
+ * @ORM\Table(name="continents_tbl", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})})
+ * @ORM\Entity
+ */
+class ContinentsTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="continent_code", type="string", length=5, nullable=false)
+     */
+    private $continentCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="CountriesTbl", mappedBy="continent")
+     */
+    protected $countries;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set continentCode
+     *
+     * @param string $continentCode
+     * @return ContinentsTbl
+     */
+    public function setContinentCode($continentCode)
+    {
+        $this->continentCode = $continentCode;
+
+        return $this;
+    }
+
+    /**
+     * Get continentCode
+     *
+     * @return string 
+     */
+    public function getContinentCode()
+    {
+        return $this->continentCode;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return ContinentsTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->countries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add countries
+     *
+     * @param \Adbck\AdbckBundle\Entity\CountriesTbl $countries
+     * @return ContinentsTbl
+     */
+    public function addCountry(\Adbck\AdbckBundle\Entity\CountriesTbl $countries)
+    {
+        $this->countries[] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Remove countries
+     *
+     * @param \Adbck\AdbckBundle\Entity\CountriesTbl $countries
+     */
+    public function removeCountry(\Adbck\AdbckBundle\Entity\CountriesTbl $countries)
+    {
+        $this->countries->removeElement($countries);
+    }
+
+    /**
+     * Get countries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCountries()
+    {
+        return $this->countries;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+}

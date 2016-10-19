@@ -1,0 +1,44 @@
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}{{ ads.title }}{% endblock %}
+
+{% block body %}
+    <article class="blog">
+        <header>
+            <div class="date"><time datetime="{{ ads.dateTime|date('c') }}">{{ ads.dateTime|date('l, F j, Y') }}</time></div>
+            <h2>{{ ads.title }}</h2>
+        </header>
+        {% if ads.image =='n' %}
+            <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" alt="{{ ads.title }} no image" class="large" />
+        {% else %}
+            
+            <img src="{{ asset(ads.getWebPath('1'))}}" alt="{{ ads.title }} image not found" class="large" />
+        {% endif %}
+            <div>
+            <p>{{ ads.description | raw}}</p>
+        </div>
+        
+    </article>
+        
+    <section class="comments" id="comments">
+        <section class="previous-comments">
+            <div>
+            {% if app.user %}
+                {% if app.user.id == ads.user.id %}
+                    <p><a href=''>Edit post </a></p>
+                {% else %}
+                        <p><a href='{{ path('user_send_msg',{ 'receiver' : ads.user.id }) }}'>Contact Poster </a></p>
+                {% endif %}    
+            
+            {% else %}
+                <p>You must<a href='{{ path('fos_user_security_login') }}'> login</a> 
+                    To Contact poster, or <a href='{{ path('fos_user_registration_register') }}'>signin</a></p>
+            {% endif %}
+        </div>
+            <h3>Comments</h3>
+            {% include 'BidwebBundle:Comment:index.html.twig' with { 'comments': comments } %}
+        </section>
+        <h3>Add Comment</h3>
+        {{ render(controller( 'BidwebBundle:Comment:new' , { 'ads_id': ads.id })) }}
+    </section>
+{% endblock %}

@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} Bidweb {% endblock %} - {{'title.page'|trans}}</title>
+
+        <!--Open Sans Font [ OPTIONAL ] -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
+        <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+
+        <!--STYLESHEET-->
+        <!--=================================================-->
+        {% block stylesheets %}
+
+            {% stylesheets
+                '@BidwebBundle/Resources/public/nifty/css/bootstrap.min.css'
+                '@BidwebBundle/Resources/public/nifty/css/nifty.min.css'
+                '@BidwebBundle/Resources/public/nifty/plugins/font-awesome/css/font-awesome.min.css'
+                '@BidwebBundle/Resources/public/nifty/plugins/animate-css/animate.min.css'
+                '@BidwebBundle/Resources/public/nifty/plugins/morris-js/morris.min.css'  
+                '@BidwebBundle/Resources/public/nifty/plugins/switchery/switchery.min.css'
+                '@BidwebBundle/Resources/public/nifty/plugins/bootstrap-select/bootstrap-select.min.css'
+
+                
+                '@BidwebBundle/Resources/public/nifty/plugins/fooTable/css/footable.core.css'
+               
+                '@BidwebBundle/Resources/public/nifty/plugins/pace/pace.min.css'
+                filter='yui_css'
+               
+              
+            %}
+            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+
+        {% endblock %}
+        
+        
+	
+    </head>
+
+    <body>
+        <div id="container" class="effect mainnav-lg footer-fixed">
+
+            <!--NAVBAR-->
+            <!--===================================================-->
+            <header id="navbar">
+                <div id="navbar-container" class="boxed">
+
+                    <!--Brand logo & name-->
+                    <!--================================-->
+                    <div class="navbar-header">
+                        <a href="/" class="navbar-brand">
+                            
+                            
+                            <img src="{{asset('/images/logo2.png')}}" alt="Bidweb Logo" class="brand-title" width="220" height="50">
+                           
+                        </a>
+                    </div>
+                    <!--================================-->
+                    <!--End brand logo & name-->
+
+
+                    <!--Navbar Dropdown-->
+                    <!--================================-->
+                    <div class="navbar-content clearfix">
+                        <ul class="nav navbar-top-links pull-left">
+
+                            <!--Navigation toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="tgl-menu-btn">
+                                <a class="mainnav-toggle" href="#">
+                                    <i class="fa fa-navicon fa-lg"></i>
+                                </a>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End Navigation toogle button-->
+
+
+                            <!--Messages Dropdown-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="dropdown">
+                                {{ render(controller("BidwebBundle:Page:msgnotification")) }}
+
+                                <!--Message dropdown menu-->
+                                <div class="dropdown-menu dropdown-menu-md with-arrow">
+                                    <div class="pad-all bord-btm">
+                                        <p class="text-lg text-muted text-thin mar-no">{{'last.msg'|trans}}</p>
+                                    </div>
+                                    <div class="nano scrollable">
+                                        <div class="nano-content">
+                                            <ul class="head-list">
+
+                                                <!-- Dropdown list-->
+                                                {{ render(controller("BidwebBundle:Message:lastmsg")) }}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!--Dropdown footer-->
+                                    <div class="pad-all bord-top">
+                                        <a href="{{path('user_msg_box')}}" class="btn-link text-dark box-block">
+                                            <i class="fa fa-angle-right fa-lg pull-right"></i>{{'show.all.msg'|trans}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End message dropdown-->
+
+
+
+
+                            <!--Notification dropdown-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="dropdown">
+                                {{ render(controller("BidwebBundle:Notification:notification")) }}
+
+                                <!--Notification dropdown menu-->
+                                <div class="dropdown-menu dropdown-menu-md with-arrow">
+                                    <div class="pad-all bord-btm">
+                                        <p class="text-lg text-muted text-thin mar-no">You have no notification.</p>
+                                    </div>
+                                    <div class="nano scrollable">
+                                        <div class="nano-content">
+                                            <ul class="head-list">
+
+                                                {{ render(controller("BidwebBundle:Notification:lastnotif")) }}
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!--Dropdown footer-->
+                                    <div class="pad-all bord-top">
+                                        <a href="{{path('bidweb_notifications')}}" class="btn-link text-dark box-block">
+                                            <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End notifications dropdown-->
+
+
+
+                            <!--Custom Search-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="mega-dropdown">
+                                <a href="#" class="mega-dropdown-toggle">
+                                    <i class="fa fa-th-large fa-lg"></i>
+                                </a>
+                                
+                                    <div class="dropdown-menu mega-dropdown-menu" style="max-width: 300px;">
+                                        <form method="POST" action="{{path('bidweb_search')}}" id="search1">
+                                        <div class="clearfix" style="max-width: 290px;">
+
+                                            <div class="col-sm-4 col-md-3" style="max-width: 290px;">
+
+                                                <!--Mega menu list-->
+                                                <ul class="list-unstyled" style="width: 290px;">
+                                                    <li class="dropdown-header">{{'select.cat'|trans}}</li>
+                                                    <li>
+                                                        <label class="form-checkbox form-icon form-text">
+                                                            <input type="checkbox" name="jobCb">
+                                                            <span>{{'job'|trans}}</span>
+                                                        </label>
+                                                    </li>
+                                                    <li><label class="form-checkbox form-icon form-text">
+                                                            <input type="checkbox" name="freelancerCb">
+                                                            <span>{{'freelancer'|trans}}</span>
+                                                        </label>
+                                                    </li>
+                                                    
+
+                                                    <li>
+                                                        <div class="input-group pad-all">
+                                                            <input type="text" name="text" id="textS" class="form-control" placeholder="{{'search.text'|trans}}" autocomplete="off">
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-success" onclick="$('#search1').submit();"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        </div>
+
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+
+                                        </div>
+                                                             </form>
+                                    </div><!-- end div  -->
+                               
+                            </li>
+                            
+                            <!-------------------------------------------->
+                            {% if app.user.type=='client' %}
+                            <li class="">
+                                <a href="{{path('bidweb_project_create')}}">
+                                    <i class="fa fa-plus fa-lg"></i> {{'create.new.project'|trans}}
+                                </a>
+
+                            </li>
+                            {% endif %}
+                        
+                        </ul>
+                        <ul class="nav navbar-top-links pull-right">
+
+                            <!--Language selector-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="dropdown">
+                                {% set lang = app.session.get('_locale') %}
+
+                                {% if  lang=='en_US'  %}
+                                    <a id="lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <span class="lang-selected">
+                                            <img class="lang-flag" src="{{asset('img/flags/united-kingdom.png')}}" alt="English">
+                                            <span class="lang-id">EN</span>
+                                            <span class="lang-name">English</span>
+                                        </span>
+                                    </a>
+                                {% else %}
+
+                                    <a id="lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <span class="lang-selected">
+                                            <img class="lang-flag" src="{{asset('img/flags/Korea.png')}}" alt="Korea" width="24" height="16">
+                                            <span class="lang-id">KO</span>
+                                            <span class="lang-name">한국어</span>
+                                        </span>
+                                    </a>
+                                {% endif %}
+
+
+                                <!--Language selector menu-->
+                                <ul class="head-list dropdown-menu with-arrow">
+                                    <li>
+                                        <!--English-->
+                                        <a href="#" class="lang-flag">
+                                            <img class="lang-flag" src="{{asset('img/flags/united-kingdom.png')}}" alt="English" >
+                                            <span class="lang-id">EN</span>
+                                            <span class="lang-name">English</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <!--France-->
+                                        <a href="#">
+                                            <img class="lang-flag" src="{{asset('img/flags/Korea.png')}}" alt="Korea" width="24" height="16">
+                                            <span class="lang-id">KO</span>
+                                            <span class="lang-name">한국어</span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End language selector-->
+
+
+
+                            <!--User dropdown-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li id="dropdown-user" class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                    <span class="pull-right">
+                                        {% if app.user.type=='client'%}
+                                            {% if app.user.image=='empty'%}
+                                                <img class="img-circle img-user media-object" src="/img/av1.png" alt="Profile Picture">
+                                            {% else %}
+                                                <img class="img-circle img-user media-object" src="{{asset(app.user.getWebPathImage())}}" alt="Profile Picture">
+                                            {% endif %}
+                                        {% else %}
+                                            {% if app.user.image=='empty'%}
+                                                <img class="img-circle img-user media-object" src="/img/av1.png" alt="Profile Picture">
+                                            {% else %}
+                                                <img class="img-circle img-user media-object" src="{{asset(app.user.getWebPathImage())}}" alt="Profile Picture">
+                                            {% endif %}
+                                        {% endif %}
+                                        
+                                        
+                                    </span>
+                                    <div class="username hidden-xs">{{app.user}}</div>
+                                </a>
+
+
+                                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                   
+
+
+                                    <!-- User dropdown menu -->
+                                    <ul class="head-list">
+                                        
+                                        
+                                        <li>
+                                            <a href="{{ path('fos_user_profile_show') }}">
+                                                
+                                                <i class="fa fa-gear fa-fw fa-lg"></i> {{'setting'|trans}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{path('bidweb_help')}}">
+                                                <i class="fa fa-question-circle fa-fw fa-lg"></i> {{'help'|trans}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{path('bidweb_contact')}}">
+                                                <i class="fa fa-lock fa-fw fa-lg"></i> {{'contact.admin'|trans}}
+                                            </a>
+                                        </li>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <li>
+                                                <a href="{{path('sonata_admin_dashboard')}}">
+                                                    <i class="fa fa-lock fa-fw fa-lg"></i> {{'admin.panel'|trans}}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+
+                                    <!-- Dropdown footer -->
+                                    <div class="pad-all text-right">
+                                        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary">
+                                            <i class="fa fa-sign-out fa-fw"></i> {{'logout'|trans}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End user dropdown-->
+
+                        </ul>
+                    </div>
+                    <!--================================-->
+                    <!--End Navbar Dropdown-->
+
+                </div>
+            </header>
+            <!--===================================================-->
+            <!--END NAVBAR-->
+
+
+            <div class="boxed">
+
+                <!--CONTENT CONTAINER-->
+                <!--===================================================-->
+                <!--CONTENT CONTAINER-->
+                <!--===================================================-->
+                <div id="content-container">
+                    
+                    <!--Page Title-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-2534108148189747"
+                                 data-ad-slot="4740122890"
+                                 data-ad-format="auto">
+                                     
+                            </ins>
+                        </div>
+                       
+                    </div>
+                    <div id="page-title">
+                        <h1 class="page-header text-overflow">
+                            {% block content_title %}
+                                
+                                {% endblock %}
+                            </h1>
+
+                        <!--Searchbox-->
+                        <div class="searchbox">
+                            <form method="POST" action="{{path('bidweb_search')}}" id="search2">
+                            <div class="input-group custom-search-form">
+                                
+                                    <input type="text" class="form-control" placeholder="{{'search'|trans}}..." name="text">
+                                    <input type="hidden" value="allCb" name="allCb">
+                                    <span class="input-group-btn">
+                                        <button class="text-muted" type="button" onclick="$('#search2').submit();"><i class="fa fa-search"></i></button>
+                                    </span>
+                               
+                            </div>
+                                     </form>
+                        </div>
+                    </div>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End page title-->
+
+
+                    <!--Breadcrumb-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <ol class="breadcrumb">
+                        <li><a href="/">{{'home'|trans}}</a></li>
+                        {% block path %}
+                        
+                       
+                        {% endblock %}
+                    </ol>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End breadcrumb-->
+
+
+
+
+                    <!--Page content-->
+                    <!--===================================================-->
+                    <div id="page-content">
+                        {% block body %}
+
+                        <h3 class="text-thin">Your content...</h3>
+
+                         {% endblock %}
+                            
+
+                    </div>
+                    <!--===================================================-->
+                    <!--End page content-->
+
+                   
+                </div>
+                <!--===================================================-->
+                <!--END CONTENT CONTAINER-->
+
+
+
+                <!--MAIN NAVIGATION-->
+                <!--===================================================-->
+                <nav id="mainnav-container">
+                    <div id="mainnav">
+
+                        <!--Shortcut buttons-->
+                        <!--================================-->
+                        <div id="mainnav-shortcut">
+                            <ul class="list-unstyled">
+                                <li class="col-xs-4" data-content="Your personnel posts" data-original-title="" title="">
+                                    <a id="mypage-toggle-aside" class="shortcut-grid" href="#">
+                                         {{'my.page'|trans}}
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                        <!--================================-->
+                        <!--End shortcut buttons-->
+
+
+                        <!--Menu-->
+                        <!--================================-->
+                        <div id="mainnav-menu-wrap">
+                            <div class="nano">
+                                <div class="nano-content">
+                                    <ul id="mainnav-menu" class="list-group">
+
+
+                                        <!--Menu list item-->
+                                        <li {% if app.request.get('_route') == 'bidweb_homepage' %} class="active-link" {% endif %}>
+                                            <a href="{{path('bidweb_homepage')}}">
+                                                <i class="fa fa-home"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'home'|trans}}</strong>
+                                                    
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <!--Menu list item-->
+                                        <!--<li
+                                            {% if app.request.get('_route') == 'bidweb_websites' or 
+                                                app.request.get('_route') == 'bidweb_database' or
+                                                app.request.get('_route') == 'bidweb_domain' or 
+                                                app.request.get('_route') == 'bidweb_seotool'%}  
+                                                class="active-sub active" {% endif %}
+                                            >
+                                            <a href="#">
+                                                <i class="fa fa-navicon"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'posts'|trans}}</strong>
+                                                </span>
+                                                <i class="arrow"></i>
+                                            </a>
+
+                                           
+                                            <ul 
+                                                {% if app.request.get('_route') == 'bidweb_websites' or 
+                                                app.request.get('_route') == 'bidweb_database' or
+                                                app.request.get('_route') == 'bidweb_domain' or 
+                                                app.request.get('_route') == 'bidweb_seotool'%} 
+                                                class="collapse in" {% else %}class="collapse" {% endif %}
+                                                >
+                                                <li{% if app.request.get('_route') == 'bidweb_websites' %} class="active-link" {% endif %}>
+                                                    <a href="{{path('bidweb_websites')}}">{{'websites'|trans}}</a>
+                                                </li>
+                                                <li{% if app.request.get('_route') == 'bidweb_database' %} class="active-link" {% endif %}><a href="{{ path('bidweb_database') }}">{{'databases'|trans}}</a></li>
+                                                <li{% if app.request.get('_route') == 'bidweb_domain' %} class="active-link" {% endif %}><a href="{{ path('bidweb_domain') }}">{{'domains'|trans}}</a></li>
+                                                <li{% if app.request.get('_route') == 'bidweb_seotool' %} class="active-link" {% endif %}><a href="{{path('bidweb_seotool')}}">{{'seo.tools'|trans}}</a></li>
+                                            </ul>
+                                        </li>-->
+
+                                        <!--Menu list item-->
+                                        <li {% if app.request.get('_route') == 'bidweb_project' %} class="active-link" {% endif %}>
+                                            <a href="{{path('bidweb_project')}}">
+                                                <i class="fa fa-home"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'projects'|trans}}</strong>
+                                                    
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li {% if app.request.get('_route') == 'freelancer' %} class="active-link" {% endif %}>
+                                            <a href="{{path('freelancer')}}">
+                                                <i class="fa fa-home"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'freelancer'|trans}}</strong>
+                                                    
+                                                </span>
+                                            </a>
+                                        </li>
+                                        
+
+                                        <li class="list-divider"></li>
+
+                                        <!--Category name-->
+                                        <li {% if app.request.get('_route') == 'bidweb_contact' %} class="active-link" {% endif %}>
+                                            <a href="{{path('bidweb_contact')}}">
+                                                <i class="fa fa-comment"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'contact.us'|trans}}</strong>
+                                                    
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <!--Menu list item-->
+                                        <li {% if app.request.get('_route') == 'user_msg_box' %} class="active-link" {% endif %}>
+                                            <a href="{{path('user_msg_box')}}">
+                                                <i class="fa fa-mail-forward"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'messages'|trans}}</strong>
+                                                    
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <!--Menu list item-->
+                                       <li {% if app.request.get('_route') == 'bidweb_wallet' or 
+                                                app.request.get('_route') == 'bidweb_payments' %}  
+                                                class="active-sub active" {% endif %}>
+                                            <a href="#">
+                                                <i class="fa fa-money"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'wallet'|trans}}</strong>
+                                                </span>
+                                                <i class="arrow"></i>
+                                            </a>
+                                            
+                                            <ul {% if app.request.get('_route') == 'bidweb_wallet' or 
+                                                app.request.get('_route') == 'bidweb_payments' %} 
+                                                class="collapse in" {% else %}class="collapse" {% endif %}>
+                                                <li {% if app.request.get('_route') == 'bidweb_wallet' %} class="active-link" {% endif %}><a href="{{path('bidweb_wallet')}}">{{'received.money'|trans}}</a></li>
+                                                <li {% if app.request.get('_route') == 'bidweb_payments' %} class="active-link" {% endif %}><a href="{{path('bidweb_payments')}}">{{'payments'|trans}}</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <!-- History menu -->
+                                        <li {% if app.request.get('_route') == 'bidweb_history_worker' or 
+                                                app.request.get('_route') == 'bidweb_history_payments' or  
+                                                app.request.get('_route') == 'bidweb_history_project'%}  
+                                                class="active-sub active" {% endif %}>
+                                            <a href="#">
+                                                <i class="fa fa-money"></i>
+                                                <span class="menu-title">
+                                                    <strong>{{'history'|trans}}</strong>
+                                                </span>
+                                                <i class="arrow"></i>
+                                            </a>
+                                            
+                                            <ul {% if app.request.get('_route') == 'bidweb_history_worker' or 
+                                                app.request.get('_route') == 'bidweb_history_payments' or  
+                                                app.request.get('_route') == 'bidweb_history_project'%}  
+                                                class="collapse in" {% else %}class="collapse" {% endif %}>
+                                                
+                                                <li {% if app.request.get('_route') == 'bidweb_history_worker' %} 
+                                                    class="active-link" {% endif %}>
+                                                    <a href="{{path('bidweb_history_worker')}}">{{'history.worker'|trans}}</a>
+                                                </li>
+                                                <li {% if app.request.get('_route') == 'bidweb_history_project' %} 
+                                                    class="active-link" {% endif %}>
+                                                    <a href="{{path('bidweb_history_project')}}">{{'history.project'|trans}}</a>
+                                                </li>
+                                                <li {% if app.request.get('_route') == 'bidweb_history_payments' %} 
+                                                    class="active-link" {% endif %}>
+                                                    <a href="{{path('bidweb_history_payments')}}">{{'history.payment'|trans}}</a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                </div>
+                            </div>
+                        </div>
+                        <!--================================-->
+                        <!--End menu-->
+
+                    </div>
+                </nav>
+                <!--===================================================-->
+                <!--END MAIN NAVIGATION-->
+
+                <!--ASIDE-->
+                <!--===================================================-->
+                <aside id="aside-container">
+                     {{ render(controller("BidwebBundle:Page:sidebar")) }}
+                </aside>
+                <!--===================================================-->
+                <!--END ASIDE-->
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+            <!--===================================================-->
+            <footer id="footer">
+
+                <!-- Visible when footer positions are fixed -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="show-fixed pull-right">
+                    <ul class="footer-list list-inline">
+                        <li>
+                            <p class="text-sm"><a href="{{path('freelancer')}}">{{'freelancers'|trans}}</a></p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 100%" class="progress-bar progress-bar-green"></div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <p class="text-sm"><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 100%" class="progress-bar progress-bar-primary"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="text-sm"><a href="{{path('bidweb_domain')}}">{{'domains'|trans}}</a></p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 100%" class="progress-bar progress-bar-red"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="text-sm"><a href="{{path('bidweb_websites')}}">{{'websites'|trans}}</a></p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 100%" class="progress-bar progress-bar-yellow"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="text-sm"><a href="{{path('bidweb_database')}}">{{'databases'|trans}}</a></p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 100%" class="progress-bar progress-bar-dark"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="text-sm"><a href="{{path('bidweb_seotool')}}">{{'seo.tools'|trans}}</a></p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 100%" class="progress-bar progress-bar-pink"></div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+
+
+                <!-- Visible when footer positions are static -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="hide-fixed pull-right pad-rgt">Currently v1</div>
+
+
+
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                <p class="pad-lft">&#0169; 2015 Bidweb</p>
+
+
+
+            </footer>
+            <!--===================================================-->
+            <!-- END FOOTER -->
+
+
+            <!-- SCROLL TOP BUTTON -->
+            <!--===================================================-->
+            <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+            <!--===================================================-->
+
+
+
+        </div>
+
+
+        {% block javascripts %}
+
+            {% javascripts
+                '@BidwebBundle/Resources/public/nifty/plugins/pace/pace.min.js'
+                '@BidwebBundle/Resources/public/nifty/js/jquery-2.1.1.min.js'
+                '@BidwebBundle/Resources/public/nifty/js/bootstrap.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/fast-click/fastclick.min.js'
+                '@BidwebBundle/Resources/public/nifty/js/nifty.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/morris-js/morris.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/morris-js/raphael-js/raphael.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/sparkline/jquery.sparkline.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/skycons/skycons.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/switchery/switchery.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/bootstrap-select/bootstrap-select.min.js'
+                
+                '@BidwebBundle/Resources/public/nifty/js/nifty.min.js'
+                '@BidwebBundle/Resources/public/nifty/plugins/bootstrap-select/bootstrap-select.min.js'
+                
+                
+                
+            %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        {% endblock %}
+    <script>
+         /*var fvisit  = setTimeout(function(){
+		$.niftyNoty({
+			type: 'dark',
+			title: 'Hello {{app.user}},',
+			message: 'Happy to see you again.',
+			container: 'floating',
+			timer: 5500
+		});
+		clearTimeout(fvisit);
+	 }, 3000);*/
+         
+          $(document).ready(function () {
+          $("#lang-switch").niftyLanguage(
+                        {
+                            onChange:function(e){
+                               /* $.niftyNoty(
+                                        {
+                                            type:"info",
+                                            icon:"fa fa-info fa-lg",
+                                            title:"Language changed",
+                                            message:"The language apparently changed, the selected language is : <strong> "+e.id+" "+e.name+"</strong> "
+                                        }
+                                )*/
+        
+                                if(e.name=="English"){
+                                    var url = "/language/en_US";//Routing.generate('bidweb_language', { '_locale': "en_US"});
+                                    window.document.location = url;
+                                }else{
+                                    var url = "/language/ko_KR";//Routing.generate('bidweb_language', { '_locale': "ko_KR"});
+                                    window.document.location = url;
+                                }
+                            }
+                        });
+                        
+                        
+                        
+                        $("#mypage-toggle-aside").on("click",function(e){
+                            e.preventDefault(),
+                            nifty.container.hasClass("aside-in")?
+                            ($.niftyAside("hide")):($.niftyAside("show"))
+                        });
+          
+    });
+    
+    
+    </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67390628-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </body>
+</html>

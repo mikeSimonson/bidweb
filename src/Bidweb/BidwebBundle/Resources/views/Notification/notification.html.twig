@@ -1,0 +1,17 @@
+
+
+    {% if is_granted('ROLE_USER') %}
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+            <i class="fa fa-bell fa-lg"></i>
+            {% if msgCount != '0'%}
+                <span class="badge badge-header badge-warning">
+
+                    {{msgCount}}
+
+                </span>
+            {% endif %}
+        </a>
+           
+    {% endif %}
+
+

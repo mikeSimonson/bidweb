@@ -1,0 +1,486 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
+/**
+ * UsersTbl
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\UserRepository")
+ * @ORM\Table(name="users_tbl", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"}), @ORM\UniqueConstraint(name="username", columns={"username"})})
+ * @ORM\Entity
+ */
+class UsersTbl extends BaseUser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+  
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=25, nullable=false)
+     */
+    protected $firstName = 'Guest';
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=25, nullable=false)
+     */
+    protected $lastName;
+
+   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=40, nullable=false)
+     */
+    protected $image = 'userImages/default.png';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="about_user", type="string", length=500, nullable=true)
+     */
+    protected $aboutUser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=50, nullable=true)
+     */
+    protected $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contact_no", type="string", length=15, nullable=false)
+     */
+    protected $contactNo;
+
+   
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="reg_date", type="datetime", nullable=false)
+     */
+    protected $regDate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    protected $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="msg_count", type="integer", nullable=false)
+     */
+    private $msgCount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="msg_expire", type="datetime", nullable=false)
+     */
+    private $msgExpire = '2014-01-01 00:00:00';
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AdsTbl", mappedBy="user")
+     */
+    protected $ads;
+    
+    
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="MessagesTbl", mappedBy="receiver")
+     */
+    protected $msgsReceive;
+    
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="MessagesTbl", mappedBy="sender")
+     */
+    protected $msgsSend;
+    
+    public function __construct()
+    {
+       parent::__construct();
+//        $this->salt = md5(uniqid(null, true));
+        $this->regDate = new \DateTime();
+        $this->msgCount = 3;
+        $this->msgExpire = new \DateTime('+30 days');
+        $this->status = 1;
+        $this->lastLogin = new \DateTime();
+        $this->contactNo = "";
+        $this->ads = new ArrayCollection();
+        $this->msgsReceive = new ArrayCollection();
+        $this->msgsSend = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return UsersTbl
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return UsersTbl
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return UsersTbl
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set aboutUser
+     *
+     * @param string $aboutUser
+     * @return UsersTbl
+     */
+    public function setAboutUser($aboutUser)
+    {
+        $this->aboutUser = $aboutUser;
+
+        return $this;
+    }
+
+    /**
+     * Get aboutUser
+     *
+     * @return string 
+     */
+    public function getAboutUser()
+    {
+        return $this->aboutUser;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return UsersTbl
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set contactNo
+     *
+     * @param string $contactNo
+     * @return UsersTbl
+     */
+    public function setContactNo($contactNo)
+    {
+        $this->contactNo = $contactNo;
+
+        return $this;
+    }
+
+    /**
+     * Get contactNo
+     *
+     * @return string 
+     */
+    public function getContactNo()
+    {
+        return $this->contactNo;
+    }
+
+    
+    /**
+     * Set regDate
+     *
+     * @param \DateTime $regDate
+     * @return UsersTbl
+     */
+    public function setRegDate($regDate)
+    {
+        $this->regDate = $regDate;
+
+        return $this;
+    }
+
+    /**
+     * Get regDate
+     *
+     * @return \DateTime 
+     */
+    public function getRegDate()
+    {
+        return $this->regDate;
+    }
+
+    /**
+     * Set msgCount
+     *
+     * @param integer $msgCount
+     * @return UsersTbl
+     */
+    public function setMsgCount($msgCount)
+    {
+        $this->msgCount = $msgCount;
+
+        return $this;
+    }
+
+    /**
+     * Get msgCount
+     *
+     * @return integer 
+     */
+    public function getMsgCount()
+    {
+        return $this->msgCount;
+    }
+
+    /**
+     * Set msgExpire
+     *
+     * @param \DateTime $msgExpire
+     * @return UsersTbl
+     */
+    public function setMsgExpire($msgExpire)
+    {
+        $this->msgExpire = $msgExpire;
+
+        return $this;
+    }
+
+    /**
+     * Get msgExpire
+     *
+     * @return \DateTime 
+     */
+    public function getMsgExpire()
+    {
+        return $this->msgExpire;
+    }
+
+   
+
+    public function getRoles() {
+         return array('ROLE_USER');
+    }
+    
+   
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return UsersTbl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Add ads
+     *
+     * @param \Adbck\AdbckBundle\Entity\AdsTbl $ads
+     * @return UsersTbl
+     */
+    public function addAd(\Adbck\AdbckBundle\Entity\AdsTbl $ads)
+    {
+        $this->ads[] = $ads;
+
+        return $this;
+    }
+
+    /**
+     * Remove ads
+     *
+     * @param \Adbck\AdbckBundle\Entity\AdsTbl $ads
+     */
+    public function removeAd(\Adbck\AdbckBundle\Entity\AdsTbl $ads)
+    {
+        $this->ads->removeElement($ads);
+    }
+
+    /**
+     * Get ads
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAds()
+    {
+        return $this->ads;
+    }
+
+    /**
+     * Add msgsReceive
+     *
+     * @param \Adbck\AdbckBundle\Entity\MessagesTbl $msgsReceive
+     * @return UsersTbl
+     */
+    public function addMsgsReceive(\Adbck\AdbckBundle\Entity\MessagesTbl $msgsReceive)
+    {
+        $this->msgsReceive[] = $msgsReceive;
+
+        return $this;
+    }
+
+    /**
+     * Remove msgsReceive
+     *
+     * @param \Adbck\AdbckBundle\Entity\MessagesTbl $msgsReceive
+     */
+    public function removeMsgsReceive(\Adbck\AdbckBundle\Entity\MessagesTbl $msgsReceive)
+    {
+        $this->msgsReceive->removeElement($msgsReceive);
+    }
+
+    /**
+     * Get msgsReceive
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMsgsReceive()
+    {
+        return $this->msgsReceive;
+    }
+
+    /**
+     * Add msgsSend
+     *
+     * @param \Adbck\AdbckBundle\Entity\MessagesTbl $msgsSend
+     * @return UsersTbl
+     */
+    public function addMsgsSend(\Adbck\AdbckBundle\Entity\MessagesTbl $msgsSend)
+    {
+        $this->msgsSend[] = $msgsSend;
+
+        return $this;
+    }
+
+    /**
+     * Remove msgsSend
+     *
+     * @param \Adbck\AdbckBundle\Entity\MessagesTbl $msgsSend
+     */
+    public function removeMsgsSend(\Adbck\AdbckBundle\Entity\MessagesTbl $msgsSend)
+    {
+        $this->msgsSend->removeElement($msgsSend);
+    }
+
+    /**
+     * Get msgsSend
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMsgsSend()
+    {
+        return $this->msgsSend;
+    }
+    
+    public function __toString()
+    {
+        return $this->getFirstName(). " ".$this->getLastName();
+    }
+}

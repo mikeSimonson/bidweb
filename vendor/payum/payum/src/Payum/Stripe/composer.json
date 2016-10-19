@@ -1,0 +1,38 @@
+{
+    "name": "payum/stripe",
+    "type": "library",
+    "description": "The Payum extension. It provides Stripe payment integration.",
+    "keywords": ["payment", "stripe", "stripe.js", "checkout"],
+    "homepage": "http://payum.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kotlyar Maksim",
+            "email": "kotlyar.maksim@gmail.com"
+        },
+        {
+            "name":     "Payum project",
+            "homepage": "http://payum.org/"
+        },
+        {
+            "name":     "Community contributions",
+            "homepage": "https://github.com/Payum/Stripe/contributors"
+        }
+    ],
+    "require": {
+        "payum/core": "1.0.*@dev",
+        "stripe/stripe-php": "~1.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Payum\\Stripe": "" }
+    },
+    "target-dir": "Payum/Stripe",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{% for msg in messages %}
+    <li>
+        <a href="{{url('user_read_msg',{'msgid':msg.id})}}" class="media">
+            <div class="media-left">
+                <img src="/img/av2.png" alt="Profile Picture" class="img-circle img-sm">
+            </div>
+            <div class="media-body">
+                <div class="text-nowrap">{{msg.sender}}</div>
+                <small class="text-muted">{{ msg.message(30)|striptags }}</small><br>
+                <small class="text-muted">{{ msg.created|created_ago }}</small>
+            </div>
+        </a>
+    </li>
+{% else %}
+    <li>
+        No messages
+    </li>
+
+{% endfor%}

@@ -1,0 +1,40 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'read'|trans}}{% endblock %}
+
+{% block content_title %}
+   {{'notification'|trans}}
+{% endblock %}
+
+{% block path %}
+    <li><a href="{{path('bidweb_notifications')}}">{{'notification'|trans}}</a></li>
+{% endblock %}
+{% block body %}
+    
+   <div class="content animate-panel">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{notif.subject}}</h3>
+            </div>
+
+            <!-- Foo Table - Pagination -->
+            <!--===================================================-->
+            <div class="panel-body">
+                <dl>
+                        <dt>{{'created'|trans}}</dt>
+                        <dd>{{notif.created | created_ago}}</dd>
+                        <dt>{{'message'|trans}}</dt>
+                        <dd><a href="{{notif.url}}">{{notif.message}}</a></dd>
+                        
+                        
+                        
+                    </dl>
+            </div>
+            <!--===================================================-->
+            <!-- End Foo Table - Pagination -->
+
+        </div>
+    </div>
+                    
+    
+{% endblock %}

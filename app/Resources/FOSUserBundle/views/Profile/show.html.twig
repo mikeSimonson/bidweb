@@ -1,0 +1,28 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block title %}{{'profile'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    Personnel infos
+{% endblock %}
+{% block path %}
+    <li><a href="/">Home</a></li>
+    <li><a href="#">Personnel Infos</a></li>
+    
+    {% endblock %}
+    {% block body %}
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Personel infos</h3>
+                </div>
+                <div class="panel-body">
+                    {% block fos_user_content %}
+                        {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+                    {% endblock fos_user_content %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

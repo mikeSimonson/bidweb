@@ -1,0 +1,7 @@
+client_registration:
+    pattern:  /register/client
+    defaults: { _controller: BidwebBundle:Client:register }
+
+freelancer_registration:
+    pattern:  /register/freelancer
+    defaults: { _controller: BidwebBundle:Freelancer:register }

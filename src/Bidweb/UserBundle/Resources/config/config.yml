@@ -1,0 +1,46 @@
+fos_user:
+  db_driver: orm
+  firewall_name: main
+  user_class: Bidweb\UserBundle\Entity\User
+  service:
+        user_manager: pugx_user_manager
+#  registration:
+#        form:
+#            type: bidweb_user_registration
+#        confirmation:
+#            enabled:    true
+#            template : UserBundle:User:confirm.register.html.twig
+  from_email:
+        address:        bidweb.com@gmail.com
+        sender_name:    Bidweb Company
+  profile:
+        form:
+            type: bidweb_user_profile
+            
+pugx_multi_user:
+  users:
+    client:
+        entity: 
+          class: Bidweb\UserBundle\Entity\Client
+#          factory: 
+        registration:
+          form: 
+            type: Bidweb\UserBundle\Form\Type\RegistrationClientFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: UserBundle:Registration:client.form.html.twig
+        profile:
+          form:
+            type: Bidweb\UserBundle\Form\Type\ProfileClientFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default] 
+    freelancer:
+        entity: 
+          class: Bidweb\UserBundle\Entity\Freelancer
+        registration:
+          form: 
+            type: Bidweb\UserBundle\Form\Type\RegistrationFreelancerFormType
+          template: UserBundle:Registration:freelancer.form.html.twig
+        profile:
+          form: 
+            type: Bidweb\UserBundle\Form\Type\ProfileFreelancerFormType

@@ -1,0 +1,664 @@
+##############################################################################
+                    ########## Page Routing        
+#############################################################################  
+
+bidweb_homepage:
+    path:  /
+    defaults: { _controller: BidwebBundle:Page:index }
+    requirements:
+        methods:  GET
+        
+bidweb_help:
+    path:  /help
+    defaults: { _controller: BidwebBundle:Page:help }
+    requirements:
+        methods:  GET
+
+bidweb_contact:
+    path:  /contact
+    defaults: { _controller: BidwebBundle:Page:contact }
+    requirements:
+        methods:  GET|POST
+       
+bidweb_ads_create:
+    path:  /create
+    defaults: { _controller: BidwebBundle:Page:create }
+    requirements:
+        methods:  GET|POST
+        
+bidweb_ads_sidebar:
+    path:  /sidebar
+    defaults: { _controller: BidwebBundle:Page:sidebar }
+    requirements:
+        methods:  GET|POST
+
+bidweb_search:
+    path: /results
+    defaults: { _controller : BidwebBundle:Page:search}
+    requirements:
+        methods: POST|GET
+
+bidweb_language:
+    path: /language/{_locale}
+    defaults: { _controller : BidwebBundle:Page:language}
+    requirements:
+        methods:  GET|POST
+bidweb_mypage:
+    path: /mypage
+    defaults: { _controller : BidwebBundle:Page:mypage}
+    requirements:
+        methods:  GET|POST
+##############################################################################
+                    ########## POST Routing        
+#############################################################################
+bidweb_post_show:
+    path:  /post/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Post:show }
+    requirements:
+        methods:  GET
+        id: \d+
+bidweb_ads_confirm_add:
+    path:  /confirmadd/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Post:confirmadd }
+    requirements:
+        methods:  GET
+        id: \d+
+
+bidweb_ads_confirm_edit:
+    path:  /confirmedit/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Post:confirmedit }
+    requirements:
+        methods:  GET
+        id: \d+        
+
+bidweb_post_create:
+    path:  /createpost
+    defaults: { _controller: BidwebBundle:Post:create }
+    requirements:
+        methods:  GET|POST
+        
+bidweb_post_edit:
+    path:  /editpost/{id}
+    defaults: { _controller: BidwebBundle:Post:editpost }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+                
+bidweb_post:
+    path: /posts
+    defaults: { _controller : BidwebBundle:Post:posts}
+
+bidweb_innerpost:
+    path: /mypost
+    defaults: { _controller : BidwebBundle:Post:innerpost}
+    
+##############################################################################
+                    ########## Job Routing        
+#############################################################################
+
+bidweb_job_show:
+    path:  /job/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Job:show }
+    requirements:
+        methods:  GET
+        id: \d+
+        
+bidweb_job_show_my:
+    path:  /jobdetail/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Job:showmy }
+    requirements:
+        methods:  GET
+        id: \d+
+        
+bidweb_job_showmy:
+    path:  /jobdetail/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Job:showmy }
+    requirements:
+        methods:  GET
+        id: \d+
+        
+bidweb_job_confirm_add:
+    path:  /confirmaddjob/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Job:confirmadd }
+    requirements:
+        methods:  GET
+        id: \d+
+
+freelancer :
+    path : /freelancer
+    defaults : { _controller : BidwebBundle:Job:freelancer}
+   
+bidweb_job_create:
+    path:  /createjob
+    defaults: { _controller: BidwebBundle:Job:create }
+    requirements:
+        methods:  GET|POST        
+        
+bidweb_jobs:
+    path: /jobs
+    defaults: { _controller : BidwebBundle:Job:jobs}
+    
+bidweb_apply_job:
+    path: /applyjob/{id}
+    defaults: { _controller : BidwebBundle:Job:apply}
+    requirements:
+        methods: GET|POST
+        id: \d+
+        
+bidweb_apply_confirm:
+    path: /applyconfirm
+    defaults: { _controller : BidwebBundle:Job:applyconfirm}        
+        
+bidweb_myjob:
+    path: /myjob
+    defaults: { _controller : BidwebBundle:Job:myjob}
+    
+bidweb_myapplication:
+    path: /myapplication
+    defaults: { _controller : BidwebBundle:ApplicationProject:myapplication}   
+        
+bidweb_job_edit:
+    path:  /editjob/{id}
+    defaults: { _controller: BidwebBundle:Job:editjob }
+    requirements:
+        methods:  GET|POST
+        id: \d+    
+
+bidweb_job_confirm_edit:
+    path:  /confirmeditjob/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Job:confirmedit }
+    requirements:
+        methods:  GET|POST
+        id: \d+  
+        
+bidweb_job_accept_application:
+    path:  /acceptapp/{id}
+    defaults: { _controller: BidwebBundle:Job:accept }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+        idjob: \d+
+        
+bidweb_job_decline_application:
+    path:  /acceptapp/{id}
+    defaults: { _controller: BidwebBundle:Job:decline }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+        idjob: \d+
+        
+bidweb_steptwo_create:
+    path: /steptwo
+    defaults: { _controller: BidwebBundle:Job:steptwo }
+    
+
+    
+bidweb_finish_job:
+    path: /finishjob/{id}
+    defaults: { _controller : BidwebBundle:Job:finish}
+    requirements:
+        methods: GET|POST
+        id: \d+
+    
+##############################################################################
+                    ########## Comments Routing        
+#############################################################################       
+        
+bidweb_comment_create:
+    path:  /comment/{post_id}
+    defaults: { _controller: BidwebBundle:Comment:createPost }
+    requirements:
+        methods:  POST
+        post_id: \d+
+
+##############################################################################
+                    ########## Message Routing        
+#############################################################################         
+user_msg_box:
+    path : /msgbox/{page}
+    defaults : { _controller : BidwebBundle:Message:msgbox,page:0}
+    requirements :
+        methods: GET|POST
+        
+user_msg_sent:
+    path : /msgsent/{page}
+    defaults : { _controller : BidwebBundle:Message:msgsent,page:0}
+    requirements :
+        methods: GET|POST
+        
+user_send_msg:
+    path : /sendmsg/{receiver}
+    defaults : { _controller : BidwebBundle:Message:sendmsg}
+    requirements :
+        methods: GET|POST
+        receiver: \d+
+        
+user_read_msg:
+    path : /readmsg/{msgid}
+    defaults : { _controller : BidwebBundle:Message:readmsg}
+    requirements :
+        methods: GET|POST
+        receiver: \d+
+        
+user_reply_msg:
+    path : /reply/{msgid}
+    defaults : { _controller : BidwebBundle:Message:replymsg}
+    requirements :
+        methods: GET|POST
+        receiver: \d+
+
+user_delete_msg:
+    path : /deletemsg/{msgid}
+    defaults : { _controller : BidwebBundle:Message:deletemsg}
+    requirements :
+        methods: GET|POST
+        receiver: \d+
+        
+user_multidelete_msg:
+    path : /multidelete
+    defaults : { _controller : BidwebBundle:Message:multidelete}
+    requirements :
+        methods: POST
+##############################################################################
+                    ########## Profile Routing        
+############################################################################# 
+show_profiles:
+    path : /profiles
+    defaults : { _controller : BidwebBundle:Profile:show}
+    
+newprofile :
+    path : /profilenew
+    defaults : { _controller : BidwebBundle:Profile:newprofile}
+    requirements:
+        methods: GET|POST
+        
+publishprofile :
+    path: /profilepublish/{id}
+    defaults : { _controller : BidwebBundle:Profile:publishprofile}
+    requirements:
+        methods: GET  
+        id: \d+
+        
+hideprofile :
+    path : /profilehide/{id}
+    defaults : { _controller : BidwebBundle:Profile:hideprofile}
+    requirements:
+        methods: GET  
+        id : \d+
+        
+editprofile :
+    path : /profileedit/{id}
+    defaults : { _controller : BidwebBundle:Profile:editprofile}
+    requirements:
+        methods: GET|POST 
+        id : \d+
+        
+deleteprofile :
+    path : /profiledelete/{id}
+    defaults : { _controller : BidwebBundle:Profile:deleteprofile}
+    requirements:
+        methods: GET
+        id : \d+
+        
+profiledetails :
+    path : /detailsprofile/{id}
+    defaults : { _controller : BidwebBundle:Profile:details}
+    requirements:
+        methods: GET
+        id : \d+
+        
+##############################################################################
+                    ########## Website Routing        
+#############################################################################
+bidweb_website_show:
+    path:  /website/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Website:show }
+    requirements:
+        methods:  GET
+        id: \d+
+bidweb_website_confirm_add:
+    path:  /websiteadded/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Website:confirmadd }
+    requirements:
+        methods:  GET
+        id: \d+
+
+bidweb_website_confirm_edit:
+    path:  /websitedited/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Website:confirmedit }
+    requirements:
+        methods:  GET
+        id: \d+        
+
+bidweb_website_create:
+    path:  /createwebsite
+    defaults: { _controller: BidwebBundle:Website:create }
+    requirements:
+        methods:  GET|POST
+        
+bidweb_website_edit:
+    path:  /editwebsite/{id}
+    defaults: { _controller: BidwebBundle:Website:editwebsite }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+                
+bidweb_websites:
+    path: /websites
+    defaults: { _controller : BidwebBundle:Website:websites}
+
+bidweb_mywebsite:
+    path: /mywebsite
+    defaults: { _controller : BidwebBundle:Website:innerwebsite}
+    
+##############################################################################
+                    ########## Database Routing        
+#############################################################################
+bidweb_database_show:
+    path:  /database/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Database:show }
+    requirements:
+        methods:  GET
+        id: \d+
+bidweb_database_confirm_add:
+    path:  /databaseadded/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Database:confirmadd }
+    requirements:
+        methods:  GET
+        id: \d+
+
+bidweb_database_confirm_edit:
+    path:  /databasedited/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Database:confirmedit }
+    requirements:
+        methods:  GET
+        id: \d+        
+
+bidweb_database_create:
+    path:  /createdatabase
+    defaults: { _controller: BidwebBundle:Database:create }
+    requirements:
+        methods:  GET|POST
+        
+bidweb_database_edit:
+    path:  /editdatabase/{id}
+    defaults: { _controller: BidwebBundle:Database:editdatabase }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+                
+bidweb_database:
+    path: /databases
+    defaults: { _controller : BidwebBundle:Database:databases}
+
+bidweb_mydatabase:
+    path: /mydatabase
+    defaults: { _controller : BidwebBundle:Database:innerdatabase}
+        
+
+##############################################################################
+                    ########## Domain Routing        
+#############################################################################
+bidweb_domain_show:
+    path:  /domain/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Domain:show }
+    requirements:
+        methods:  GET
+        id: \d+
+bidweb_domain_confirm_add:
+    path:  /domainadded/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Domain:confirmadd }
+    requirements:
+        methods:  GET
+        id: \d+
+
+bidweb_domain_confirm_edit:
+    path:  /domainedited/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Domain:confirmedit }
+    requirements:
+        methods:  GET
+        id: \d+        
+
+bidweb_domain_create:
+    path:  /createdomain
+    defaults: { _controller: BidwebBundle:Domain:create }
+    requirements:
+        methods:  GET|POST
+        
+bidweb_domain_edit:
+    path:  /editdomain/{id}
+    defaults: { _controller: BidwebBundle:Domain:editdomain }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+                
+bidweb_domain:
+    path: /domains
+    defaults: { _controller : BidwebBundle:Domain:domains}
+
+bidweb_mydomain:
+    path: /mydomain
+    defaults: { _controller : BidwebBundle:Domain:innerdomain}
+
+    
+##############################################################################
+                    ########## SEO Tools Routing        
+#############################################################################
+bidweb_seotool_show:
+    path:  /seotool/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Seotool:show }
+    requirements:
+        methods:  GET
+        id: \d+
+bidweb_seotool_confirm_add:
+    path:  /seotooladded/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Seotool:confirmadd }
+    requirements:
+        methods:  GET
+        id: \d+
+
+bidweb_seotool_confirm_edit:
+    path:  /seotooledited/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Seotool:confirmedit }
+    requirements:
+        methods:  GET
+        id: \d+        
+
+bidweb_seotool_create:
+    path:  /createseotool
+    defaults: { _controller: BidwebBundle:Seotool:create }
+    requirements:
+        methods:  GET|POST
+        
+bidweb_seotool_edit:
+    path:  /editseotool/{id}
+    defaults: { _controller: BidwebBundle:Seotool:editseotool }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+                
+bidweb_seotool:
+    path: /seotools
+    defaults: { _controller : BidwebBundle:Seotool:seotools}
+
+bidweb_myseotool:
+    path: /myseotool
+    defaults: { _controller : BidwebBundle:Seotool:innerseotool}
+
+##############################################################################
+                    ########## Notification Routing        
+##############################################################################
+bidweb_notifications:
+    path: /notifications
+    defaults: { _controller : BidwebBundle:Notification:show}
+    
+bidweb_read_notif:
+    path: /notif/{id}
+    defaults: { _controller : BidwebBundle:Notification:read}
+    requirements:
+        methods:  GET|POST
+        id: \d+
+        
+##############################################################################
+                    ########## Projects Routing        
+#############################################################################
+bidweb_project_show:
+    path:  /project/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Project:show }
+    requirements:
+        methods:  GET
+        id: \d+
+        
+bidweb_project_show_my:
+    path:  /myproject/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Project:showmy }
+    requirements:
+        methods:  GET
+        id: \d+
+
+bidweb_project_confirm_add:
+    path:  /projectadded/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Project:confirmadd }
+    requirements:
+        methods:  GET
+        id: \d+
+
+bidweb_project_confirm_edit:
+    path:  /projectedited/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Project:confirmedit }
+    requirements:
+        methods:  GET
+        id: \d+
+        
+bidweb_project_create:
+    path:  /createproject
+    defaults: { _controller: BidwebBundle:Project:create }
+    requirements:
+        methods:  GET|POST
+        
+bidweb_project_edit:
+    path:  /projectedit/{id}
+    defaults: { _controller: BidwebBundle:Project:edit }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+                
+bidweb_project:
+    path: /project
+    defaults: { _controller : BidwebBundle:Project:showAll}
+
+bidweb_myproject:
+    path: /myprojects
+    defaults: { _controller : BidwebBundle:Project:myprojects}
+
+bidweb_apply_project:
+    path: /applyproject/{id}
+    defaults: { _controller : BidwebBundle:ApplicationProject:apply}
+    requirements:
+        methods: GET|POST
+        id: \d+
+        
+bidweb_apply_project_confirm:
+    path: /applyconfirmproject
+    defaults: { _controller : BidwebBundle:ApplicationProject:applyconfirm}
+    
+bidweb_project_accept_application:
+    path:  /acceptapplication/{app}
+    defaults: { _controller: BidwebBundle:ApplicationProject:accept }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+        idjob: \d+
+        
+bidweb_project_decline_application:
+    path:  /declineapplication/{app}
+    defaults: { _controller: BidwebBundle:ApplicationProject:decline }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+        idjob: \d+
+        
+bidweb_my_worker:
+    path: /myworker
+    defaults: { _controller: BidwebBundle:Project:myworker }
+    
+##############################################################################
+                    ########## History Routing        
+#############################################################################
+bidweb_history_worker:
+    path: /historyworker
+    defaults: { _controller: BidwebBundle:History:historyworker }
+    
+bidweb_history_payments:
+    path: /historypayment
+    defaults: { _controller: BidwebBundle:History:historypayment }
+    
+bidweb_history_project:
+    path: /historyproject
+    defaults: { _controller: BidwebBundle:History:historyproject }
+    
+##############################################################################
+                    ########## Client Routing        
+#############################################################################
+bidweb_client_application:
+    path: /client_application
+    defaults: { _controller: BidwebBundle:Client:clientApplication }
+    
+bidweb_client_application_detail:
+    path: /client_application_detail/{id}
+    defaults: { _controller: BidwebBundle:Client:applicationDetail }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+    
+bidweb_client_project:
+    path: /client_project
+    defaults: { _controller: BidwebBundle:Client:myProject }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+    
+bidweb_client_project_detail:
+    path: /client_project_detail/{id}/{slug}
+    defaults: { _controller: BidwebBundle:Client:projectDetail }
+    
+    
+bidweb_client_profile:
+    path: /client_profile/{id}
+    defaults: { _controller: BidwebBundle:Client:profile }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+    
+##############################################################################
+                    ########## Freelancer Routing        
+##############################################################################
+bidweb_freelancer_project:
+    path: /freelancer_project
+    defaults: { _controller: BidwebBundle:Freelancer:myProject }
+    
+bidweb_freelancer_project_detail:
+    path: /freelancer_project_detail/{id}
+    defaults: { _controller: BidwebBundle:Freelancer:projectDetail }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+        
+bidweb_freelancer_profile:
+    path: /freelancer_profile/{id}
+    defaults: { _controller: BidwebBundle:Freelancer:profile }
+    requirements:
+        methods:  GET|POST
+        id: \d+
+    
+bidweb_freelancer_application:
+    path: /freelancer_application
+    defaults: { _controller: BidwebBundle:Freelancer:myApplication }
+    
+    
+bidweb_freelancer_application_detail:
+    path: /freelancer_application_detail/{id}
+    defaults: { _controller: BidwebBundle:Freelancer:applicationDetail }
+    requirements:
+        methods:  GET|POST
+        id: \d+

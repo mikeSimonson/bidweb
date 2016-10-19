@@ -1,0 +1,23 @@
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}{{ ads.title }}{% endblock %}
+
+{% block body %}
+    <article class="blog">
+        <h1>Congratuation, your ads is added </h1>
+        <header>
+            <div class="date"><time datetime="{{ ads.dateTime|date('c') }}">{{ ads.dateTime|date('l, F j, Y') }}</time></div>
+            <h2>{{ ads.title }}</h2>
+        </header>
+        {% if ads.image =='n' %}
+            <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" alt="{{ ads.title }} image not found" class="large" />
+        {% else %}
+            
+            <img src="{{asset(ads.getWebPath('1'))}}" alt="{{ ads.title }} image not found" class="large" />
+        {% endif %}
+            <div>
+            <p>{{ ads.description | raw}}</p>
+        </div>
+    </article>
+    
+{% endblock %}

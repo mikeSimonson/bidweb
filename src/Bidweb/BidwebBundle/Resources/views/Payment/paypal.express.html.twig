@@ -1,0 +1,10 @@
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}{{'contact.poster'|trans}} - Bidweb{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>{{'payment'|trans}}</h1>
+    </header>
+   <form method="POST"> {{ form_widget(form) }} <input type="submit" value="Pay" /> </form> 
+{% endblock %}

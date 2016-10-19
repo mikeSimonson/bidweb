@@ -1,0 +1,11 @@
+{# empty Twig template #}
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}{{'apply.job'|trans}} - Bidweb{% endblock%}
+
+    
+    {% block quick_starter %}
+        
+        <h1>This is step 2</h1>
+        {{parent()}}
+        {% endblock%}

@@ -1,0 +1,32 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{ job.title }}{% endblock %}
+{% block content_title %}
+    {{'confirm'|trans}}
+{% endblock %}
+{% block path %}
+  
+    <li><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></li>
+    <li><a href="#">{{'confirm'|trans}}</a></li>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'msg.add.confirm'|trans}}</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="date"><time datetime="{{ job.created|date('c') }}">{{ job.created|date('l, F j, Y') }}</time></div>
+                    <h2>{{ job.title }}</h2>
+                    <div>
+                        <p>{{ job.description | raw}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

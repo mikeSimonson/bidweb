@@ -1,0 +1,10 @@
+<form action="{{ path('bidweb_comment_create', { 'post_id' : comment.post.id } ) }}" method="post" {{ form_enctype(form) }} class="blogger" id="commentForm">
+    <div class="post">
+        <div class="addbtns">
+            
+            <a href="javascript:$('#commentForm').submit()" class="plus" >Add</a>
+        </div>
+        {{ form_widget(form) }}
+    </div>
+    
+</form>

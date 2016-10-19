@@ -1,0 +1,90 @@
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+    <div class="page">
+        <div class="side2">
+            <div class="product-box">
+                <div class="product-image product-image-zoom">
+                    <div class="product-image product-image-zoom">
+                        <a rel="lensOpacity:0,tintOpacity:0" href="{{ asset(post.getWebPath('1'))}}" class="cloud-zoom" id="cloudZoom">
+                            {% if post.image %}
+                                <img src="{{ asset(post.getWebPath('1'))}}" name="image" id="image" width="190" height="190" alt="Bidweb" title="{{ post.title }}" style="display: block;">
+
+                            {% else %}
+                                <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" name="image" id="image" width="190" height="190" alt="TrendPin" title="Urun Adı" style="display: block;">
+
+                            {% endif %}
+                        </a>
+                    </div>
+
+                </div>
+                <div class="more-views">
+                    <ul>
+                        {% if post.image %}
+
+                            <li>
+                                <a href="{{ asset(post.getWebPath('1'))}}" rel="useZoom: 'cloudZoom', smallImage: '{{ asset(post.getWebPath('1'))}}' " class="cloud-zoom-gallery" title=""><img src="{{ asset(post.getWebPath('1'))}}" width="35" height="35" alt="Bidweb"></a>
+                            </li>
+                        {% endif %}
+                        {% if post.image2 %}
+
+                            <li>
+                                <a href="{{ asset(post.getWebPath('2'))}}" rel="useZoom: 'cloudZoom', smallImage: '{{ asset(post.getWebPath('2'))}}' " class="cloud-zoom-gallery" title=""><img src="{{ asset(post.getWebPath('2'))}}" width="35" height="35" alt="Bidweb"></a>
+                            </li>
+                        {% endif %}
+                        {% if post.image3 %}
+
+                            <li>
+                                <a href="{{ asset(post.getWebPath('3'))}}" rel="useZoom: 'cloudZoom', smallImage: '{{ asset(post.getWebPath('3'))}}' " class="cloud-zoom-gallery" title=""><img src="{{ asset(post.getWebPath('3'))}}" width="35" height="35" alt="Bidweb"></a>
+                            </li>
+                        {% endif %}
+                        {% if post.image4 %}
+
+                            <li>
+                                <a href="{{ asset(post.getWebPath('4'))}}" rel="useZoom: 'cloudZoom', smallImage: '{{ asset(post.getWebPath('3'))}}' " class="cloud-zoom-gallery" title=""><img src="{{ asset(post.getWebPath('4'))}}" width="35" height="35" alt="Bidweb"></a>
+                            </li>
+                        {% endif %}
+                        {% if post.image5 %}
+
+                            <li>
+                                <a href="{{ asset(post.getWebPath('5'))}}" rel="useZoom: 'cloudZoom', smallImage: '{{ asset(post.getWebPath('5'))}}' " class="cloud-zoom-gallery" title=""><img src="{{ asset(post.getWebPath('5'))}}" width="35" height="35" alt="Bidweb"></a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                    <div class="fix"></div>
+                </div>
+                <div class="details">
+                    <dl>
+                        <dt>Details</dt>
+                        <dd>Category : {{post.category}}</dd>
+                        <dd>Sub Category : {{post.subcategory}}</dd>
+                        <dd>Price : {{post.price}}</dd>
+                        <dd>State : {{post.state}}</dd>
+                        <dd>City : {{post.city}}</dd>
+                        <dd>Posted : {{post.created | created_ago}}</dd>
+                        {% if is_granted('ROLE_USER')%}
+                            {% if app.user.id != post.user.id %}
+                                <dd><a class="like" href="{{path('user_send_msg',{'receiver':post.user.id})}}">Contact Poster</a></dd>
+                            {% else %}
+                                <dd><a class="like" href="{{path('bidweb_post_edit',{'id':post.id})}}">Edit post</a></dd>
+                            {% endif %}
+                        {% endif %}
+                    </dl>
+                </div>
+            </div>
+        </div><!-- side_left -->
+        <div class="feed">
+            <div class="product-info">
+                <p>Congratuation your post {{post.title}} is added</p>
+                <h3>{{post.description}}</h3>
+                <span{{post.price}}<em class="tl"></em></span>
+            </div>
+            
+        </div><!-- feed -->
+
+        <div class="fix"></div>
+    </div>
+{% endblock %}

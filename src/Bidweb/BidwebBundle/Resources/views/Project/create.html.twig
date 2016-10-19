@@ -1,0 +1,130 @@
+{# empty Twig template #}
+{% extends '::landing.html.twig' %}
+{% block title %}{{'new.job'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    {{'create.new.project'|trans}}
+{% endblock %}
+{% block path %}
+        <li><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></li>
+    <li><a href="#">{{'new.job'|trans}}</a></li>
+{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'project'|trans}}</h3>
+                </div>
+                <form action="{{ path('bidweb_project_create' ) }}" method="post" {{ form_enctype(form) }}>
+                     {{ form_errors(form) }}
+                    <div class="panel-body form-horizontal form-padding">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >{{'title'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.title, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >{{'budget'|trans}}</label>
+                            <div class="col-md-3 input-group mar-btm">
+                                <span class="input-group-addon"><i class="fa fa-dollar fa-lg"></i></span>
+                                {{ form_row(form.budget, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                    
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >{{'category'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.category, { 'label' : false,'attr': {'class': 'col-sm-7 form-control typeahead',
+                                                               
+                                                                'data-provide':'typeahead',
+                                                                'data-source':'[]',
+                                                                'data-role':'tagsinput'} }) }}
+                            </div>
+                        </div>
+                            <div class="form-group">
+                            <label class="col-md-4 control-label" >{{'opened.post'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.openedPost, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+                     
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >{{'detail'|trans}}</label>
+                            <div class="col-md-6">
+                                {{ form_row(form.description, { 'label' : false,'attr': {'rows':9,'class': 'col-sm-9 form-control'} }) }}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-footer text-right">
+
+                        <input type="submit" value="{{'save'|trans}}" class="btn btn-info"/>
+                    </div>
+                     {{ form_rest(form) }}
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+	<link href="bundles/bidweb/nifty/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <script src="bundles/bidweb/nifty/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script src="bundles/bidweb/js/bootstrap-typeahead.js"></script>
+    <script>
+        var $state = $('#job_state');
+        $('.typeahead').attr('data-source','["PHP","CSS","Java","C#","Python","Perl","Prolog"]');
+        $('.typeahead').typeahead();
+        
+        $state.change(function () {
+
+            var $form = $(this).closest('form');
+
+            var data = {};
+            data[$state.attr('name')] = $state.val();
+            // Submit data via AJAX to the form's action path.
+
+            $.ajax({
+                url: $form.attr('action'),
+                type: $form.attr('method'),
+                data: data,
+                success: function (html) {
+
+                    // Replace current position field ...
+                    $('#job_city').replaceWith(
+                            // ... with the returned one from the AJAX response.
+                            $(html).find('#job_city')
+                            );
+                    // Position field now displays the appropriate positions.
+                }
+            });
+        });
+
+        $(document).ajaxStart(function () {
+            $("#wait").css("display", "block");
+        });
+        $(document).ajaxComplete(function () {
+            $("#wait").css("display", "none");
+        });
+
+    </script>   
+    <div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
+        <img src="{{asset('bundles/bidweb/images/wait.gif')}}" width="64" height="64" />
+        <br>{{'load.wait'|trans}}
+    </div>
+
+{% endblock%}

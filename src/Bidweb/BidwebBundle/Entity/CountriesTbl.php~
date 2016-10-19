@@ -1,0 +1,263 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * CountriesTbl
+ * @ORM\Entity(repositoryClass="Adbck\AdbckBundle\Repository\CountryRepository")
+ * @ORM\Table(name="countries_tbl", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="index_countries_tbl_continent_id", columns={"continent_id"})})
+ * @ORM\Entity
+ */
+class CountriesTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="iso_code", type="string", length=5, nullable=false)
+     */
+    private $isoCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="std_code", type="string", length=10, nullable=true)
+     */
+    private $stdCode;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="ContinentsTbl", inversedBy="countries")
+     * @ORM\JoinColumn(name="continent_id", referencedColumnName="id")
+     */
+    protected $continent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="flag_img", type="string", length=50, nullable=true)
+     */
+    private $flagImg;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @ORM\OneToMany(targetEntity="StatesTbl", mappedBy="country")
+     **/
+    protected $states;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set isoCode
+     *
+     * @param string $isoCode
+     * @return CountriesTbl
+     */
+    public function setIsoCode($isoCode)
+    {
+        $this->isoCode = $isoCode;
+
+        return $this;
+    }
+
+    /**
+     * Get isoCode
+     *
+     * @return string 
+     */
+    public function getIsoCode()
+    {
+        return $this->isoCode;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return CountriesTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set stdCode
+     *
+     * @param string $stdCode
+     * @return CountriesTbl
+     */
+    public function setStdCode($stdCode)
+    {
+        $this->stdCode = $stdCode;
+
+        return $this;
+    }
+
+    /**
+     * Get stdCode
+     *
+     * @return string 
+     */
+    public function getStdCode()
+    {
+        return $this->stdCode;
+    }
+
+    /**
+     * Set ContinentsTbl
+     *
+     * @param integer $continent
+     * @return CountriesTbl
+     */
+    public function setContinent($continent)
+    {
+        $this->continent = $continent;
+
+        return $this;
+    }
+
+    /**
+     * Get ContinentsTbl
+     *
+     * @return ContinentsTbl 
+     */
+    public function getContinent()
+    {
+        return $this->continent;
+    }
+
+    /**
+     * Set flagImg
+     *
+     * @param string $flagImg
+     * @return CountriesTbl
+     */
+    public function setFlagImg($flagImg)
+    {
+        $this->flagImg = $flagImg;
+
+        return $this;
+    }
+
+    /**
+     * Get flagImg
+     *
+     * @return string 
+     */
+    public function getFlagImg()
+    {
+        return $this->flagImg;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return CountriesTbl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    public function __construct()
+    {
+        $this->states = new ArrayCollection();
+    }
+
+    /**
+     * Add states
+     *
+     * @param \Adbck\AdbckBundle\Entity\StatesTbl $states
+     * @return CountriesTbl
+     */
+    public function addState(\Adbck\AdbckBundle\Entity\StatesTbl $states)
+    {
+        $this->states[] = $states;
+
+        return $this;
+    }
+
+    /**
+     * Remove states
+     *
+     * @param \Adbck\AdbckBundle\Entity\StatesTbl $states
+     */
+    public function removeState(\Adbck\AdbckBundle\Entity\StatesTbl $states)
+    {
+        $this->states->removeElement($states);
+    }
+
+    /**
+     * Get states
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStates()
+    {
+        return $this->states;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+}

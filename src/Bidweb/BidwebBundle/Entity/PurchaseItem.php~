@@ -1,0 +1,155 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PurchaseItem
+ *
+ * @ORM\Table(name="purchase_item")
+ * @ORM\Entity
+ */
+class PurchaseItem
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="purchase_item_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $purchaseItemId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="item_name", type="string", length=200, nullable=false)
+     */
+    private $itemName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="days", type="string", length=200, nullable=false)
+     */
+    private $days;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="string", length=50, nullable=false)
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plan_type", type="string", length=100, nullable=false)
+     */
+    private $planType;
+
+
+
+    /**
+     * Get purchaseItemId
+     *
+     * @return integer 
+     */
+    public function getPurchaseItemId()
+    {
+        return $this->purchaseItemId;
+    }
+
+    /**
+     * Set itemName
+     *
+     * @param string $itemName
+     * @return PurchaseItem
+     */
+    public function setItemName($itemName)
+    {
+        $this->itemName = $itemName;
+
+        return $this;
+    }
+
+    /**
+     * Get itemName
+     *
+     * @return string 
+     */
+    public function getItemName()
+    {
+        return $this->itemName;
+    }
+
+    /**
+     * Set days
+     *
+     * @param string $days
+     * @return PurchaseItem
+     */
+    public function setDays($days)
+    {
+        $this->days = $days;
+
+        return $this;
+    }
+
+    /**
+     * Get days
+     *
+     * @return string 
+     */
+    public function getDays()
+    {
+        return $this->days;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     * @return PurchaseItem
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set planType
+     *
+     * @param string $planType
+     * @return PurchaseItem
+     */
+    public function setPlanType($planType)
+    {
+        $this->planType = $planType;
+
+        return $this;
+    }
+
+    /**
+     * Get planType
+     *
+     * @return string 
+     */
+    public function getPlanType()
+    {
+        return $this->planType;
+    }
+}

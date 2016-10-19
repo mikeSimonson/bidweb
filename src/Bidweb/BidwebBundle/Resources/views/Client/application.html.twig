@@ -1,0 +1,249 @@
+{# empty Twig template #}
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'application'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+    {{'application'|trans}}
+{% endblock %}
+{% block path %}
+
+    <li><a href="#">{{'application'|trans}}</a></li>
+
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'accepted.application'|trans}}</h3>
+                </div>
+                <div class="panel-body">
+                    
+                    <table id="dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>  
+                                <th>
+                                    
+
+                                </th>
+                                <th>{{'project'|trans}}</th>
+                                <th>{{'date'|trans}}</th>
+                                <th class="min-tablet">{{'company.name'|trans}}</th>
+                                <th class="min-tablet">{{'status'|trans}}.</th>
+                                <th class="min-tablet">{{'message'|trans}}.</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ad in accepted %}
+                                <tr>
+                                    <td>
+                                        {% if ad.project.client.image %}
+                                        <img src="{{ asset(ad.project.client.getWebPathImage())}}" name="image" 
+                                             id="image" class="img-circle m-b m-t-md" alt="Bidweb" 
+                                             title="{{ ad.project.title }}" width="32" height="32">
+                                    {% else %}
+                                        <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" 
+                                             name="image" id="image" class="img-circle m-b m-t-md" 
+                                             alt="Bidweb" title="Urun Adı"  width="76" height="76">
+                                    {% endif %}
+                                        
+                                    </td>
+                                    <td><a href="{{ path('bidweb_project_show', { 'id': ad.project.id, 'slug':ad.project.slug }) }}" original-title="{{ ad.project.title }}">
+                                            
+                                            {{ ad.project.title }}
+                                        
+                                        </a>
+                                        
+                                    </td>
+                                    <td>{{ad.created | date('Y-M-D')}}</td>
+                                    <td><a href="#">{{ad.project.client.companyName}}</a></td>
+                                    <td>{% if ad.status==0 %}
+                                            {{'waiting'|trans}}
+                                        {%elseif ad.status == 1%}
+                                            {{'accepted'|trans}}
+                                        {% else %}
+                                            {{'declined'|trans}}
+                                        {% endif %}
+                                    </td>
+                                    <td><a href="">{{ ad.message(50) | raw |striptags}}</a></td>
+                                    
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+                                
+<div class="row">
+    <div class="col-lg-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{'wait.application'|trans}}</h3>
+            </div>
+            <div class="panel-body">
+
+                <table id="dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>  
+                            <th>
+
+
+                            </th>
+                            <th>{{'project'|trans}}</th>
+                            <th>{{'date'|trans}}</th>
+                            <th class="min-tablet">{{'company.name'|trans}}</th>
+                            <th class="min-tablet">{{'status'|trans}}.</th>
+                            <th class="min-tablet">{{'message'|trans}}.</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ad in wait %}
+                            <tr>
+                                <td>
+                                    {% if ad.project.client.image %}
+                                        <img src="{{ asset(ad.project.client.getWebPathImage())}}" name="image" 
+                                             id="image" class="img-circle m-b m-t-md" alt="Bidweb" 
+                                             title="{{ ad.project.title }}" width="32" height="32">
+                                    {% else %}
+                                        <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" 
+                                             name="image" id="image" class="img-circle m-b m-t-md" 
+                                             alt="Bidweb" title="Urun Adı"  width="76" height="76">
+                                    {% endif %}
+
+                                </td>
+                                <td><a href="{{ path('bidweb_project_show', { 'id': ad.project.id, 'slug':ad.project.slug }) }}" original-title="{{ ad.project.title }}">
+
+                                        {{ ad.project.title }}
+
+                                    </a>
+
+                                </td>
+                                <td>{{ad.created | date('Y-M-D')}}</td>
+                                <td><a href="#">{{ad.project.client.companyName}}</a></td>
+                                <td>{% if ad.status==0 %}
+                                    {{'waiting'|trans}}
+                                    {%elseif ad.status == 1%}
+                                        {{'accepted'|trans}}
+                                        {% else %}
+                                            {{'declined'|trans}}
+                                            {% endif %}
+                                            </td>
+                                            <td><a href="">{{ ad.message(50) | raw |striptags}}</a></td>
+
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                            
+<div class="row">
+    <div class="col-lg-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{'declined.application'|trans}}</h3>
+            </div>
+            <div class="panel-body">
+
+                <table id="dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>  
+                            <th>
+
+
+                            </th>
+                            <th>{{'project'|trans}}</th>
+                            <th>{{'date'|trans}}</th>
+                            <th class="min-tablet">{{'company.name'|trans}}</th>
+                            <th class="min-tablet">{{'status'|trans}}.</th>
+                            <th class="min-tablet">{{'message'|trans}}.</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ad in declined %}
+                            <tr>
+                                <td>
+                                    {% if ad.project.client.image %}
+                                        <img src="{{ asset(ad.project.client.getWebPathImage())}}" name="image" 
+                                             id="image" class="img-circle m-b m-t-md" alt="Bidweb" 
+                                             title="{{ ad.project.title }}" width="32" height="32">
+                                    {% else %}
+                                        <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" 
+                                             name="image" id="image" class="img-circle m-b m-t-md" 
+                                             alt="Bidweb" title="Urun Adı"  width="76" height="76">
+                                    {% endif %}
+
+                                </td>
+                                <td><a href="{{ path('bidweb_project_show', { 'id': ad.project.id, 'slug':ad.project.slug }) }}" original-title="{{ ad.project.title }}">
+
+                                        {{ ad.project.title }}
+
+                                    </a>
+
+                                </td>
+                                <td>{{ad.created | date('Y-M-D')}}</td>
+                                <td><a href="#">{{ad.project.client.companyName}}</a></td>
+                                <td>{% if ad.status==0 %}
+                                    {{'waiting'|trans}}
+                                    {%elseif ad.status == 1%}
+                                        {{'accepted'|trans}}
+                                        {% else %}
+                                            {{'declined'|trans}}
+                                            {% endif %}
+                                            </td>
+                                            <td><a href="">{{ ad.message(50) | raw |striptags}}</a></td>
+
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                          
+{% endblock %}
+
+{% block javascripts %}
+    {{parent() }}
+    <script src="bundles/bidweb/nifty/plugins/fooTable/dist/footable.all.min.js"></script>
+
+    <script>
+        $(window).on('load', function () {
+
+
+            // FOO TABLES
+            // =================================================================
+            // Require FooTable
+            // -----------------------------------------------------------------
+            // http://fooplugins.com/footable-demos/
+            // =================================================================
+
+
+            // Row Toggler
+            // -----------------------------------------------------------------
+            // Pagination
+            // -----------------------------------------------------------------
+            $('#foo-pagination').footable();
+            $('#demo-show-entries').change(function (e) {
+                e.preventDefault();
+                var pageSize = $(this).val();
+                $('#foo-pagination').data('page-size', pageSize);
+                $('#foo-pagination').trigger('footable_initialized');
+            });
+
+
+
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<!DOCTYPE html>
+<html>
+
+    <!-- Mirrored from 198.199.94.141/homer_admin-v1.6/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jun 2015 10:54:29 GMT -->
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Page title -->
+        <title>Bidweb | {{'layout.login'|trans}} </title>
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
+
+        <!-- Vendor styles -->
+        {% stylesheets
+                '@BidwebBundle/Resources/public/vendor/fontawesome/css/font-awesome.css'
+                '@BidwebBundle/Resources/public/vendor/metisMenu/dist/metisMenu.css'
+                '@BidwebBundle/Resources/public/vendor/animate.css/animate.css'
+                '@BidwebBundle/Resources/public/vendor/bootstrap/dist/css/bootstrap.css'
+
+                '@BidwebBundle/Resources/public/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css'
+                '@BidwebBundle/Resources/public/fonts/pe-icon-7-stroke/css/helper.css'
+                '@BidwebBundle/Resources/public/styles/style.css'
+
+                filter='yui_css'
+               
+              
+        %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+
+    </head>
+    <body class="blank">
+
+        <!-- Simple splash screen-->
+        <div class="splash"> 
+            <div class="color-line">
+
+            </div><div class="splash-title">
+                <h1>Bidweb - Authentication</h1>
+                <p>Please wait until page is loaded </p>
+                <img src="{{asset('images/loading-bars.svg')}}" width="64" height="64" />
+            </div> 
+        </div>
+        <!--[if lt IE 7]>
+        <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="color-line"></div>
+
+        <div class="pull-left m">
+            <a href="/" class="btn btn-primary">{{'layout.back_to_home'|trans}}</a>
+        </div>
+
+        <div class="login-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center m-b-md">
+                        <h3>{{'form.please_sign_in'|trans}}</h3>
+                        <small>{{'form.to_access_page'|trans}}</small>
+                    </div>
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            {% block fos_user_content %}
+                                <form action="{{ path("fos_user_security_check") }}" method="post" id="loginForm">
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                    <div class="form-group">
+                                        <label class="control-label" for="username">{{'form.username'|trans}}</label>
+                                        <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="_username" id="username" class="form-control">
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="password">{{'form.password'|trans}}</label>
+                                        <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="_password" id="password" class="form-control">
+                                        
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="i-checks" checked id="remember_me" name="_remember_me">
+                                        {{'security.login.remember_me'|trans}}
+                                        <p class="help-block "><a href="{{path('fos_user_resetting_request')}}"> {{'layout.forget_password'|trans}}</a></p>
+                                    </div>
+                                    <button class="btn btn-success btn-block">{{'layout.login'|trans}}</button>
+                                    <a class="btn btn-default btn-block" href="{{ path('fos_user_registration_register') }}">{{'layout.register'|trans}}</a>
+                                </form>
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <strong>Bidweb</strong> - Job/Freelancer/Free ads <br/> 2015 Copyright Bidweb.org
+                </div>
+            </div>
+        </div>
+
+        {% javascripts
+                '@BidwebBundle/Resources/public/vendor/jquery/dist/jquery.min.js'
+                '@BidwebBundle/Resources/public/vendor/jquery-ui/jquery-ui.min.js'
+                '@BidwebBundle/Resources/public/vendor/slimScroll/jquery.slimscroll.min.js'
+                '@BidwebBundle/Resources/public/vendor/bootstrap/dist/js/bootstrap.min.js'
+                '@BidwebBundle/Resources/public/vendor/metisMenu/dist/metisMenu.min.js'
+                '@BidwebBundle/Resources/public/vendor/iCheck/icheck.min.js'
+                '@BidwebBundle/Resources/public/vendor/sparkline/index.js'
+                '@BidwebBundle/Resources/public/scripts/homer.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+
+    </body>
+
+    <!-- Mirrored from 198.199.94.141/homer_admin-v1.6/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jun 2015 10:54:29 GMT -->
+</html>

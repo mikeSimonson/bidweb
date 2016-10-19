@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'error'|trans}}{% endblock%}
+{% block content_title %}
+    Job application
+{% endblock %}
+{% block path %}
+    <li><a href="{{path('bidweb_jobs')}}">{{'jobs'|trans}}</a></li>
+    <li><a href="#">{{'applications'|trans}}</a></li>
+    {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3>{{'apply.job'|trans}}</h3>
+                </div>
+                <div class="panel-body">
+                    <p>{{'msg.error.profile.create'|trans}}<br> <a class='btn' href='{{path('newprofile')}}'>{{'create.profile'|trans}}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+{% endblock %}

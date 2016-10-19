@@ -1,0 +1,116 @@
+{% extends '::guest.html.twig' %}
+
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <section>
+            <div class="normalheader transition animated fadeIn">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <a class="small-header-action" href="#">
+                            <div class="clip-header">
+                                <i class="fa fa-arrow-up"></i>
+                            </div>
+                        </a>
+                        <div id="hbreadcrumb" class="pull-right m-t-lg">
+                            <ol class="hbreadcrumb breadcrumb">
+                                <li><a href="/">Bidweb</a></li>
+                                <li>
+                                    <a href="{{path('bidweb_jobs')}}"><span>{{'jobs'|trans}}</span></a>
+                                </li>
+                                <li class="active">
+                                    <span>{{'detail'|trans}} </span>
+                                </li>
+                            </ol>
+                        </div>
+                        <h2 class="font-light m-b-xs">
+                            {{'jobs'|trans}}
+                        </h2>
+                        <small>{{'detail'|trans}}</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="content animate-panel">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="hpanel hgreen">
+                        <div class="panel-body">
+                            <div class="pull-right text-right">
+                                <div class="btn-group">
+                                    <i class="fa fa-facebook btn btn-default btn-xs"></i>
+                                    <i class="fa fa-twitter btn btn-default btn-xs"></i>
+                                    <i class="fa fa-linkedin btn btn-default btn-xs"></i>
+                                </div>
+                            </div>
+                            {% if job.logo %}
+                                <img src="{{ asset(job.getWebPath())}}" name="image" 
+                                     id="image" class="img-circle m-b m-t-md" alt="Bidweb" 
+                                     title="{{ job.title }}" width="76" height="76">
+                            {% else %}
+                                <img src="{{ asset(['adImages/', 'thumb_default.png']|join)}}" 
+                                     name="image" id="image" class="img-circle m-b m-t-md" 
+                                     alt="Bidweb" title="Urun Adı"  width="76" height="76">
+                            {% endif %}
+                            <h3><a href="#">{{ job.title }}</a></h3>
+                            <div class="text-muted font-bold m-b-xs">{{'posted'|trans}} : {{job.created | created_ago}}</div>
+                        </div>
+                        <div class="panel-body">
+                            <dl>
+                                <dt>{{'company.name'|trans}}</dt>
+                                <dd>{{job.companyName}}</dd>
+                                <dt>{{'sub.cat'|trans}}</dt>
+                                <dd>{{job.subcategory}}</dd>
+                                <dt>{{'work.type'|trans}}</dt>
+                                <dd>{{job.workingType}}</dd>
+                                <dt>{{'state'|trans}}</dt>
+                                <dd>{{job.state}}</dd>
+                                <dt>{{'city'|trans}}</dt>
+                                <dd>{{job.city}}</dd>
+                                {% if is_granted('ROLE_USER')%}
+                                    {% if app.user.id != job.user.id %}
+                                        <dd><a class="like" href="{{path('user_send_msg',{'receiver':job.user.id})}}" class="text-success">{{'contact.poster'|trans}}</a></dd>
+                                        <dd><a href='{{ path('bidweb_apply_job',{ 'id' : job.id }) }}' class="text-success">{{'apply.job'|trans}} </a></dd>
+                                    {% else %}
+                                        <dd><a class="like" href="{{path('bidweb_job_edit',{'id':job.id})}}" class="text-success">{{'edit.job'|trans}}</a></dd>
+                                    {% endif %}
+                                {% else %}
+                                    <dd>{{'you.must'|trans}} <a class="text-success" href='{{ path('fos_user_security_login') }}'> {{'login'|trans}}</a> {{'to.contact.poster'|trans}}.<br>
+                                    </dd>
+                                    <dd>{{'or'|trans}} 
+                                        <a href='{{ path('fos_user_registration_register') }}' class="text-success">{{'create.new.account'|trans}}</a></dd>
+                                    {% endif %}
+                            </dl>
+                        </div>
+                        <div class="panel-footer contact-footer">
+                            <!--<div class="row">
+                                <div class="col-md-4 border-right">
+                                    <div class="contact-stat"><span>{{'applications'|trans}}: </span> <strong>0</strong></div>
+                                </div>
+                                <div class="col-md-4 border-right">
+                                    <div class="contact-stat"><span>Accepted: </span> <strong>0</strong></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="contact-stat"><span>Declined: </span> <strong>0</strong></div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="hpanel">
+                        <div class="hpanel hgreen">
+                            <div class="panel-body">
+                                <h3><a href="#">{{'detail'|trans}}</a></h3>
+                                <p>{{job.description}}</p>
+                                <div class="text-muted font-bold m-b-xs">{{'skill'|trans}} : {{job.skills}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>  
+        </div>
+    </div>
+
+{% endblock %}

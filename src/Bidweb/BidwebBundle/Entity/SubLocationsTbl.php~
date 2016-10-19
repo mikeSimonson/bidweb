@@ -1,0 +1,130 @@
+<?php
+
+namespace Adbck\AdbckBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SubLocationsTbl
+ *
+ * @ORM\Table(name="sub_locations_tbl", indexes={@ORM\Index(name="index_sub_locations_tbl_main_loc_id", columns={"main_loc_id"}), @ORM\Index(name="index_sub_locations_tbl_name", columns={"name"})})
+ * @ORM\Entity
+ */
+class SubLocationsTbl
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="MainLocationsTbl", inversedBy="sublocations")
+     * @ORM\JoinColumn(name="main_loc_id", referencedColumnName="id")
+     */
+    private $mainLocation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set mainLocation
+     *
+     * @param MainLocationsTbl $mainLocation
+     * @return SubLocationsTbl
+     */
+    public function setMainLocation($mainLocation)
+    {
+        $this->mainLocation = $mainLocation;
+
+        return $this;
+    }
+
+    /**
+     * Get mainLocation
+     *
+     * @return MainLocationsTbl 
+     */
+    public function getMainLocation()
+    {
+        return $this->mainLocation;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return SubLocationsTbl
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return SubLocationsTbl
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+}

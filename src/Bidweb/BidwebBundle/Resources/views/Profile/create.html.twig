@@ -1,0 +1,97 @@
+{% form_theme form 'BidwebBundle:Form:fields.html.twig' %}
+{% extends '::landing.html.twig' %}
+{% block title %}User Profile{% endblock%}
+{% block content_title %}
+    {{'create.profile'|trans}}
+{% endblock %}
+{% block path %}
+    
+    <li><a href="{{path('show_profiles')}}">{{'profile'|trans}}</a></li>
+    <li><a href="">{{'create.profile'|trans}}</a></li>
+
+{% endblock %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'create.profile'|trans}}</h3>
+                </div>
+                <form action="{{ path('newprofile' ) }}" method="post" {{ form_enctype(form) }}>
+                    {{ form_errors(form) }}
+                    <div class="panel-body form-horizontal form-padding">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'title'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.title, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'diploma1'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.diploma, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'diploma2'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.diploma2, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'diploma3'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.diploma3, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'certif1'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.certification, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'certif2'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.certification2, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'certif3'|trans}}</label>
+                            <div class="col-md-3">
+                                {{ form_row(form.certification3, { 'label' : false,'attr': {'class': 'col-sm-7 form-control'} }) }}
+                            </div>
+                        </div>
+
+
+                                
+
+                            <div class="form-group">
+                            <label class="col-md-3 control-label" >{{'detail'|trans}}</label>
+                            <div class="col-md-6">
+                                {{ form_row(form.description, { 'label' : false,'attr': {'rows':9,'class': 'col-sm-9 form-control'} }) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel-footer text-right">
+
+                        <input type="submit" value="{{'save'|trans}}" class="btn btn-info"/>
+                    </div>
+                    {{ form_rest(form) }}
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

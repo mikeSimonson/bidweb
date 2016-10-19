@@ -1,0 +1,40 @@
+{# empty Twig template #}
+{# src/Adbck/BidwebBundle/Resources/views/Page/index.html.twig #}
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for ad in posts %}
+        <div class="feed">
+            <div class="row">
+                <div class="avatar">
+                    <a href="{{ path('bidweb_post_show', { 'id': ad.id, 'slug':ad.slug }) }}" original-title="{{ ad.title }}">{{ ad.title }}</a>
+                    {% if ad.image %}
+                        <img src="{{asset(ad.getWebPath('1')) }}" alt="{{ ad.title }} image not found" alt="Bidweb" width="50" height="50" />
+                    {% else %}
+                        <img src="{{asset("rs/thumb_default.png")}}" alt="Bidweb" width="50" height="50">
+                    {% endif %}
+                </div>
+                <h6>
+                    <a href="{{ path('bidweb_post_show', { 'id': ad.id, 'slug':ad.slug }) }}" class="usr">{{ad.category}}-{{ad.subcategory}} </a> 
+                    <a href="{{ path('bidweb_post_show', { 'id': ad.id, 'slug':ad.slug }) }}">{{ad.title}}</a>
+                </h6>
+                <p><i></i>{{ ad.description(80) | raw |striptags}}...</p>
+                <div class="usrbar">
+                    {{ ad.created|date('l, F j, Y') }}
+                    <i>-</i>
+                    <a href="{{ path('bidweb_post_show', { 'id': ad.id , 'slug':ad.slug}) }}#comments">Comments : {{ ad.comments|length }}</a>
+                    <b>-</b>
+                    <a href="#">Posted by : {{ad.user}}</a>
+                    <b>-</b>
+                    <a href="{{ path('bidweb_post_show', { 'id': ad.id , 'slug':ad.slug}) }}">Details</a>
+                </div>
+
+            </div>
+                
+        </div>
+        
+    {% else %}
+        <p>There are no ads posted in Bidweb</p>
+    {% endfor %}
+    <div class="morebtn"><span>See more Posts</span><em></em></div>
+{% endblock %}

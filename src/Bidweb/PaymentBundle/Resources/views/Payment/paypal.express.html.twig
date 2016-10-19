@@ -1,0 +1,26 @@
+{% extends '::landing.html.twig' %}
+
+{% block title %}{{'payment'|trans}} - Bidweb{% endblock%}
+{% block content_title %}
+   {{'payment'|trans}}
+{% endblock %}
+{% block path %}
+    
+    
+    <li><a href="#">{{'payment'|trans}}</a></li>
+    
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{'payment'|trans}} </h3>
+                </div>
+                <div class="panel-body">
+                    <form method="POST" class="form-signin"> {{ form_widget(form) }} <input type="submit" value="Pay" /> </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

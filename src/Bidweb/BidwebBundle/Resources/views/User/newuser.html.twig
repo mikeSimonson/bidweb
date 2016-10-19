@@ -1,0 +1,22 @@
+{% extends 'BidwebBundle::layout.html.twig' %}
+
+{% block title %}Add Comment{% endblock%}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('adbck-notice') %}
+        <div class="blogger-notice">
+            {{ flashMessage }}
+        </div>
+        
+    {% endfor %}
+    
+    <form action="{{ path('adbck_newuser' ) }}" method="post" {{ form_enctype(form) }} class="blogger">
+    {{ form_widget(form) }}
+    <p>
+        <input type="submit" value="Submit">
+    </p>
+</form>
+{% endblock %}
+
+
+    
